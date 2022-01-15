@@ -93,6 +93,8 @@ source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/polyglot.vim
+source ~/.config/nvim/plugins/fzf.vim
 
 call plug#end()
 doautocmd User PlugLoaded
