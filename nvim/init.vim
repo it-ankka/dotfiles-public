@@ -92,6 +92,7 @@ source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/surround.vim
+source ~/.config/nvim/plugins/nerdtree.vim
 
 call plug#end()
 doautocmd User PlugLoaded
