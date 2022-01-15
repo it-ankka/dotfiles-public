@@ -1,0 +1,15 @@
+- clean: ['~']
+
+- link:
+    ~/.zshrc: zshrc
+    ~/.gitconfig: gitconfig
+    ~/.config/nvim:
+        create: true
+        path: nvim
+    ~/.config/kitty: kitty
+    ~/.oh-my-zsh/custom/aliases.zsh: aliases.zsh
+    ~/.oh-my-zsh/custom/themes/lambda-gitster.zsh-theme: lambda-gitster.zsh-theme
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - ["vim +PlugUpdate +PlugClean! +qa", Installing and updating plugins]
