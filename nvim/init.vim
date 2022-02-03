@@ -1,4 +1,4 @@
-"
+
 " Personal nvim configuration of Lassi Köykkä
 "
 "-------------------------------------------------------------
@@ -62,9 +62,17 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Paste replace visual selection without copying it
 vnoremap <leader>p "_dP
+" Delete without yank
+nnoremap <leader>d "_d
+nnoremap x "_x
+
 " Easy insertion of a trailing ; or , from insert mode
 imap ;; <Esc>A;<Esc>
 imap ,, <Esc>A,<Esc>
+
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
 
 " Allows for moving lines like in vscode
 nnoremap <A-j> :m .+1<CR>==
@@ -94,13 +102,16 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin(data_dir . '/plugins')
-
 source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/blamer.vim
-source ~/.config/nvim/plugins/coc.vim
+" source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/fugitive.vim
+" source ~/.config/nvim/plugins/nvim-lspconfig.vim
+" source ~/.config/nvim/plugins/cmp-nvim-lsp.vim
+" source ~/.config/nvim/plugins/lspsaga.vim
+source ~/.config/nvim/plugins/lexima.vim
 source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/monokai.vim
 source ~/.config/nvim/plugins/nerdtree.vim
