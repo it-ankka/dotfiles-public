@@ -11,7 +11,7 @@ set tabstop=4
 set relativenumber
 set number
 set hidden
-set signcolumn=yes:2
+set signcolumn=yes
 set termguicolors
 set undofile
 set title
@@ -73,6 +73,13 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+" For mac
+nnoremap √ :m .+1<CR>==
+nnoremap ª :m .-2<CR>==
+inoremap √ <Esc>:m .+1<CR>==gi
+inoremap ª <Esc>:m .-2<CR>==gi
+vnoremap √ :m '>+1<CR>gv=gv
+vnoremap ª :m '<-2<CR>gv=gv
 
 cmap w!! %!sudo tee > /dev/null %
 
@@ -98,6 +105,8 @@ source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/monokai.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/polyglot.vim
+source ~/.config/nvim/plugins/treesitter.vim
+" source ~/.config/nvim/plugins/neoscroll.vim
 
 call plug#end()
 doautocmd User PlugLoaded
