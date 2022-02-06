@@ -102,13 +102,15 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin(data_dir . '/plugins')
+source 
+source ~/.config/nvim/plugins/autopairs.vim
 source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/blamer.vim
 " source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/fugitive.vim
-source ~/.config/nvim/plugins/lexima.vim
+"source ~/.config/nvim/plugins/lexima.vim
 source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/monokai.vim
 source ~/.config/nvim/plugins/nerdtree.vim
@@ -116,8 +118,7 @@ source ~/.config/nvim/plugins/polyglot.vim
 source ~/.config/nvim/plugins/treesitter.vim
 " source ~/.config/nvim/plugins/neoscroll.vim
 
-" source ~/.config/nvim/plugins/nvim-lspconfig.vim
-"source ~/.config/nvim/plugins/cmp-nvim-lsp.vim
-"source ~/.config/nvim/plugins/lspsaga.vim
+source ~/.config/nvim/plugins/nvim-lspconfig.vim
+source ~/.config/nvim/plugins/lspsaga.vim
 call plug#end()
 doautocmd User PlugLoaded
