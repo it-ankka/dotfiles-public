@@ -1,1 +1,1 @@
-Plug 'APZelos/blamer.nvim'
+Plug 'APZelos/blamer.nvim', { 'do': ':BlamerShow' }

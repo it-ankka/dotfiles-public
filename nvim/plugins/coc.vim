@@ -34,11 +34,11 @@ function! s:check_back_space() abort
 endfunction
 
  " Use <c-space> to trigger completion.
- " if has('nvim')
- "   inoremap <silent><expr> <c-tab> coc#refresh()
- " else
- "   inoremap <silent><expr> <c-@> coc#refresh()
- " endif
+ if has('nvim')
+   inoremap <silent><expr> <C-Space> coc#refresh()
+ else
+   inoremap <silent><expr> <C-Space> coc#refresh()
+ endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -49,7 +49,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>d <Plug>(coc-diagnostic-info)
+nmap <silent> <leader>e <Plug>(coc-diagnostic-info)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)

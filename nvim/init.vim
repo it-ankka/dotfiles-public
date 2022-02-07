@@ -4,7 +4,7 @@
 " General settings
 "-------------------------------------------------------------
 
-language en_US
+" language en_US
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -34,6 +34,7 @@ set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 "Reduce time for highlighting other references
 set redrawtime=10000 "Allow more time for loading highlighting in large files
 
+" let g:python3_host_prog = '/usr/local/bin/python3'
 "-------------------------------------------------------------
 " Keybinds
 "-------------------------------------------------------------
@@ -42,6 +43,7 @@ let mapleader = "\<space>"
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim
+nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
 
 nmap <leader>k :nohlsearch<CR>
 nmap <leader>Q :bufdo bdelete<cr>
@@ -102,15 +104,15 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin(data_dir . '/plugins')
-source 
 source ~/.config/nvim/plugins/autopairs.vim
 source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/blamer.vim
-" source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/fugitive.vim
-"source ~/.config/nvim/plugins/lexima.vim
+source ~/.config/nvim/plugins/indent-blankline.vim
+source ~/.config/nvim/plugins/vim-gitgutter.vim
 source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/monokai.vim
 source ~/.config/nvim/plugins/nerdtree.vim
@@ -118,7 +120,7 @@ source ~/.config/nvim/plugins/polyglot.vim
 source ~/.config/nvim/plugins/treesitter.vim
 " source ~/.config/nvim/plugins/neoscroll.vim
 
-source ~/.config/nvim/plugins/nvim-lspconfig.vim
-source ~/.config/nvim/plugins/lspsaga.vim
+" source ~/.config/nvim/plugins/nvim-lspconfig.vim
+" source ~/.config/nvim/plugins/lspsaga.vim
 call plug#end()
 doautocmd User PlugLoaded
