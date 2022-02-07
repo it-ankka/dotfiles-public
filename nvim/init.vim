@@ -104,20 +104,22 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin(data_dir . '/plugins')
-source ~/.config/nvim/plugins/autopairs.vim
-source ~/.config/nvim/plugins/airline.vim
-source ~/.config/nvim/plugins/blamer.vim
-" source ~/.config/nvim/plugins/coc.vim
-source ~/.config/nvim/plugins/commentary.vim
-source ~/.config/nvim/plugins/fzf.vim
-source ~/.config/nvim/plugins/fugitive.vim
-source ~/.config/nvim/plugins/indent-blankline.vim
-source ~/.config/nvim/plugins/vim-gitgutter.vim
-source ~/.config/nvim/plugins/surround.vim
-source ~/.config/nvim/plugins/monokai.vim
-source ~/.config/nvim/plugins/nerdtree.vim
-source ~/.config/nvim/plugins/polyglot.vim
-source ~/.config/nvim/plugins/treesitter.vim
+if !exists('g:vscode')
+  source ~/.config/nvim/plugins/autopairs.vim
+  source ~/.config/nvim/plugins/airline.vim
+  source ~/.config/nvim/plugins/blamer.vim
+  source ~/.config/nvim/plugins/commentary.vim
+  source ~/.config/nvim/plugins/coc.vim
+  source ~/.config/nvim/plugins/fzf.vim
+  source ~/.config/nvim/plugins/fugitive.vim
+  source ~/.config/nvim/plugins/indent-blankline.vim
+  source ~/.config/nvim/plugins/vim-gitgutter.vim
+  source ~/.config/nvim/plugins/surround.vim
+  source ~/.config/nvim/plugins/monokai.vim
+  source ~/.config/nvim/plugins/nerdtree.vim
+  source ~/.config/nvim/plugins/polyglot.vim
+  source ~/.config/nvim/plugins/treesitter.vim
+endif
 " source ~/.config/nvim/plugins/neoscroll.vim
 
 " source ~/.config/nvim/plugins/nvim-lspconfig.vim
