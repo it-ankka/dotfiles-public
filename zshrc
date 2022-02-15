@@ -101,3 +101,4 @@ source $ZSH/oh-my-zsh.sh
  alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/android-studio/bin
