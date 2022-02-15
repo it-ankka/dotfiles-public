@@ -1,17 +1,17 @@
-"
 " Personal nvim configuration of Lassi Köykkä
 "
 "-------------------------------------------------------------
 " General settings
 "-------------------------------------------------------------
 
+" language en_US
 set expandtab
 set shiftwidth=4
 set tabstop=4
 set relativenumber
 set number
 set hidden
-set signcolumn=yes:2
+set signcolumn=yes
 set termguicolors
 set undofile
 set title
@@ -34,6 +34,7 @@ set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 "Reduce time for highlighting other references
 set redrawtime=10000 "Allow more time for loading highlighting in large files
 
+" let g:python3_host_prog = '/usr/local/bin/python3'
 "-------------------------------------------------------------
 " Keybinds
 "-------------------------------------------------------------
@@ -42,6 +43,7 @@ let mapleader = "\<space>"
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim
+nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
 
 nmap <leader>k :nohlsearch<CR>
 nmap <leader>Q :bufdo bdelete<cr>
@@ -62,9 +64,17 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Paste replace visual selection without copying it
 vnoremap <leader>p "_dP
+" Delete without yank
+nnoremap <leader>d "_d
+nnoremap x "_x
+
 " Easy insertion of a trailing ; or , from insert mode
 imap ;; <Esc>A;<Esc>
 imap ,, <Esc>A,<Esc>
+
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
 
 " Allows for moving lines like in vscode
 nnoremap <A-j> :m .+1<CR>==
@@ -73,6 +83,13 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+" For mac
+nnoremap √ :m .+1<CR>==
+nnoremap ª :m .-2<CR>==
+inoremap √ <Esc>:m .+1<CR>==gi
+inoremap ª <Esc>:m .-2<CR>==gi
+vnoremap √ :m '>+1<CR>gv=gv
+vnoremap ª :m '<-2<CR>gv=gv
 
 cmap w!! %!sudo tee > /dev/null %
 
@@ -87,19 +104,25 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin(data_dir . '/plugins')
+if !exists('g:vscode')
+  source ~/.config/nvim/plugins/autopairs.vim
+  source ~/.config/nvim/plugins/airline.vim
+  source ~/.config/nvim/plugins/blamer.vim
+  source ~/.config/nvim/plugins/commentary.vim
+  source ~/.config/nvim/plugins/coc.vim
+  source ~/.config/nvim/plugins/fzf.vim
+  source ~/.config/nvim/plugins/fugitive.vim
+  source ~/.config/nvim/plugins/indent-blankline.vim
+  source ~/.config/nvim/plugins/vim-gitgutter.vim
+  source ~/.config/nvim/plugins/surround.vim
+  source ~/.config/nvim/plugins/monokai.vim
+  source ~/.config/nvim/plugins/nerdtree.vim
+  source ~/.config/nvim/plugins/polyglot.vim
+  source ~/.config/nvim/plugins/treesitter.vim
+endif
+" source ~/.config/nvim/plugins/neoscroll.vim
 
-source ~/.config/nvim/plugins/airline.vim
-source ~/.config/nvim/plugins/blamer.vim
-source ~/.config/nvim/plugins/coc.vim
-source ~/.config/nvim/plugins/commentary.vim
-source ~/.config/nvim/plugins/fzf.vim
-source ~/.config/nvim/plugins/fugitive.vim
-source ~/.config/nvim/plugins/surround.vim
-source ~/.config/nvim/plugins/monokai.vim
-source ~/.config/nvim/plugins/nerdtree.vim
-source ~/.config/nvim/plugins/polyglot.vim
-
+" source ~/.config/nvim/plugins/nvim-lspconfig.vim
+" source ~/.config/nvim/plugins/lspsaga.vim
 call plug#end()
 doautocmd User PlugLoaded
-
-
