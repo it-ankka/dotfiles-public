@@ -20,7 +20,7 @@ set smartcase
 set wildmode=longest:full,full
 set nowrap
 set list
-set listchars=tab:▸\ ,trail:·
+set listchars=trail:·
 set mouse=a
 set scrolloff=8
 set sidescrolloff=8
@@ -76,21 +76,29 @@ imap ,, <Esc>A,<Esc>
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
 
-" Allows for moving lines like in vscode
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-" For mac
-nnoremap √ :m .+1<CR>==
-nnoremap ª :m .-2<CR>==
-inoremap √ <Esc>:m .+1<CR>==gi
-inoremap ª <Esc>:m .-2<CR>==gi
-vnoremap √ :m '>+1<CR>gv=gv
-vnoremap ª :m '<-2<CR>gv=gv
-
+" if !exists('g:vscode')
+    " Allows for moving lines like in vscode
+    nnoremap <A-j> :m .+1<CR>==
+    nnoremap <A-k> :m .-2<CR>==
+    inoremap <A-j> <Esc>:m .+1<CR>==gi
+    inoremap <A-k> <Esc>:m .-2<CR>==gi
+    vnoremap <A-j> :m '>+1<CR>gv=gv
+    vnoremap <A-k> :m '<-2<CR>gv=gv
+    " For mac
+    nnoremap √ :m .+1<CR>==
+    nnoremap ª :m .-2<CR>==
+    inoremap √ <Esc>:m .+1<CR>==gi
+    inoremap ª <Esc>:m .-2<CR>==gi
+    vnoremap √ :m '>+1<CR>gv=gv
+    vnoremap ª :m '<-2<CR>gv=gv
+" else 
+    " nnoremap <A-j> <Cmd>call VSCodeNotifyVisual('editor.action.moveLinesDownAction', 1)<CR>
+    " nnoremap <A-k> <Cmd>call VSCodeNotifyVisual('editor.action.moveLinesUpAction', 1)<CR>
+    " inoremap <A-j> <Cmd>call VSCodeNotifyVisual('editor.action.moveLinesDownAction', 1)<CR>
+    " inoremap <A-k> <Cmd>call VSCodeNotifyVisual('editor.action.moveLinesUpAction', 1)<CR>
+    " vnoremap <A-j> <Cmd>call VSCodeNotifyVisual('editor.action.moveLinesDownAction', 1)<CR>
+    " vnoremap <A-k> <Cmd>call VSCodeNotifyVisual('editor.action.moveLinesUpAction', 1)<CR>
+" endif
 cmap w!! %!sudo tee > /dev/null %
 
 "-------------------------------------------------------------
