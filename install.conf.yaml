@@ -5,6 +5,9 @@
     ~/.gitconfig: gitconfig
     ~/.config/nvim:
         create: true
+        path: neocode
+    ~/.config/nvim.old:
+        create: true
         path: nvim
     ~/.config/kitty: kitty
     ~/.oh-my-zsh/custom/aliases.zsh: aliases.zsh

@@ -5,6 +5,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
+Plug 'ray-x/lsp_signature.nvim'
 
 function! SetupLsp()
   " if !exists('g:lspconfig')
@@ -13,9 +14,7 @@ function! SetupLsp()
 
 lua << EOF
   --vim.lsp.set_log_level("debug")
-EOF
 
-lua << EOF
   local nvim_lsp = require('lspconfig')
   local protocol = require'vim.lsp.protocol'
 

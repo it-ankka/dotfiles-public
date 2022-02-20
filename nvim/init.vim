@@ -29,6 +29,9 @@ set splitright
 set clipboard=unnamedplus
 set confirm
 set exrc
+set pumheight=10
+set cursorline
+set fileencoding=utf-8
 set backup
 set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 "Reduce time for highlighting other references
@@ -117,7 +120,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/airline.vim
   source ~/.config/nvim/plugins/blamer.vim
   source ~/.config/nvim/plugins/commentary.vim
-  source ~/.config/nvim/plugins/coc.vim
+  " source ~/.config/nvim/plugins/coc.vim
   source ~/.config/nvim/plugins/fzf.vim
   source ~/.config/nvim/plugins/fugitive.vim
   source ~/.config/nvim/plugins/indent-blankline.vim
@@ -127,10 +130,13 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/nerdtree.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
+  "LSP
+  source ~/.config/nvim/plugins/nvim-lspconfig.vim
+  source ~/.config/nvim/plugins/lspsaga.vim
 endif
+" source ~/.config/nvim/lsp/init.lua
+" source ~/.config/nvim/plugins/lspsaga.lua
 " source ~/.config/nvim/plugins/neoscroll.vim
 
-" source ~/.config/nvim/plugins/nvim-lspconfig.vim
-" source ~/.config/nvim/plugins/lspsaga.vim
 call plug#end()
 doautocmd User PlugLoaded
