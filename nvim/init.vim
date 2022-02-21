@@ -20,6 +20,8 @@ set smartcase
 set wildmode=longest:full,full
 set nowrap
 set list
+set smartindent
+set autoindent
 set listchars=tab:\│\ ,eol:↴,trail:·
 set mouse=a
 set scrolloff=8
@@ -54,6 +56,8 @@ nmap <leader>Q :bufdo bdelete<cr>
 " Switch buffers
 nmap <M-Left> :bp<cr>
 nmap <M-Right> :bn<cr>
+nmap <M-h> :bp<cr>
+nmap <M-l> :bn<cr>
 nmap ˛ :bp<cr>
 nmap ﬁ :bn<cr>
 
