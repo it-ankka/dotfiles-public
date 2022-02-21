@@ -135,8 +135,10 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/autopairs.vim
   source ~/.config/nvim/plugins/airline.vim
   source ~/.config/nvim/plugins/blamer.vim
+  source ~/.config/nvim/plugins/bufferline.vim
   source ~/.config/nvim/plugins/commentary.vim
   source ~/.config/nvim/plugins/coc.vim
+  source ~/.config/nvim/plugins/nvim-dashboard.vim
   source ~/.config/nvim/plugins/fzf.vim
   source ~/.config/nvim/plugins/fugitive.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
