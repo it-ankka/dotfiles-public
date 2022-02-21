@@ -133,7 +133,8 @@ endif
 call plug#begin(data_dir . '/plugins')
 if !exists('g:vscode')
   source ~/.config/nvim/plugins/autopairs.vim
-  source ~/.config/nvim/plugins/airline.vim
+  " source ~/.config/nvim/plugins/airline.vim
+  source ~/.config/nvim/plugins/lualine.vim
   source ~/.config/nvim/plugins/blamer.vim
   source ~/.config/nvim/plugins/bufferline.vim
   source ~/.config/nvim/plugins/commentary.vim
