@@ -84,6 +84,7 @@ packer.startup(function(use)
 	-- -----------------
 	use({ "rafamadriz/neon", as = "neon" })
   use 'Mofiqul/vscode.nvim'
+  use 'tanvirtin/monokai.nvim'
   use 'feline-nvim/feline.nvim'
   use({'mrjones2014/legendary.nvim'})
 	use({
