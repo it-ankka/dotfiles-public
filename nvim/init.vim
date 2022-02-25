@@ -149,6 +149,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/nerdtree.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
+  source ~/.config/nvim/plugins/tagalong.vim
   "LSP
   " source ~/.config/nvim/plugins/nvim-lspconfig.vim
   " source ~/.config/nvim/plugins/lspsaga.vim
