@@ -142,6 +142,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/bufferline.vim
   source ~/.config/nvim/plugins/commentary.vim
   source ~/.config/nvim/plugins/coc.vim
+  source ~/.config/nvim/plugins/rust-lang.vim
   source ~/.config/nvim/plugins/nvim-dashboard.vim
   source ~/.config/nvim/plugins/fzf.vim
   source ~/.config/nvim/plugins/fugitive.vim
