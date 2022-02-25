@@ -1,4 +1,5 @@
 alias nv='nvim'
+alias :q='exit'
 alias aliases='nv ~/.oh-my-zsh/custom/aliases.zsh'
 alias zshrs='source ~/.zshrc'
 alias kittyrs='killall x-terminal-emul -10'
