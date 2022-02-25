@@ -95,6 +95,9 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
+" Close buffer
+nnoremap <c-c> :bp\|bd #<CR>
+
 " if !exists('g:vscode')
     " Allows for moving lines like in vscode
     nnoremap <A-j> :m .+1<CR>==
