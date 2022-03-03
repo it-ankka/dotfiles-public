@@ -8,7 +8,6 @@ language C
 set expandtab
 set shiftwidth=4
 set tabstop=4
-set relativenumber
 set number
 set hidden
 set signcolumn=yes
@@ -148,6 +147,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/fugitive.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
   source ~/.config/nvim/plugins/vim-gitgutter.vim
+  source ~/.config/nvim/plugins/vim-graphql.vim
   source ~/.config/nvim/plugins/surround.vim
   source ~/.config/nvim/plugins/monokai.vim
   source ~/.config/nvim/plugins/nerdtree.vim

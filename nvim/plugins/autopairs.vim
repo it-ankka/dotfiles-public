@@ -1,1 +1,1 @@
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
