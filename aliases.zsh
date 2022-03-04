@@ -1,15 +1,16 @@
+# My aliases
 alias nv='nvim'
 alias :q='exit'
 alias aliases='nv ~/.oh-my-zsh/custom/aliases.zsh'
+alias funcs='nv ~/.oh-my-zsh/custom/functions.zsh'
 alias zshrs='source ~/.zshrc'
+alias bashrs='source ~/.bashrc'
 alias kittyrs='killall x-terminal-emul -10'
 alias kittyconfig='nv ~/.config/kitty/kitty.conf'
 alias kittystartup='nv ~/.config/kitty/startup.conf'
 alias work='kitty --detach --session ~/.config/kitty/work.conf'
 alias weather='clear; curl wttr.in;'
 alias aptup='sudo apt update && sudo apt upgrade -y'
-
-
 
 # Docker
 alias dk='docker'
