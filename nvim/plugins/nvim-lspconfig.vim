@@ -5,6 +5,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
+Plug 'ray-x/lsp_signature.nvim'
 
 function! SetupLsp()
   " if !exists('g:lspconfig')
@@ -13,9 +14,7 @@ function! SetupLsp()
 
 lua << EOF
   --vim.lsp.set_log_level("debug")
-EOF
 
-lua << EOF
   local nvim_lsp = require('lspconfig')
   local protocol = require'vim.lsp.protocol'
 
@@ -104,6 +103,11 @@ lua << EOF
   --}
 
   nvim_lsp.eslint.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+
+  nvim_lsp.svelte.setup{
     on_attach = on_attach,
     capabilities = capabilities
   }
@@ -245,12 +249,22 @@ lua <<EOF
     })
   })
 
+  local servers = { 'eslint', 'svelte', 'tsserver', 'diagnosticls' }
+  for _, lsp in pairs(servers) do
+    require('lspconfig')[lsp].setup {
+      on_attach = on_attach,
+      flags = {
+        -- This will be the default in neovim 0.7+
+        -- debounce_text_changes = 150,
+    }
+  }
+end
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-    capabilities = capabilities
-  }
+  --require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+  --  capabilities = capabilities
+  --}
 EOF
 endfunction
 
