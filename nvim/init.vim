@@ -32,6 +32,7 @@ set confirm
 set exrc
 set pumheight=10
 set cursorline
+set inccommand=nosplit
 set fileencoding=utf-8
 set backup
 set backupdir=~/.local/share/nvim/backup//
@@ -93,6 +94,10 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+
+
+" Quick play Q macro
+nnoremap <leader>q @q
 
 " Close buffer
 nnoremap <c-c> :bp\|bd #<CR>
