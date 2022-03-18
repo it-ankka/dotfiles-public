@@ -59,5 +59,6 @@ function xkcd () {
     echo "#$comicNum -- $date\n"
     
     # Display the image using icat or alternatively print the alt-text and transcript of the comic
-    kitty +kitten icat --align left $url || (echo $alt && echo $transcript)
+    kitty +kitten icat --align left $url || echo $transcript
+    echo "\n\"$alt\"\n"
 }
