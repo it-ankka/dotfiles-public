@@ -103,4 +103,6 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/android-studio/bin
 export PATH=$PATH:$HOME/.cargo/env
+export PATH=$PATH:$HOME/scripts

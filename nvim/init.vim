@@ -8,7 +8,6 @@ language C
 set expandtab
 set shiftwidth=4
 set tabstop=4
-set relativenumber
 set number
 set hidden
 set signcolumn=yes
@@ -33,6 +32,7 @@ set confirm
 set exrc
 set pumheight=10
 set cursorline
+set inccommand=nosplit
 set fileencoding=utf-8
 set backup
 set backupdir=~/.local/share/nvim/backup//
@@ -95,6 +95,10 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
+
+" Quick play Q macro
+nnoremap <leader>q @q
+
 " Close buffer
 nnoremap <c-c> :bp\|bd #<CR>
 
@@ -148,6 +152,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/fugitive.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
   source ~/.config/nvim/plugins/vim-gitgutter.vim
+  source ~/.config/nvim/plugins/vim-graphql.vim
   source ~/.config/nvim/plugins/surround.vim
   source ~/.config/nvim/plugins/monokai.vim
   source ~/.config/nvim/plugins/nerdtree.vim

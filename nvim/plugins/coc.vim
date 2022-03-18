@@ -8,6 +8,7 @@ let g:coc_global_extensions = [
     \ 'coc-diagnostic',
     \ 'coc-emmet',
     \ 'coc-eslint',
+    \ 'coc-prettier',
     \ 'coc-git',
     \ 'coc-html',
     \ 'coc-json',
@@ -16,7 +17,6 @@ let g:coc_global_extensions = [
     \ 'coc-snippets',
     \ 'coc-sql',
     \ 'coc-tsserver',
-    "\ '@yaegassy/coc-volar',
 \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -108,6 +108,9 @@ inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float
 inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+
+" Format with prettier
+nmap <leader>pf   :CocCommand prettier.formatFile<CR>
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
