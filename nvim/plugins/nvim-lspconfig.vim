@@ -102,22 +102,26 @@ lua << EOF
     --capabilities = capabilities
   --}
 
+  --Eslint
   nvim_lsp.eslint.setup{
     on_attach = on_attach,
     capabilities = capabilities
   }
 
+  --Svelte
   nvim_lsp.svelte.setup{
     on_attach = on_attach,
     capabilities = capabilities
   }
 
+  --TS/JS
   nvim_lsp.tsserver.setup {
     on_attach = on_attach,
     filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact", "typescript.tsx" },
     capabilities = capabilities
   }
 
+  --DiagnosticsLS
   nvim_lsp.diagnosticls.setup {
     on_attach = on_attach,
     filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },

@@ -122,3 +122,5 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 nmap <leader>l :CocFzfList<cr>
+
+let g:coc_fzf_opts = ['--layout=reverse', '--info=inline']

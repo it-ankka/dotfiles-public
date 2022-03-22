@@ -4,6 +4,7 @@
 " General settings
 "-------------------------------------------------------------
 
+syntax on
 language C
 set expandtab
 set shiftwidth=4
