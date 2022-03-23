@@ -62,3 +62,16 @@ function xkcd () {
     kitty +kitten icat --align left $url || echo $transcript
     echo "\n\"$alt\"\n"
 }
+
+function xmlgetnext () {
+    local IFS='>'
+    read -d '<' TAG VALUE
+}
+
+function dilbert () {
+    rssUrl=https://kimmo.suominen.com/stuff/dilbert.xml
+    rss=$(curl -s $rssUrl)
+    echo $rss
+}
+
+ 
