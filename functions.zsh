@@ -69,9 +69,21 @@ function xmlgetnext () {
 }
 
 function dilbert () {
+    comicNumb=1
     rssUrl=https://kimmo.suominen.com/stuff/dilbert.xml
     rss=$(curl -s $rssUrl)
-    echo $rss
+    rss+=$(curl -s $rssUrl?paged=2)
+    dates=($(echo $rss | rg -oP '[0-9-]{10}'))
+    srcs=($(echo $rss | rg -oP 'src="\K[^"]+'))
+    len=${#srcs[@]}
+    if [[ "$1" != "newest" ]] ; then
+        comicNum=$((1 + $RANDOM % $len - 1))
+    fi
+
+    echo "\n\nDilbert"
+    echo "${dates[$comicNum]}\n\n"
+    url=${srcs[$comicNum]}
+
+    kitty +kitten icat --align left $url
 }
 
- 
