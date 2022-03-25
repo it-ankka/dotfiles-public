@@ -71,7 +71,9 @@ ZSH_THEME="lambda-gitster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages git-flow)
+plugins=(git colored-man-pages git-flow vi-mode)
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
 source $ZSH/oh-my-zsh.sh
 
