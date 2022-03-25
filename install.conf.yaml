@@ -6,6 +6,9 @@
     ~/.config/nvim:
         create: true
         path: nvim
+    ~/.config/karabiner:
+        create: true
+        path: karabiner
     ~/scripts:
         create: true
         path: scripts

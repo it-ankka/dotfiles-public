@@ -90,6 +90,10 @@ imap ,, <Esc>A,<Esc>
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
 
+" Resize splits
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
 " Window movement
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j

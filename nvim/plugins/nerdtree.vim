@@ -18,6 +18,9 @@ autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | en
 " avoid crashes when calling vim-plug functions while the cursor is on the NERDTree window
 let g:plug_window = 'noautocmd vertical topleft new'
 
+" If in nerdtree, toggle it instead of closing buffer
+:autocmd FileType nerdtree noremap <buffer> <c-c> :NERDTreeToggle<CR>
+
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:DevIconsEnableFolderExtensionPatternMatching = 1
