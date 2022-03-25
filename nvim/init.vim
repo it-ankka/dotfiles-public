@@ -44,6 +44,7 @@ set redrawtime=10000 "Allow more time for loading highlighting in large files
 "-------------------------------------------------------------
 " Keybinds
 "-------------------------------------------------------------
+noremap <F1> <Nop>
 noremap <Space> <Nop>
 let mapleader = "\<space>"
 
