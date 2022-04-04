@@ -146,6 +146,7 @@ endif
 call plug#begin(data_dir . '/plugins')
 if !exists('g:vscode')
   source ~/.config/nvim/plugins/autopairs.vim
+  source ~/.config/nvim/plugins/auto-session.vim
   " source ~/.config/nvim/plugins/airline.vim
   source ~/.config/nvim/plugins/lualine.vim
   source ~/.config/nvim/plugins/blamer.vim
@@ -161,6 +162,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/vim-graphql.vim
   source ~/.config/nvim/plugins/surround.vim
   source ~/.config/nvim/plugins/monokai.vim
+  source ~/.config/nvim/plugins/markdown-preview.vim
   source ~/.config/nvim/plugins/nerdtree.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
