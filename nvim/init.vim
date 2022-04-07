@@ -102,8 +102,16 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
 
-" Quick play Q macro
-nnoremap <leader>q @q
+" Quick play macros on the number row
+nnoremap <F13> @1
+nnoremap <F14> @2
+nnoremap <F15> @3
+nnoremap <F16> @4
+nnoremap <F17> @5
+nnoremap <F18> @6
+nnoremap <F19> @7
+nnoremap <F20> @8
+nnoremap <F21> @9
 
 " Close buffer
 nnoremap <c-c> :bp\|bd #<CR>
