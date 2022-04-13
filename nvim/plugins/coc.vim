@@ -47,8 +47,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <leader><Left> <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader><Right> <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>e <Plug>(coc-diagnostic-info)
 
 " GoTo code navigation.
