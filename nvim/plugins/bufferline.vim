@@ -17,6 +17,12 @@ offsets = {
 }
 EOF
 " KEYBINDS
+
+nnoremap <silent> <M-l> :BufferLineCycleNext<CR>
+nnoremap <silent> <M-h> :BufferLineCyclePrev<CR>
+nnoremap <silent> <S-M-l> :BufferLineMoveNext<CR>
+nnoremap <silent> <S-M-h> :BufferLineMovePrev<CR>
+nnoremap <silent> <M-b> :BufferLinePick<CR>
 nnoremap <silent> ﬂ :BufferLineMoveNext<CR>
 nnoremap <silent> ˘ :BufferLineMovePrev<CR>
 nnoremap <silent> › :BufferLinePick<CR>
