@@ -34,5 +34,6 @@
         "filetypes": ["typescript", "typescriptreact", "graphql"]
       }
     },
+    "rust-analyzer.inlayHints.refreshOnInsertMode": true,
     "svelte.enable-ts-plugin": true
 }
