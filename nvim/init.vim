@@ -40,7 +40,9 @@ set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 "Reduce time for highlighting other references
 set redrawtime=10000 "Allow more time for loading highlighting in large files
 
-" let g:python3_host_prog = '/usr/local/bin/python3'
+" No list chars in .csv files
+autocmd BufRead,BufNewFile *.csv set listchars=eol:↴,trail:·
+
 "-------------------------------------------------------------
 " Keybinds
 "-------------------------------------------------------------
@@ -161,6 +163,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/bufferline.vim
   source ~/.config/nvim/plugins/commentary.vim
   source ~/.config/nvim/plugins/coc.vim
+  source ~/.config/nvim/plugins/copilot.vim
   source ~/.config/nvim/plugins/rust-lang.vim
   source ~/.config/nvim/plugins/nvim-dashboard.vim
   source ~/.config/nvim/plugins/fzf.vim

@@ -16,6 +16,11 @@ offsets = {
     }
 }
 EOF
+" KEYBINDS
+nnoremap <silent> ﬂ :BufferLineMoveNext<CR>
+nnoremap <silent> ˘ :BufferLineMovePrev<CR>
+nnoremap <silent> › :BufferLinePick<CR>
 endfunction
+
 
 autocmd User PlugLoaded ++nested call SetupBufferLine()
