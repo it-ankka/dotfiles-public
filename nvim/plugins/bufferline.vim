@@ -18,13 +18,18 @@ offsets = {
 EOF
 " KEYBINDS
 
+" Movement between buffers
 nnoremap <silent> <M-l> :BufferLineCycleNext<CR>
 nnoremap <silent> <M-h> :BufferLineCyclePrev<CR>
+nnoremap <silent> ﬁ :BufferLineCycleNext<CR>
+nnoremap <silent> ˛ :BufferLineCyclePrev<CR>
+" Reorganize buffers
 nnoremap <silent> <S-M-l> :BufferLineMoveNext<CR>
 nnoremap <silent> <S-M-h> :BufferLineMovePrev<CR>
-nnoremap <silent> <M-b> :BufferLinePick<CR>
 nnoremap <silent> ﬂ :BufferLineMoveNext<CR>
 nnoremap <silent> ˘ :BufferLineMovePrev<CR>
+" Pick a buffer
+nnoremap <silent> <M-b> :BufferLinePick<CR>
 nnoremap <silent> › :BufferLinePick<CR>
 endfunction
 
