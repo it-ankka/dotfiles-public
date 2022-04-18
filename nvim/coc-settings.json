@@ -1,5 +1,4 @@
 {
-    "suggest.autoTrigger": "trigger",
     "suggest.completionItemKindLabels": {
         "method": "  ",
         "function": "  ",

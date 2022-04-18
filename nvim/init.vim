@@ -5,7 +5,6 @@
 "-------------------------------------------------------------
 
 syntax on
-language C
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -57,6 +56,9 @@ nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
 nmap <leader>k :nohlsearch<CR>
 nmap <leader>Q :bufdo bdelete<cr>
 
+" Toggle linewrap
+nnoremap <leader>w :set wrap!<CR>
+
 " Switch buffers
 nmap <M-Left> :bp<cr>
 nmap <M-Right> :bn<cr>
@@ -84,6 +86,9 @@ vnoremap <leader>p "_dP
 " Delete without yank
 nnoremap <leader>d "_d
 nnoremap x "_x
+
+" Delete word in insertmode
+inoremap <M-BS> <C-\><C-o>"_dB
 
 " Easy insertion of a trailing ; or , from insert mode
 imap ;; <Esc>A;<Esc>
@@ -143,6 +148,7 @@ nnoremap <c-c> :bp\|bd #<CR>
 " endif
 cmap w!! %!sudo tee > /dev/null %
 
+
 "-------------------------------------------------------------
 " Plugins
 "-------------------------------------------------------------
@@ -158,15 +164,16 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/autopairs.vim
   source ~/.config/nvim/plugins/auto-session.vim
   " source ~/.config/nvim/plugins/airline.vim
-  source ~/.config/nvim/plugins/lualine.vim
   source ~/.config/nvim/plugins/blamer.vim
   source ~/.config/nvim/plugins/bufferline.vim
-  source ~/.config/nvim/plugins/commentary.vim
   source ~/.config/nvim/plugins/coc.vim
+  source ~/.config/nvim/plugins/nvim-colorizer.vim
+  source ~/.config/nvim/plugins/commentary.vim
   source ~/.config/nvim/plugins/copilot.vim
   source ~/.config/nvim/plugins/rust-lang.vim
   source ~/.config/nvim/plugins/nvim-dashboard.vim
   source ~/.config/nvim/plugins/fzf.vim
+  source ~/.config/nvim/plugins/lualine.vim
   source ~/.config/nvim/plugins/fugitive.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
   source ~/.config/nvim/plugins/vim-gitgutter.vim

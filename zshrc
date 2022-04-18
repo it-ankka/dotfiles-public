@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
  alias zshconfig="nvim ~/.zshrc"
  alias ohmyzsh="nvim ~/.oh-my-zsh"
 
+export LANG=$(locale -a | grep -i 'en_us.utf')
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/android-studio/bin
