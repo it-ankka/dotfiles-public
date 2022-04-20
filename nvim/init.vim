@@ -39,6 +39,11 @@ set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 "Reduce time for highlighting other references
 set redrawtime=10000 "Allow more time for loading highlighting in large files
 
+" SET TITLE
+let dir = fnamemodify(getcwd(), ':t') . " - NVIM"
+set title
+set titlestring=%{dir}
+
 " No list chars in .csv files
 autocmd BufRead,BufNewFile *.csv set listchars=eol:↴,trail:·
 
@@ -73,6 +78,17 @@ map gf :edit <cfile><cr>
 " Reselect visual selection after indenting
 vnoremap < <gv
 vnoremap > >gv
+
+" Smart indent when entering insert mode with i on empty lines
+function! IndentWithI(default)
+    if len(getline('.')) == 0
+        return "\"_cc"
+    else
+        return a:default
+    endif
+endfunction
+nnoremap <expr> i IndentWithI("i")
+nnoremap <expr> I IndentWithI("I")
 
 " Make Y behave like the other capitals
 nnoremap Y y$
@@ -182,6 +198,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/monokai.vim
   source ~/.config/nvim/plugins/markdown-preview.vim
   source ~/.config/nvim/plugins/nerdtree.vim
+  " source ~/.config/nvim/plugins/nvim-tree.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
   source ~/.config/nvim/plugins/tagalong.vim
