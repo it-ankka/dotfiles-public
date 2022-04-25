@@ -44,9 +44,6 @@ let dir = fnamemodify(getcwd(), ':t') . " - NVIM"
 set title
 set titlestring=%{dir}
 
-" No list chars in .csv files
-autocmd BufRead,BufNewFile *.csv set listchars=eol:↴,trail:·
-
 "-------------------------------------------------------------
 " Keybinds
 "-------------------------------------------------------------
@@ -199,6 +196,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/markdown-preview.vim
   source ~/.config/nvim/plugins/nerdtree.vim
   " source ~/.config/nvim/plugins/nvim-tree.vim
+  " source ~/.config/nvim/plugins/orgmode.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
   source ~/.config/nvim/plugins/tagalong.vim
