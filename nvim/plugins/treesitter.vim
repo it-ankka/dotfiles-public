@@ -31,13 +31,14 @@ require'nvim-treesitter.configs'.setup {
     --"swift",
     "html",
     "scss",
-    "org",
     "css",
+    "prisma",
+    "rust",
+    "svelte",
     "javascript",
-    "javascriptreact",
     "typescript",
-    "typescriptreact",
-    "python",
+    "bash",
+    "bash",
   },
 }
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

@@ -12,6 +12,9 @@
     ~/scripts:
         create: true
         path: scripts
+    ~/.config/limelight:
+        create: true
+        path: limelight
     ~/cheatsheets:
         create: true
         path: cheatsheets
