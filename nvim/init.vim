@@ -77,15 +77,13 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Smart indent when entering insert mode with i on empty lines
-function! IndentWithI(default)
+function IndentWithI(default)
     if len(getline('.')) == 0
         return "\"_cc"
     else
         return a:default
     endif
 endfunction
-nnoremap <expr> i IndentWithI("i")
-nnoremap <expr> I IndentWithI("I")
 
 " Make Y behave like the other capitals
 nnoremap Y y$
@@ -207,6 +205,13 @@ endif
 " source ~/.config/nvim/lsp/init.lua
 " source ~/.config/nvim/plugins/lspsaga.lua
 " source ~/.config/nvim/plugins/neoscroll.vim
-
 call plug#end()
 doautocmd User PlugLoaded
+
+
+"------------------------------------------------------------
+" MISC
+"-------------------------------------------------------------
+" Set i remap after plugins are loaded
+nmap <expr> i IndentWithI("i")
+nmap <expr> I IndentWithI("I")

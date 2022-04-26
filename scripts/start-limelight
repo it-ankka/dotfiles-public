@@ -1,7 +1,0 @@
-#!/bin/bash
-if [ -x "$(command -v /usr/local/bin/limelight)" ]; then
-    killall limelight &> /dev/null
-    /usr/local/bin/limelight &> /dev/null 2>&1 &
-else
-    echo "limelight not installed"
-fi
