@@ -6,7 +6,8 @@ lua << EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
-    disable = {},
+    disable = {'org'},
+    additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
   },
   rainbow = {
     enable = true,
@@ -29,7 +30,15 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
     --"swift",
     "html",
-    "scss"
+    "scss",
+    "css",
+    "prisma",
+    "rust",
+    "svelte",
+    "javascript",
+    "typescript",
+    "bash",
+    "bash",
   },
 }
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

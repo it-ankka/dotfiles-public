@@ -44,9 +44,6 @@ let dir = fnamemodify(getcwd(), ':t') . " - NVIM"
 set title
 set titlestring=%{dir}
 
-" No list chars in .csv files
-autocmd BufRead,BufNewFile *.csv set listchars=eol:↴,trail:·
-
 "-------------------------------------------------------------
 " Keybinds
 "-------------------------------------------------------------
@@ -80,14 +77,15 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Smart indent when entering insert mode with i on empty lines
-function! IndentWithI(default)
+function IndentWithI(default)
     if len(getline('.')) == 0
         return "\"_cc"
     else
         return a:default
     endif
 endfunction
-nnoremap <expr> i IndentWithI("i")
+
+" Smart indent when entering insert mode with I on empty lines
 nnoremap <expr> I IndentWithI("I")
 
 " Make Y behave like the other capitals
@@ -197,8 +195,9 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/surround.vim
   source ~/.config/nvim/plugins/monokai.vim
   source ~/.config/nvim/plugins/markdown-preview.vim
-  source ~/.config/nvim/plugins/nerdtree.vim
-  " source ~/.config/nvim/plugins/nvim-tree.vim
+  " source ~/.config/nvim/plugins/nerdtree.vim
+  source ~/.config/nvim/plugins/nvim-tree.vim
+  " source ~/.config/nvim/plugins/orgmode.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
   source ~/.config/nvim/plugins/tagalong.vim

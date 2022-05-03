@@ -134,33 +134,6 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                        "description": "Finnish ~ key",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "close_bracket",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "close_bracket",
-                                        "modifiers": [
-                                            "right_option"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "spacebar"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
                     }
                 ]
             },
