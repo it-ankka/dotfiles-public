@@ -85,6 +85,9 @@ function IndentWithI(default)
     endif
 endfunction
 
+" Smart indent when entering insert mode with I on empty lines
+nnoremap <expr> I IndentWithI("I")
+
 " Make Y behave like the other capitals
 nnoremap Y y$
 
@@ -192,8 +195,8 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/surround.vim
   source ~/.config/nvim/plugins/monokai.vim
   source ~/.config/nvim/plugins/markdown-preview.vim
-  source ~/.config/nvim/plugins/nerdtree.vim
-  " source ~/.config/nvim/plugins/nvim-tree.vim
+  " source ~/.config/nvim/plugins/nerdtree.vim
+  source ~/.config/nvim/plugins/nvim-tree.vim
   " source ~/.config/nvim/plugins/orgmode.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
@@ -205,13 +208,6 @@ endif
 " source ~/.config/nvim/lsp/init.lua
 " source ~/.config/nvim/plugins/lspsaga.lua
 " source ~/.config/nvim/plugins/neoscroll.vim
+
 call plug#end()
 doautocmd User PlugLoaded
-
-
-"------------------------------------------------------------
-" MISC
-"-------------------------------------------------------------
-" Set i remap after plugins are loaded
-nmap <expr> i IndentWithI("i")
-nmap <expr> I IndentWithI("I")

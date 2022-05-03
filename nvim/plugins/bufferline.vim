@@ -7,8 +7,8 @@ options = {
 diagnostics = "coc",
 offsets = {
   {
-    filetype = "nerdtree",
-    text = "File Explorer",
+    filetype = "NvimTree",
+    text = "📁 File Explorer",
     highlight = "Directory",
     text_align = "left"
   }
