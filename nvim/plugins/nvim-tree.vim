@@ -11,6 +11,9 @@ lua << EOF
                     side = "right",
                     width = 35
             },
+            git = {
+                    ignore = false
+            }
         }
 EOF
 endfunction
