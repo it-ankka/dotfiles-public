@@ -4,7 +4,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 " lua
 function! SetupNvimTree()
-    nnoremap <leader>n :NvimTreeToggle<CR>
+    nnoremap <leader>n :NvimTreeFindFileToggle<CR>
 lua << EOF
     require'nvim-tree'.setup {
             view = {
