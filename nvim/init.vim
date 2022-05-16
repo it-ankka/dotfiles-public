@@ -105,8 +105,13 @@ nnoremap x "_x
 inoremap <M-BS> <C-\><C-o>"_dB
 
 " Easy insertion of a trailing ; or , from insert mode
+nmap ;; <Esc>A;<Esc>
+nmap ,, <Esc>A,<Esc>
 imap ;; <Esc>A;<Esc>
 imap ,, <Esc>A,<Esc>
+
+" Easy insertion of newline at cursor
+nnoremap <leader><CR> a<CR><Esc>
 
 " Split window
 nmap ss :split<Return><C-w>w

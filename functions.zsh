@@ -9,6 +9,10 @@ function cheatsheet () {
     cat ~/cheatsheets/$1
 }
 
+function kb () {
+    explorer.exe https://kaboomjs.com/#$1
+}
+
 function rndXkcdUrl () {
     newestNum=$(curl -s https://xkcd.com/info.0.json | jq .num)
     rnumber=$((1 + $RANDOM % $newestNum))
