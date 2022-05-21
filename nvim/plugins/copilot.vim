@@ -1,5 +1,5 @@
-Plug 'daquexian/copilot.vim'
-"Plug 'github/copilot.vim'
+" Plug 'daquexian/copilot.vim'
+Plug 'github/copilot.vim'
 
 let g:copilot_no_maps = v:true
 let g:copilot_assume_mapped = v:true

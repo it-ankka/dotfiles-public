@@ -105,10 +105,10 @@ nnoremap x "_x
 inoremap <M-BS> <C-\><C-o>"_dB
 
 " Easy insertion of a trailing ; or , from insert mode
-nmap ;; <Esc>A;<Esc>
-nmap ,, <Esc>A,<Esc>
-imap ;; <Esc>A;<Esc>
-imap ,, <Esc>A,<Esc>
+nmap ;; <Esc>mpA;<Esc>`p
+nmap ,, <Esc>mpA,<Esc>`p
+imap ;; <Esc>mpA;<Esc>`p
+imap ,, <Esc>mpA,<Esc>`p
 
 " Easy insertion of newline at cursor
 nnoremap <leader><CR> a<CR><Esc>
@@ -196,7 +196,6 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/fugitive.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
   source ~/.config/nvim/plugins/vim-gitgutter.vim
-  source ~/.config/nvim/plugins/vim-graphql.vim
   source ~/.config/nvim/plugins/surround.vim
   source ~/.config/nvim/plugins/monokai.vim
   source ~/.config/nvim/plugins/markdown-preview.vim
