@@ -185,7 +185,7 @@ if !exists('g:vscode')
   " source ~/.config/nvim/plugins/airline.vim
   source ~/.config/nvim/plugins/blamer.vim
   source ~/.config/nvim/plugins/bufferline.vim
-  source ~/.config/nvim/plugins/coc.vim
+  " source ~/.config/nvim/plugins/coc.vim
   source ~/.config/nvim/plugins/nvim-colorizer.vim
   source ~/.config/nvim/plugins/commentary.vim
   source ~/.config/nvim/plugins/copilot.vim
@@ -202,11 +202,14 @@ if !exists('g:vscode')
   " source ~/.config/nvim/plugins/nerdtree.vim
   source ~/.config/nvim/plugins/nvim-tree.vim
   " source ~/.config/nvim/plugins/orgmode.vim
+  source ~/.config/nvim/plugins/omnisharp.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
   source ~/.config/nvim/plugins/tagalong.vim
+  source ~/.config/nvim/plugins/neoformat.vim
   "LSP
-  " source ~/.config/nvim/plugins/nvim-lspconfig.vim
+  source ~/.config/nvim/plugins/nvim-lspconfig.vim
+  " source ~/.config/nvim/plugins/nvim-lspconfig.lua
   " source ~/.config/nvim/plugins/lspsaga.vim
 endif
 " source ~/.config/nvim/lsp/init.lua

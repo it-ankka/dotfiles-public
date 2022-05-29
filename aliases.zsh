@@ -1,5 +1,7 @@
 # My aliases
 alias nv='nvim'
+alias vim='nvim'
+alias cat='batcat'
 alias lg='lazygit'
 alias :q='exit'
 alias aliases='nv ~/.oh-my-zsh/custom/aliases.zsh'

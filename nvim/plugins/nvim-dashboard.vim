@@ -1,7 +1,5 @@
 Plug 'glepnir/dashboard-nvim'
-
 let g:dashboard_default_executive ='fzf'
-
 
 let g:dashboard_custom_header = [
 \'  　　　。　　　　•　 　ﾟ　　。 　　.         ',
