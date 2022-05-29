@@ -8,6 +8,16 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'narutoxy/dim.lua'
 Plug 'ojroques/nvim-lspfuzzy'
+" Plug 'weilbith/nvim-code-action-menu'
+Plug 'RishabhRD/popfix'
+Plug 'hood/popui.nvim'
+
+function! SetupPopUi()
+lua << EOF
+  vim.ui.select = require"popui.ui-overrider"
+  vim.ui.input = require"popui.input-overrider"
+EOF
+endfunction
 
 function! SetupLspFuzzy()
 lua << EOF
@@ -107,6 +117,15 @@ lua << EOF
   local capabilities = require('cmp_nvim_lsp').update_capabilities(
     vim.lsp.protocol.make_client_capabilities()
   )
+
+  --Diagnostic
+  nvim_lsp.diagnosticls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+  }
 
   --Bash
   nvim_lsp.bashls.setup{
@@ -272,5 +291,6 @@ EOF
 endfunction
 
 autocmd User PlugLoaded ++nested call SetupLspFuzzy()
+autocmd User PlugLoaded ++nested call SetupPopUi()
 autocmd User PlugLoaded ++nested call SetupLsp()
 autocmd User PlugLoaded ++nested call SetupCompletion()
