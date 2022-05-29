@@ -6,11 +6,16 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'onsails/lspkind.nvim'
 Plug 'narutoxy/dim.lua'
 Plug 'ojroques/nvim-lspfuzzy'
 " Plug 'weilbith/nvim-code-action-menu'
 Plug 'RishabhRD/popfix'
 Plug 'hood/popui.nvim'
+
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
 function! SetupPopUi()
 lua << EOF
@@ -232,8 +237,15 @@ set completeopt=menu,menuone,noselect
 lua <<EOF
   -- Setup nvim-cmp.
   local cmp = require'cmp'
+  local lspkind = require('lspkind')
 
   cmp.setup({
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text', -- show only symbol annotations
+      maxwidth = 50,
+      })
+    },
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -254,6 +266,8 @@ lua <<EOF
       }),
       ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 'c'}),
       ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 'c'}),
+      ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 'c'}),
+      ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 'c'}),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
     },
