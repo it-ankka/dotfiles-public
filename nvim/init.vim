@@ -202,7 +202,7 @@ if !exists('g:vscode')
   " source ~/.config/nvim/plugins/nerdtree.vim
   source ~/.config/nvim/plugins/nvim-tree.vim
   " source ~/.config/nvim/plugins/orgmode.vim
-  source ~/.config/nvim/plugins/omnisharp.vim
+  " source ~/.config/nvim/plugins/omnisharp.vim
   source ~/.config/nvim/plugins/polyglot.vim
   source ~/.config/nvim/plugins/treesitter.vim
   source ~/.config/nvim/plugins/tagalong.vim
