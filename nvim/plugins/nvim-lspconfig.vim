@@ -9,6 +9,7 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'onsails/lspkind.nvim'
 Plug 'narutoxy/dim.lua'
 Plug 'ojroques/nvim-lspfuzzy'
+Plug 'stevearc/aerial.nvim'
 " Plug 'weilbith/nvim-code-action-menu'
 Plug 'RishabhRD/popfix'
 Plug 'hood/popui.nvim'
@@ -16,6 +17,26 @@ Plug 'hood/popui.nvim'
 " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+
+function! SetupAerial()
+lua << EOF
+require("aerial").setup({
+  filter_kind = false,
+  on_attach = function(bufnr)
+    -- Toggle the aerial window with <leader>a
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>A', '<cmd>AerialToggle! left<CR>', {})
+    -- Jump forwards/backwards with '{' and '}'
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
+    -- Jump up the tree with '[[' or ']]'
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
+  end
+})
+EOF
+
+endfunction
+
 
 function! SetupPopUi()
 lua << EOF
@@ -53,6 +74,8 @@ lua << EOF
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+    -- Aerial
+    require("aerial").on_attach(client, bufnr)
     --Enable completion triggered by <c-x><c-o>
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -304,6 +327,7 @@ lua <<EOF
 EOF
 endfunction
 
+autocmd User PlugLoaded ++nested call SetupAerial()
 autocmd User PlugLoaded ++nested call SetupLspFuzzy()
 autocmd User PlugLoaded ++nested call SetupPopUi()
 autocmd User PlugLoaded ++nested call SetupLsp()
