@@ -36,5 +36,6 @@
     },
     "sumneko-lua.enableNvimLuaDev": true,
     "rust-analyzer.inlayHints.refreshOnInsertMode": true,
-    "svelte.enable-ts-plugin": true
+    "svelte.enable-ts-plugin": true,
+    "Lua.telemetry.enable": false
 }
