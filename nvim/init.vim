@@ -107,8 +107,8 @@ inoremap <M-BS> <C-\><C-o>"_dB
 " Easy insertion of a trailing ; or , from insert mode
 nmap ;; <Esc>mpA;<Esc>`p
 nmap ,, <Esc>mpA,<Esc>`p
-imap ;; <Esc>mpA;<Esc>`p
-imap ,, <Esc>mpA,<Esc>`p
+" imap ;; <Esc>mpA;<Esc>`p
+" imap ,, <Esc>mpA,<Esc>`p
 
 " Easy insertion of newline at cursor
 nnoremap <leader><CR> a<CR><Esc>
