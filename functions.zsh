@@ -147,3 +147,22 @@ function dilbert () {
     kitty +kitten icat --align left $url
     echo
 }
+
+function reddit() {
+    url=https://www.reddit.com/r/$1/$2.json
+    json=$(curl -sA 'Kitty zsh script' $url)
+    posts=$(jq -r '.data.children' <<< $json)
+    postsCount=$(jq -r '. | length' <<< $posts)
+    postNum=0
+    while [[ "$postNum" -lt "$postsCount" ]]
+    do
+        post=$(jq -r ".data.children | .[$postNum]" <<< $json)
+        hint=$(jq -r '.data.post_hint' <<< $post)
+        if [[ "$hint" == "image" ]] ; then
+            imgUrl=$(jq -r '.data.url' <<< $post)
+            kitty +kitten icat --align left $imgUrl
+            return
+        fi
+        postNum=$((postNum + 1))
+    done
+}
