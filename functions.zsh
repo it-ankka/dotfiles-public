@@ -166,3 +166,7 @@ function reddit() {
         postNum=$((postNum + 1))
     done
 }
+
+function proj() {
+    cd $(fzf <<< $(find ~/Projects -name ".git" ! -iregex '.*node_modules.*' -type d -exec dirname {} \;))
+}
