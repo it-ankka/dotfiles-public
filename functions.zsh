@@ -168,5 +168,5 @@ function reddit() {
 }
 
 function proj() {
-    cd $(fzf <<< $(find ~/Projects -name ".git" ! -iregex '.*node_modules.*' -type d -exec dirname {} \;))
+    cd $(fzf <<< $(find ~/Projects -type d -exec test -e '{}/.git' ';' -print -prune))
 }
