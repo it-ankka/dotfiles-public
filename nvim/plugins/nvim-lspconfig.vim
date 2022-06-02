@@ -234,6 +234,16 @@ lua << EOF
     capabilities = capabilities
   }
 
+  --LUA
+  local pid = vim.fn.getpid()
+  local omnisharp_bin = "/home/lassi/.cache/omnisharp-vim/omnisharp-roslyn/OmniSharp"
+  nvim_lsp.omnisharp.setup{
+    on_attach = on_attach,
+    bin_dir = '/usr/bin',
+    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+    capabilities = capabilities
+  }
+
   vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
   vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
   vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })

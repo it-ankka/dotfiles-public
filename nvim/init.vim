@@ -212,10 +212,10 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/nvim-lspconfig.vim
   " source ~/.config/nvim/plugins/nvim-lspconfig.lua
   " source ~/.config/nvim/plugins/lspsaga.vim
+  " source ~/.config/nvim/lsp/init.lua
+  " source ~/.config/nvim/plugins/lspsaga.lua
+  " source ~/.config/nvim/plugins/neoscroll.vim
 endif
-" source ~/.config/nvim/lsp/init.lua
-" source ~/.config/nvim/plugins/lspsaga.lua
-" source ~/.config/nvim/plugins/neoscroll.vim
 
 call plug#end()
 doautocmd User PlugLoaded
