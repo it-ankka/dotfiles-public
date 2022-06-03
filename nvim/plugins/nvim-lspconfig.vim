@@ -98,17 +98,6 @@ lua << EOF
     buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     --buf_set_keymap("n", "<leader>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-    -- formatting
-    if client.name == 'tsserver' then
-      client.resolved_capabilities.document_formatting = false
-    end
-
-    if client.resolved_capabilities.document_formatting then
-      vim.api.nvim_command [[augroup Format]]
-      vim.api.nvim_command [[autocmd! * <buffer>]]
-      vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-      vim.api.nvim_command [[augroup END]]
-    end
 
     --protocol.SymbolKind = { }
     protocol.CompletionItemKind = {
