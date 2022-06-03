@@ -44,6 +44,9 @@ let dir = fnamemodify(getcwd(), ':t') . " - NVIM"
 set title
 set titlestring=%{dir}
 
+set guifont=Iosevka:18
+let g:neovide_transparency=0.9
+
 "-------------------------------------------------------------
 " Keybinds
 "-------------------------------------------------------------
