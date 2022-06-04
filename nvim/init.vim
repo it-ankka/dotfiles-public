@@ -183,41 +183,43 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 if !exists('g:vscode')
-  " source ~/.config/nvim/plugins/aerial.vim
-  source ~/.config/nvim/plugins/autopairs.vim
   source ~/.config/nvim/plugins/auto-session.vim
-  " source ~/.config/nvim/plugins/airline.vim
+  source ~/.config/nvim/plugins/autopairs.vim
   source ~/.config/nvim/plugins/blamer.vim
   source ~/.config/nvim/plugins/bufferline.vim
-  " source ~/.config/nvim/plugins/coc.vim
-  source ~/.config/nvim/plugins/nvim-colorizer.vim
   source ~/.config/nvim/plugins/commentary.vim
   source ~/.config/nvim/plugins/copilot.vim
-  source ~/.config/nvim/plugins/rust-lang.vim
-  source ~/.config/nvim/plugins/nvim-dashboard.vim
-  source ~/.config/nvim/plugins/fzf.vim
-  source ~/.config/nvim/plugins/lualine.vim
   source ~/.config/nvim/plugins/fugitive.vim
-  " source ~/.config/nvim/plugins/indent-blankline.vim
-  source ~/.config/nvim/plugins/vim-gitgutter.vim
-  source ~/.config/nvim/plugins/surround.vim
-  source ~/.config/nvim/plugins/monokai.vim
+  source ~/.config/nvim/plugins/fzf.vim
+  source ~/.config/nvim/plugins/goyo.vim
+  source ~/.config/nvim/plugins/lualine.vim
   source ~/.config/nvim/plugins/markdown-preview.vim
-  " source ~/.config/nvim/plugins/nerdtree.vim
-  source ~/.config/nvim/plugins/nvim-tree.vim
-  " source ~/.config/nvim/plugins/orgmode.vim
-  " source ~/.config/nvim/plugins/omnisharp.vim
-  source ~/.config/nvim/plugins/polyglot.vim
-  source ~/.config/nvim/plugins/treesitter.vim
-  source ~/.config/nvim/plugins/tagalong.vim
+  source ~/.config/nvim/plugins/monokai.vim
   source ~/.config/nvim/plugins/neoformat.vim
-  "LSP
+  source ~/.config/nvim/plugins/nvim-colorizer.vim
+  source ~/.config/nvim/plugins/nvim-dashboard.vim
   source ~/.config/nvim/plugins/nvim-lspconfig.vim
-  " source ~/.config/nvim/plugins/nvim-lspconfig.lua
-  " source ~/.config/nvim/plugins/lspsaga.vim
+  source ~/.config/nvim/plugins/nvim-tree.vim
+  source ~/.config/nvim/plugins/polyglot.vim
+  source ~/.config/nvim/plugins/rust-lang.vim
+  source ~/.config/nvim/plugins/surround.vim
+  source ~/.config/nvim/plugins/tagalong.vim
+  source ~/.config/nvim/plugins/treesitter.vim
+  source ~/.config/nvim/plugins/vim-gitgutter.vim
+
+  " DISABLED
   " source ~/.config/nvim/lsp/init.lua
+  " source ~/.config/nvim/plugins/aerial.vim
+  " source ~/.config/nvim/plugins/airline.vim
+  " source ~/.config/nvim/plugins/coc.vim
+  " source ~/.config/nvim/plugins/indent-blankline.vim
   " source ~/.config/nvim/plugins/lspsaga.lua
+  " source ~/.config/nvim/plugins/lspsaga.vim
   " source ~/.config/nvim/plugins/neoscroll.vim
+  " source ~/.config/nvim/plugins/nerdtree.vim
+  " source ~/.config/nvim/plugins/nvim-lspconfig.lua
+  " source ~/.config/nvim/plugins/omnisharp.vim
+  " source ~/.config/nvim/plugins/orgmode.vim
 endif
 
 call plug#end()
