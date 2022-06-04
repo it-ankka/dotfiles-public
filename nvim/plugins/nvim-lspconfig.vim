@@ -64,7 +64,6 @@ function! SetupLsp()
 
 lua << EOF
   --vim.lsp.set_log_level("debug")
-
   local nvim_lsp = require('lspconfig')
   local protocol = require'vim.lsp.protocol'
 
@@ -326,9 +325,10 @@ lua <<EOF
 EOF
 endfunction
 
+autocmd User PlugLoaded ++nested lua require('dim').setup({})
+autocmd User PlugLoaded ++nested lua require("nvim-lsp-installer").setup({})
 autocmd User PlugLoaded ++nested call SetupAerial()
 autocmd User PlugLoaded ++nested call SetupLspFuzzy()
 autocmd User PlugLoaded ++nested call SetupPopUi()
 autocmd User PlugLoaded ++nested call SetupLsp()
 autocmd User PlugLoaded ++nested call SetupCompletion()
-autocmd User PlugLoaded ++nested lua require('dim').setup({})
