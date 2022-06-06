@@ -462,7 +462,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "f",
+                                    "key_code": "v",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -485,7 +485,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "d",
+                                    "key_code": "b",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -508,7 +508,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "s",
+                                    "key_code": "n",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -531,32 +531,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "escape",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "mouse_key": {
-                                            "speed_multiplier": 3.0
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "mouse_keys_full",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "left_shift",
+                                    "key_code": "f",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -581,7 +556,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "spacebar",
+                                    "key_code": "d",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -606,7 +581,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "a",
+                                    "key_code": "s",
                                     "modifiers": {
                                         "optional": [
                                             "any"
