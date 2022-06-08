@@ -212,14 +212,29 @@ lua << EOF
   --Svelte
   nvim_lsp.svelte.setup{
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+  }
+
+  --Pyright
+  nvim_lsp.pyright.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
   }
 
   --TS/JS
   nvim_lsp.tsserver.setup {
     on_attach = on_attach,
     filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact", "typescript.tsx" },
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
   }
 
   --LUA

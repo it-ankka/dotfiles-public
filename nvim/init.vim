@@ -39,11 +39,15 @@ set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 "Reduce time for highlighting other references
 set redrawtime=10000 "Allow more time for loading highlighting in large files
 
+" Markdown listchars
+au BufNewFile,BufRead *.md set nolist
+
 " SET TITLE
 let dir = fnamemodify(getcwd(), ':t') . " - NVIM"
 set title
 set titlestring=%{dir}
 
+" NEOVIDE
 set guifont=Iosevka:18
 let g:neovide_transparency=0.9
 
