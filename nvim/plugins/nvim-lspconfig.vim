@@ -139,8 +139,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --Bash
@@ -148,8 +149,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
   
   --Docker
@@ -157,8 +159,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --Emmet
@@ -166,8 +169,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --Eslint
@@ -175,11 +179,12 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
     },
     handlers = {
       ['window/showMessageRequest'] = function(_, result, _) return result end,
-    },
+    }
   }
 
   --HTML
@@ -188,7 +193,8 @@ lua << EOF
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
-    },
+      allow_incremental_sync = true
+    }
   }
 
   --JSON
@@ -196,7 +202,8 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
     }
   }
 
@@ -205,7 +212,8 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
     },
   }
 
@@ -214,8 +222,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --Pyright
@@ -223,8 +232,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --TS/JS
@@ -233,8 +243,9 @@ lua << EOF
     filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact", "typescript.tsx" },
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --OMNISHARP
@@ -244,7 +255,11 @@ lua << EOF
     on_attach = on_attach,
     bin_dir = '/usr/bin',
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })

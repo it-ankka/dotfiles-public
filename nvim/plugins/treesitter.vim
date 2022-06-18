@@ -1,5 +1,6 @@
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
 function! SetupTreesitter()
 lua << EOF
@@ -8,6 +9,9 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     disable = {'org'},
     additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
+  },
+  content_commentstring = {
+    enable = true,
   },
   rainbow = {
     enable = true,
