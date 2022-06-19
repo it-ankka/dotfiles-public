@@ -139,8 +139,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --Bash
@@ -148,8 +149,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
   
   --Docker
@@ -157,8 +159,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --Emmet
@@ -166,8 +169,9 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --Eslint
@@ -175,11 +179,12 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
     },
     handlers = {
       ['window/showMessageRequest'] = function(_, result, _) return result end,
-    },
+    }
   }
 
   --HTML
@@ -188,7 +193,8 @@ lua << EOF
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
-    },
+      allow_incremental_sync = true
+    }
   }
 
   --JSON
@@ -196,7 +202,8 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
     }
   }
 
@@ -205,37 +212,54 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
     },
   }
 
   --Svelte
   nvim_lsp.svelte.setup{
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --Pyright
   nvim_lsp.pyright.setup{
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   --TS/JS
   nvim_lsp.tsserver.setup {
     on_attach = on_attach,
     filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact", "typescript.tsx" },
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
-  --LUA
+  --OMNISHARP
   local pid = vim.fn.getpid()
   local omnisharp_bin = "/home/lassi/.cache/omnisharp-vim/omnisharp-roslyn/OmniSharp"
   nvim_lsp.omnisharp.setup{
     on_attach = on_attach,
     bin_dir = '/usr/bin',
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
@@ -333,6 +357,7 @@ endfunction
 
 autocmd User PlugLoaded ++nested lua require('dim').setup({})
 autocmd User PlugLoaded ++nested lua require("nvim-lsp-installer").setup({})
+autocmd User PlugLoaded ++nested lua require("lsp_signature").setup({})
 autocmd User PlugLoaded ++nested call SetupAerial()
 autocmd User PlugLoaded ++nested call SetupLspFuzzy()
 autocmd User PlugLoaded ++nested call SetupPopUi()
