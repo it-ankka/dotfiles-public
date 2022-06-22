@@ -22,7 +22,7 @@ alias aptup='sudo apt update && sudo apt upgrade -y'
 alias icat="kitty +kitten icat"
 alias gd="git diff --ignore-all-space --ignore-space-at-eol --ignore-space-change --ignore-blank-lines -- . ':(exclude)*package-lock.json' -- . ':(exclude)*yarn.lock'"
 alias kit="kitty --detach && exit"
-alias myIssues='jira issue list -s~Done -a$(jira me)'
+alias myissues='jira issue list -s~Done -a$(jira me)'
 
 # Docker
 alias dk='docker'

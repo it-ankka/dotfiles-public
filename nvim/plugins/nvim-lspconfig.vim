@@ -134,44 +134,47 @@ lua << EOF
     vim.lsp.protocol.make_client_capabilities()
   )
 
-  --Diagnostic
-  nvim_lsp.diagnosticls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 500,
-      allow_incremental_sync = true
-    }
-  }
+  local servers = { "diagnosticls", "bashls", "dockerls", "emmet_ls", "html", "jsonls", "sqls", "svelte", "pyright"}
 
-  --Bash
-  nvim_lsp.bashls.setup{
+  for _, server in pairs(servers) do
+    nvim_lsp[server].setup{
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 500,
       allow_incremental_sync = true
+      }
     }
-  }
-  
-  --Docker
-  nvim_lsp.dockerls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 500,
-      allow_incremental_sync = true
-    }
-  }
+  end
 
-  --Emmet
-  nvim_lsp.emmet_ls.setup{
+  --Sumneko Lua
+  nvim_lsp.sumneko_lua.setup {
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 500,
       allow_incremental_sync = true
-    }
+    },
   }
 
   --Eslint
@@ -187,55 +190,6 @@ lua << EOF
     }
   }
 
-  --HTML
-  nvim_lsp.html.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-      allow_incremental_sync = true
-    }
-  }
-
-  --JSON
-  nvim_lsp.jsonls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 500,
-      allow_incremental_sync = true
-    }
-  }
-
-  --SQL
-  nvim_lsp.sqls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 500,
-      allow_incremental_sync = true
-    },
-  }
-
-  --Svelte
-  nvim_lsp.svelte.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 500,
-      allow_incremental_sync = true
-    }
-  }
-
-  --Pyright
-  nvim_lsp.pyright.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 500,
-      allow_incremental_sync = true
-    }
-  }
 
   --TS/JS
   nvim_lsp.tsserver.setup {
@@ -243,8 +197,8 @@ lua << EOF
     filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact", "typescript.tsx" },
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 500,
-      allow_incremental_sync = true
+      debounce_text_changes = 150,
+      --allow_incremental_sync = true
     }
   }
 

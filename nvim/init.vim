@@ -188,7 +188,8 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/autopairs.vim
   source ~/.config/nvim/plugins/blamer.vim
   source ~/.config/nvim/plugins/bufferline.vim
-  source ~/.config/nvim/plugins/commentary.vim
+  " source ~/.config/nvim/plugins/commentary.vim
+  source ~/.config/nvim/plugins/comment.lua
   source ~/.config/nvim/plugins/copilot.vim
   source ~/.config/nvim/plugins/fugitive.vim
   source ~/.config/nvim/plugins/fzf.vim
