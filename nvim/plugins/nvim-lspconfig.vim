@@ -10,9 +10,12 @@ Plug 'onsails/lspkind.nvim'
 Plug 'narutoxy/dim.lua'
 Plug 'ojroques/nvim-lspfuzzy'
 Plug 'stevearc/aerial.nvim'
+Plug 'stevearc/dressing.nvim'
+" Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 " Plug 'weilbith/nvim-code-action-menu'
-Plug 'RishabhRD/popfix'
-Plug 'hood/popui.nvim'
+" Plug 'RishabhRD/popfix'
+" Plug 'hood/popui.nvim'
+
 
 " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
@@ -309,11 +312,13 @@ lua <<EOF
 EOF
 endfunction
 
-autocmd User PlugLoaded ++nested lua require('dim').setup({})
+" autocmd User PlugLoaded ++nested lua require('dim').setup({})
+autocmd User PlugLoaded ++nested lua require('dressing').setup({})
 autocmd User PlugLoaded ++nested lua require("nvim-lsp-installer").setup({})
 autocmd User PlugLoaded ++nested lua require("lsp_signature").setup({})
+" autocmd User PlugLoaded ++nested lua require('lspsaga').init_lsp_saga()
 autocmd User PlugLoaded ++nested call SetupAerial()
 autocmd User PlugLoaded ++nested call SetupLspFuzzy()
-autocmd User PlugLoaded ++nested call SetupPopUi()
+" autocmd User PlugLoaded ++nested call SetupPopUi()
 autocmd User PlugLoaded ++nested call SetupLsp()
 autocmd User PlugLoaded ++nested call SetupCompletion()

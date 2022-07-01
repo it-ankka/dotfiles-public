@@ -188,9 +188,8 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/autopairs.vim
   source ~/.config/nvim/plugins/blamer.vim
   source ~/.config/nvim/plugins/bufferline.vim
-  " source ~/.config/nvim/plugins/commentary.vim
   source ~/.config/nvim/plugins/comment.lua
-  source ~/.config/nvim/plugins/copilot.vim
+  " source ~/.config/nvim/plugins/copilot.vim
   source ~/.config/nvim/plugins/fugitive.vim
   source ~/.config/nvim/plugins/fzf.vim
   source ~/.config/nvim/plugins/goyo.vim
@@ -199,7 +198,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/monokai.vim
   source ~/.config/nvim/plugins/neoformat.vim
   source ~/.config/nvim/plugins/nvim-colorizer.vim
-  source ~/.config/nvim/plugins/nvim-dashboard.vim
+  source ~/.config/nvim/plugins/nvim-dashboard.lua
   source ~/.config/nvim/plugins/nvim-lspconfig.vim
   source ~/.config/nvim/plugins/nvim-tree.vim
   source ~/.config/nvim/plugins/polyglot.vim
@@ -214,6 +213,7 @@ if !exists('g:vscode')
   " source ~/.config/nvim/plugins/aerial.vim
   " source ~/.config/nvim/plugins/airline.vim
   " source ~/.config/nvim/plugins/coc.vim
+  " source ~/.config/nvim/plugins/commentary.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
   " source ~/.config/nvim/plugins/lspsaga.lua
   " source ~/.config/nvim/plugins/lspsaga.vim
