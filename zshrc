@@ -105,6 +105,8 @@ source $ZSH/oh-my-zsh.sh
 export LANG=$(locale -a | grep -i 'en_us.utf')
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
 export PATH=$PATH:$HOME/android-studio/bin
 export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:/opt/firefox/firefox

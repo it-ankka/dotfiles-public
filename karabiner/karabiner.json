@@ -163,6 +163,33 @@
                         ]
                     },
                     {
+                        "description": "Finnish ~ key",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    },
+                                    {
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Mouse keys (xgwang.me)",
                         "manipulators": [
                             {
@@ -366,6 +393,9 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "k"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
@@ -391,6 +421,9 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "j"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
@@ -416,6 +449,9 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "j"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
@@ -441,6 +477,9 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "k"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
@@ -466,6 +505,9 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "j"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
@@ -491,6 +533,9 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "j"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },

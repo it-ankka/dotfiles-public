@@ -10,9 +10,12 @@ Plug 'onsails/lspkind.nvim'
 Plug 'narutoxy/dim.lua'
 Plug 'ojroques/nvim-lspfuzzy'
 Plug 'stevearc/aerial.nvim'
+Plug 'stevearc/dressing.nvim'
+" Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 " Plug 'weilbith/nvim-code-action-menu'
-Plug 'RishabhRD/popfix'
-Plug 'hood/popui.nvim'
+" Plug 'RishabhRD/popfix'
+" Plug 'hood/popui.nvim'
+
 
 " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
@@ -134,39 +137,46 @@ lua << EOF
     vim.lsp.protocol.make_client_capabilities()
   )
 
-  --Diagnostic
-  nvim_lsp.diagnosticls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
+  local servers = { "diagnosticls", "bashls", "dockerls", "emmet_ls", "html", "jsonls", "sqls", "svelte", "pyright"}
 
-  --Bash
-  nvim_lsp.bashls.setup{
+  for _, server in pairs(servers) do
+    nvim_lsp[server].setup{
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
-    },
-  }
-  
-  --Docker
-  nvim_lsp.dockerls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+      }
+    }
+  end
 
-  --Emmet
-  nvim_lsp.emmet_ls.setup{
+  --Sumneko Lua
+  nvim_lsp.sumneko_lua.setup {
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
     },
   }
 
@@ -175,63 +185,14 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
     },
     handlers = {
       ['window/showMessageRequest'] = function(_, result, _) return result end,
-    },
-  }
-
-  --HTML
-  nvim_lsp.html.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
-
-  --JSON
-  nvim_lsp.jsonls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
     }
   }
 
-  --SQL
-  nvim_lsp.sqls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
-
-  --Svelte
-  nvim_lsp.svelte.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
-
-  --Pyright
-  nvim_lsp.pyright.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
-
-  --Pyright
-  nvim_lsp.pyright.setup{
-    on_attach = on_attach,
-    capabilities = capabilities
-  }
 
   --TS/JS
   nvim_lsp.tsserver.setup {
@@ -240,17 +201,22 @@ lua << EOF
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
-    },
+      --allow_incremental_sync = true
+    }
   }
 
-  --LUA
+  --OMNISHARP
   local pid = vim.fn.getpid()
   local omnisharp_bin = "/home/lassi/.cache/omnisharp-vim/omnisharp-roslyn/OmniSharp"
   nvim_lsp.omnisharp.setup{
     on_attach = on_attach,
     bin_dir = '/usr/bin',
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 500,
+      allow_incremental_sync = true
+    }
   }
 
   vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
@@ -346,10 +312,13 @@ lua <<EOF
 EOF
 endfunction
 
-autocmd User PlugLoaded ++nested lua require('dim').setup({})
+" autocmd User PlugLoaded ++nested lua require('dim').setup({})
+autocmd User PlugLoaded ++nested lua require('dressing').setup({})
 autocmd User PlugLoaded ++nested lua require("nvim-lsp-installer").setup({})
+autocmd User PlugLoaded ++nested lua require("lsp_signature").setup({})
+" autocmd User PlugLoaded ++nested lua require('lspsaga').init_lsp_saga()
 autocmd User PlugLoaded ++nested call SetupAerial()
 autocmd User PlugLoaded ++nested call SetupLspFuzzy()
-autocmd User PlugLoaded ++nested call SetupPopUi()
+" autocmd User PlugLoaded ++nested call SetupPopUi()
 autocmd User PlugLoaded ++nested call SetupLsp()
 autocmd User PlugLoaded ++nested call SetupCompletion()
