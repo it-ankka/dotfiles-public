@@ -5,6 +5,7 @@ function! s:goyo_enter()
   set listchars=
   set noshowmode
   set noshowcmd
+  set wrap
 endfunction
 
 function! s:goyo_leave()
@@ -12,7 +13,9 @@ function! s:goyo_leave()
   set listchars=tab:\│\ ,eol:↴,trail:·
   set showmode
   set showcmd
+  set nowrap
 endfunction
 
+nnoremap <silent> <leader>md :Goyo<CR>
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
