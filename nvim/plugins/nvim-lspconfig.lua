@@ -118,7 +118,25 @@ local setupLsp = function()
         vim.lsp.protocol.make_client_capabilities()
     )
 
-    local servers = { "diagnosticls", "bashls", "dockerls", "emmet_ls", "html", "jsonls", "sqls", "svelte", "pyright" }
+    local servers = {
+        "diagnosticls",
+        "bashls",
+        "dockerls",
+        "emmet_ls",
+        "html",
+        "jsonls",
+        "sqls",
+        "svelte",
+        "pyright",
+        "gopls",
+        "vimls",
+        "yamlls",
+        "prismals",
+        "graphql",
+        "rust_analyzer",
+        "vls",
+        "zk"
+    }
 
     for _, server in pairs(servers) do
         nvim_lsp[server].setup {

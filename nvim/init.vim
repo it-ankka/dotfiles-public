@@ -168,6 +168,8 @@ nnoremap <c-c> :bp\|bd #<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
+" Terminal settings
+autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber
 
 "-------------------------------------------------------------
 " Plugins
