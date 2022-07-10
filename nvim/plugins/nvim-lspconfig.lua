@@ -134,7 +134,7 @@ local setupLsp = function()
         "prismals",
         "graphql",
         "rust_analyzer",
-        "vls",
+        -- "vls",
         "zk"
     }
 
@@ -149,6 +149,8 @@ local setupLsp = function()
         }
     end
 
+    --Vlang
+    nvim_lsp.vls.setup{}
     --Sumneko Lua
     nvim_lsp.sumneko_lua.setup {
         settings = {

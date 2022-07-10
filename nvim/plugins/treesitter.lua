@@ -7,8 +7,6 @@ local setupTreesitter = function()
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
-      disable = {'org'},
-      additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
     },
     content_commentstring = {
       enable = true,

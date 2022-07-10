@@ -2,7 +2,6 @@ local Plug = vim.fn['plug#']
 Plug 'tanvirtin/monokai.nvim'
 
 vim.cmd([[
-        syntax on
         augroup MonokaiOverrides
             autocmd!
             autocmd ColorScheme monokai highlight Normal guibg=none

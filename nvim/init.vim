@@ -216,3 +216,6 @@ endif
 
 call plug#end()
 doautocmd User PlugLoaded
+
+" Set correct filetype for vlang
+autocmd BufRead,BufNewFile *.v set filetype=vlang
