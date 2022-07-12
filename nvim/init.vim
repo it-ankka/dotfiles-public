@@ -219,3 +219,5 @@ doautocmd User PlugLoaded
 
 " Set correct filetype for vlang
 autocmd BufRead,BufNewFile *.v set filetype=vlang
+" Set correct filetype for prisma
+autocmd BufRead,BufNewFile *.prisma set filetype=prisma
