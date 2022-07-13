@@ -45,6 +45,8 @@ local setupTreesitter = function()
   }
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
   parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+
+  vim.api.nvim_create_user_command("TSResync", ":write | edit | TSBufEnable highlight", {})
 end
 
 vim.api.nvim_create_autocmd("User", {
