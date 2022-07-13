@@ -1,11 +1,6 @@
 local Plug = vim.fn['plug#']
 
-Plug ('junegunn/fzf', { ['do'] = 'fzf#install()' })
 Plug ('ibhagwan/fzf-lua', {branch = 'main'})
-
-
--- nmap <leader>b :Buffers<cr>
--- nmap <leader>h :History<cr>
 
 
 vim.api.nvim_create_user_command("Files",
@@ -101,6 +96,6 @@ vim.api.nvim_create_autocmd("User", {
     pattern = "PlugLoaded",
     nested = true,
     callback = function() require'fzf-lua'.setup({
-                winopts = { width = 0.8, height = 0.8, }
+                winopts = { width = 0.8, height = 0.8 },
         }) end,
 })

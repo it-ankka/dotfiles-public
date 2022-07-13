@@ -35,15 +35,15 @@ local setupAerial = function()
 end
 
 
-local setupLspFuzzy = function()
-    require('lspfuzzy').setup {
-        methods = 'all', -- either 'all' or a list of LSP methods (see below)
-        jump_one = true, -- jump immediately if there is only one location
-        save_last = false, -- save last location results for the :LspFuzzyLast command
-        fzf_modifier = ':~:.', -- format FZF entries, see |filename-modifiers|
-        fzf_trim = true, -- trim FZF entries
-    }
-end
+-- local setupLspFuzzy = function()
+--     require('lspfuzzy').setup {
+--         methods = 'all', -- either 'all' or a list of LSP methods (see below)
+--         jump_one = true, -- jump immediately if there is only one location
+--         save_last = false, -- save last location results for the :LspFuzzyLast command
+--         fzf_modifier = ':~:.', -- format FZF entries, see |filename-modifiers|
+--         fzf_trim = true, -- trim FZF entries
+--     }
+-- end
 
 local setupLsp = function()
     --vim.lsp.set_log_level("debug")
@@ -134,7 +134,7 @@ local setupLsp = function()
         "prismals",
         "graphql",
         "rust_analyzer",
-        -- "vls",
+        "vls",
         "zk"
     }
 
@@ -149,8 +149,6 @@ local setupLsp = function()
         }
     end
 
-    --Vlang
-    nvim_lsp.vls.setup{}
     --Sumneko Lua
     nvim_lsp.sumneko_lua.setup {
         settings = {
@@ -309,7 +307,7 @@ local setupCompletion = function()
 
 
     -- Setup lspconfig.
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local _capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
 -- autocmd User PlugLoaded ++nested lua require('dim').setup({})
