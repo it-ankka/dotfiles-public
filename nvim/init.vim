@@ -194,6 +194,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/lualine.lua
   source ~/.config/nvim/plugins/markdown-preview.lua
   source ~/.config/nvim/plugins/monokai.lua
+  source ~/.config/nvim/plugins/neoformat.lua
   source ~/.config/nvim/plugins/nvim-colorizer.lua
   source ~/.config/nvim/plugins/nvim-lspconfig.lua
   source ~/.config/nvim/plugins/nvim-tree.lua
@@ -209,7 +210,6 @@ if !exists('g:vscode')
   " source ~/.config/nvim/plugins/copilot.vim
   " source ~/.config/nvim/plugins/fzf.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
-  " source ~/.config/nvim/plugins/neoformat.lua
   " source ~/.config/nvim/plugins/nvim-dashboard.lua
   " source ~/.config/nvim/plugins/nvim-lspconfig.lua
 endif
