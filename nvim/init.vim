@@ -225,3 +225,4 @@ autocmd BufRead,BufNewFile *.prisma set filetype=prisma
 
 command GoRun execute '!cd %:h && go run %'
 command VRun execute '!v run %'
+command VCompileAndRun execute '!v % && %'
