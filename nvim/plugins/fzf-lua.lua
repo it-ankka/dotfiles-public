@@ -11,6 +11,7 @@ Plug ('ibhagwan/fzf-lua', {branch = 'main'})
 vim.api.nvim_create_user_command("Files",
     function()
         require('fzf-lua').files({
+                sync = true,
                 fd_opts = "--type f --hidden --exclude node_modules --exclude .git",
                 find_opts = "-type f -not -path '*/node_modules/*' -printf '%P\n'"
     }) end, {})
@@ -18,24 +19,26 @@ vim.api.nvim_create_user_command("Files",
 vim.api.nvim_create_user_command("AllFiles",
     function()
         require('fzf-lua').files({
+                sync = true,
                 fd_opts = "--type f --hidden --exclude .git",
                 find_opts = "-type f -not -path '*/.git/*' -printf '%P\n'",
-                cmd = "find -type f -not -path '*/.git/*' -printf '%P\n'",
                 git_icons = false,
                 file_icons = false
     }) end, {})
+
 vim.api.nvim_create_user_command("GrepAll",function()
     require('fzf-lua').grep({
         cmd='rg -uu --color=always --smart-case -g !{.git}',
         git_icons = false,
         file_icons = false
     }) end, {})
+
 --Diagnostics
 vim.api.nvim_create_user_command("Diagnostics",function()
-    require('fzf-lua').lsp_document_diagnostics() end, {})
+    require('fzf-lua').lsp_document_diagnostics({ sync = true, jump_to_single_result = true}) end, {})
 --All Diagnostics
 vim.api.nvim_create_user_command("AllDiagnostics",function()
-    require('fzf-lua').lsp_workspace_diagnostics() end, {})
+    require('fzf-lua').lsp_workspace_diagnostics({ sync = true, jump_to_single_result = true}) end, {})
 
 -- Files search
 vim.api.nvim_set_keymap('n',
@@ -70,22 +73,22 @@ vim.api.nvim_set_keymap('n',
 -- LSP references
 vim.api.nvim_set_keymap('n',
     '<leader>gr',
-    "<cmd>lua require('fzf-lua').lsp_references()<CR>",
+    "<cmd>lua require('fzf-lua').lsp_references({ sync = true, jump_to_single_result = true})<CR>",
     { noremap = true, silent = true })
 -- LSP definitions
 vim.api.nvim_set_keymap('n',
     '<leader>gd',
-    "<cmd>lua require('fzf-lua').lsp_definitions()<CR>",
+    "<cmd>lua require('fzf-lua').lsp_definitions({ sync = true, jump_to_single_result = true})<CR>",
     { noremap = true, silent = true })
 -- LSP declarations
 vim.api.nvim_set_keymap('n',
     '<leader>gD',
-    "<cmd>lua require('fzf-lua').lsp_declarations()<CR>",
+    "<cmd>lua require('fzf-lua').lsp_declarations({ sync = true, jump_to_single_result = true})<CR>",
     { noremap = true, silent = true })
 -- LSP typedefs
 vim.api.nvim_set_keymap('n',
     '<leader>gy',
-    "<cmd>lua require('fzf-lua').lsp_typedefs()<CR>",
+    "<cmd>lua require('fzf-lua').lsp_typedefs({ sync = true, jump_to_single_result = true})<CR>",
     { noremap = true, silent = true })
 -- LSP code actions
 vim.api.nvim_set_keymap('n',
