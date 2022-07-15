@@ -34,6 +34,7 @@ local setupTreesitter = function()
       "html",
       "scss",
       "css",
+      "markdown",
       "prisma",
       "rust",
       "svelte",

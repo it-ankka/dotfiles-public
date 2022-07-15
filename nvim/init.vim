@@ -105,6 +105,7 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Paste replace visual selection without copying it
 vnoremap p "_dP
+
 " Delete without yank
 nnoremap <leader>d "_d
 nnoremap x "_x
