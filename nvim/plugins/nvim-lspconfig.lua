@@ -122,6 +122,7 @@ local setupLsp = function()
     local servers = {
         "diagnosticls",
         "bashls",
+        "nimls",
         "dockerls",
         "emmet_ls",
         "html",
@@ -160,7 +161,7 @@ local setupLsp = function()
                 },
                 diagnostics = {
                     -- Get the language server to recognize the `vim` global
-                    globals = { 'vim' },
+                    globals = { 'vim', 'love' },
                 },
                 workspace = {
                     -- Make the server aware of Neovim runtime files
