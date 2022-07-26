@@ -1,6 +1,7 @@
 # My aliases
 alias nv='nvim'
 alias vim='nvim'
+alias dotfiles='cd ~/dotfiles'
 alias lg='lazygit'
 alias lzd='lazydocker'
 alias lcl='lazycli -r 2'
