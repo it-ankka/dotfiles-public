@@ -126,6 +126,8 @@ local setupLsp = function()
         "emmet_ls",
         "html",
         "jsonls",
+        "gdscript",
+        "omnisharp",
         "sqls",
         "svelte",
         "pyright",
@@ -209,19 +211,16 @@ local setupLsp = function()
     }
 
     --OMNISHARP
-    local pid = vim.fn.getpid()
-    local omnisharp_bin = "/home/lassi/.cache/omnisharp-vim/omnisharp-roslyn/OmniSharp"
-    nvim_lsp.omnisharp.setup {
-        on_attach = on_attach,
-        bin_dir = '/usr/bin',
-        cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-        capabilities = capabilities,
-        flags = {
-            debounce_text_changes = 500,
-            allow_incremental_sync = true
-        }
-    }
-
+-- require'lspconfig'.omnisharp.setup {
+--     cmd = { "/home/lassi/omnisharp/OmniSharp" },
+--     enable_editorconfig_support = true,
+--     enable_ms_build_load_projects_on_demand = false,
+--     enable_roslyn_analyzers = false,
+--     organize_imports_on_format = false,
+--     enable_import_completion = false,
+--     sdk_include_prereleases = true,
+--     analyze_open_documents_only = false,
+-- }
     vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
     vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
     vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
