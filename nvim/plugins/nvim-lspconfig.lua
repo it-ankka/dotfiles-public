@@ -35,15 +35,15 @@ local setupAerial = function()
 end
 
 
-local setupLspFuzzy = function()
-    require('lspfuzzy').setup {
-        methods = 'all', -- either 'all' or a list of LSP methods (see below)
-        jump_one = true, -- jump immediately if there is only one location
-        save_last = false, -- save last location results for the :LspFuzzyLast command
-        fzf_modifier = ':~:.', -- format FZF entries, see |filename-modifiers|
-        fzf_trim = true, -- trim FZF entries
-    }
-end
+-- local setupLspFuzzy = function()
+--     require('lspfuzzy').setup {
+--         methods = 'all', -- either 'all' or a list of LSP methods (see below)
+--         jump_one = true, -- jump immediately if there is only one location
+--         save_last = false, -- save last location results for the :LspFuzzyLast command
+--         fzf_modifier = ':~:.', -- format FZF entries, see |filename-modifiers|
+--         fzf_trim = true, -- trim FZF entries
+--     }
+-- end
 
 local setupLsp = function()
     --vim.lsp.set_log_level("debug")
@@ -122,10 +122,13 @@ local setupLsp = function()
     local servers = {
         "diagnosticls",
         "bashls",
+        "nimls",
         "dockerls",
         "emmet_ls",
         "html",
         "jsonls",
+        "gdscript",
+        "omnisharp",
         "sqls",
         "svelte",
         "pyright",
@@ -135,7 +138,7 @@ local setupLsp = function()
         "prismals",
         "graphql",
         "rust_analyzer",
-        -- "vls",
+        "vls",
         "zk"
     }
 
@@ -150,8 +153,6 @@ local setupLsp = function()
         }
     end
 
-    --Vlang
-    nvim_lsp.vls.setup {}
     --Sumneko Lua
     nvim_lsp.sumneko_lua.setup {
         settings = {
@@ -162,7 +163,7 @@ local setupLsp = function()
                 },
                 diagnostics = {
                     -- Get the language server to recognize the `vim` global
-                    globals = { 'vim' },
+                    globals = { 'vim', 'love' },
                 },
                 workspace = {
                     -- Make the server aware of Neovim runtime files
@@ -209,19 +210,16 @@ local setupLsp = function()
     }
 
     --OMNISHARP
-    local pid = vim.fn.getpid()
-    local omnisharp_bin = "/home/lassi/.cache/omnisharp-vim/omnisharp-roslyn/OmniSharp"
-    nvim_lsp.omnisharp.setup {
-        on_attach = on_attach,
-        bin_dir = '/usr/bin',
-        cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-        capabilities = capabilities,
-        flags = {
-            debounce_text_changes = 500,
-            allow_incremental_sync = true
-        }
-    }
-
+-- require'lspconfig'.omnisharp.setup {
+--     cmd = { "/home/lassi/omnisharp/OmniSharp" },
+--     enable_editorconfig_support = true,
+--     enable_ms_build_load_projects_on_demand = false,
+--     enable_roslyn_analyzers = false,
+--     organize_imports_on_format = false,
+--     enable_import_completion = false,
+--     sdk_include_prereleases = true,
+--     analyze_open_documents_only = false,
+-- }
     vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
     vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
     vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
@@ -310,7 +308,7 @@ local setupCompletion = function()
 
 
     -- Setup lspconfig.
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local _capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
 -- autocmd User PlugLoaded ++nested lua require('dim').setup({})
