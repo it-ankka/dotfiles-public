@@ -200,13 +200,13 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/nvim-lspconfig.lua
   source ~/.config/nvim/plugins/nvim-tree.lua
   source ~/.config/nvim/plugins/polyglot.lua
-  source ~/.config/nvim/plugins/rust-lang.lua
   source ~/.config/nvim/plugins/surround.lua
   source ~/.config/nvim/plugins/tagalong.lua
   source ~/.config/nvim/plugins/treesitter.lua
   source ~/.config/nvim/plugins/vim-gitgutter.lua
 
   " DISABLED
+  " source ~/.config/nvim/plugins/rust-lang.lua
   " source ~/.config/nvim/plugins/coc.vim
   " source ~/.config/nvim/plugins/copilot.vim
   " source ~/.config/nvim/plugins/fzf.vim
