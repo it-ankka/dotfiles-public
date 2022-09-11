@@ -120,6 +120,7 @@ local setupLsp = function()
     )
 
     local servers = {
+        "astro",
         "bashls",
         "diagnosticls",
         "dockerls",

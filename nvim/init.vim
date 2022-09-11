@@ -190,7 +190,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/bufferline.lua
   source ~/.config/nvim/plugins/comment.lua
   source ~/.config/nvim/plugins/fugitive.lua
-  " source ~/.config/nvim/plugins/fzf-lua.lua
+  source ~/.config/nvim/plugins/fzf-lua.lua
   source ~/.config/nvim/plugins/goyo.vim
   source ~/.config/nvim/plugins/lualine.lua
   source ~/.config/nvim/plugins/markdown-preview.lua
@@ -209,7 +209,7 @@ if !exists('g:vscode')
   " source ~/.config/nvim/plugins/rust-lang.lua
   " source ~/.config/nvim/plugins/coc.vim
   " source ~/.config/nvim/plugins/copilot.vim
-  source ~/.config/nvim/plugins/fzf.vim
+  " source ~/.config/nvim/plugins/fzf.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
   " source ~/.config/nvim/plugins/nvim-dashboard.lua
   " source ~/.config/nvim/plugins/nvim-lspconfig.lua
