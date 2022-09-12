@@ -120,6 +120,7 @@ local setupLsp = function()
     )
 
     local servers = {
+        "astro",
         "bashls",
         "ccls",
         "diagnosticls",
@@ -130,6 +131,7 @@ local setupLsp = function()
         "graphql",
         "html",
         "jsonls",
+        "marksman",
         "nimls",
         "omnisharp",
         "prismals",

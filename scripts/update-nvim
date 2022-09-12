@@ -1,5 +1,6 @@
 #!/bin/bash
 
-curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o /usr/local/bin/nvim.appimage
-chmod u+x /usr/local/bin/nvim.appimage
+wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+sudo su
+chmod u+x ./nvim.appimage
 mv -f /usr/local/bin/nvim.appimage /usr/local/bin/nvim
