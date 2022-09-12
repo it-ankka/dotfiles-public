@@ -120,25 +120,26 @@ local setupLsp = function()
     )
 
     local servers = {
-        "diagnosticls",
         "bashls",
-        "nimls",
+        "ccls",
+        "diagnosticls",
         "dockerls",
         "emmet_ls",
+        "gdscript",
+        "gopls",
+        "graphql",
         "html",
         "jsonls",
-        "gdscript",
+        "nimls",
         "omnisharp",
+        "prismals",
+        "pyright",
+        "rust_analyzer",
         "sqls",
         "svelte",
-        "pyright",
-        "gopls",
         "vimls",
-        "yamlls",
-        "prismals",
-        "graphql",
-        "rust_analyzer",
         "vls",
+        "yamlls",
         "zk"
     }
 

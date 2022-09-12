@@ -225,6 +225,7 @@ autocmd BufRead,BufNewFile *.v set filetype=vlang
 autocmd BufRead,BufNewFile *.prisma set filetype=prisma
 
 command GoRun execute '!cd %:h && go run %'
+command GoRunMain execute '!go run main.go'
 command VRun execute '!v run %'
 command NimRunSilent execute '!nim c -r --verbosity:0 %'
 command NimRun execute '!nim c -r %'
