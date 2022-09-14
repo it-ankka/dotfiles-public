@@ -151,21 +151,20 @@ nnoremap <F21> @9
 " Close buffer
 nnoremap <c-c> :bp\|bd #<CR>
 
-" if !exists('g:vscode')
-    " Allows for moving lines like in vscode
-    nnoremap <A-j> :m .+1<CR>==
-    nnoremap <A-k> :m .-2<CR>==
-    inoremap <A-j> <Esc>:m .+1<CR>==gi
-    inoremap <A-k> <Esc>:m .-2<CR>==gi
-    vnoremap <A-j> :m '>+1<CR>gv=gv
-    vnoremap <A-k> :m '<-2<CR>gv=gv
-    " For mac
-    nnoremap √ :m .+1<CR>==
-    nnoremap ª :m .-2<CR>==
-    inoremap √ <Esc>:m .+1<CR>==gi
-    inoremap ª <Esc>:m .-2<CR>==gi
-    vnoremap √ :m '>+1<CR>gv=gv
-    vnoremap ª :m '<-2<CR>gv=gv
+" Allows for moving lines like in vscode
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+" For mac
+nnoremap √ :m .+1<CR>==
+nnoremap ª :m .-2<CR>==
+inoremap √ <Esc>:m .+1<CR>==gi
+inoremap ª <Esc>:m .-2<CR>==gi
+vnoremap √ :m '>+1<CR>gv=gv
+vnoremap ª :m '<-2<CR>gv=gv
 
 cmap w!! %!sudo tee > /dev/null %
 
@@ -190,7 +189,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/bufferline.lua
   source ~/.config/nvim/plugins/comment.lua
   source ~/.config/nvim/plugins/fugitive.lua
-  " source ~/.config/nvim/plugins/fzf-lua.lua
+  source ~/.config/nvim/plugins/fzf-lua.lua
   source ~/.config/nvim/plugins/goyo.vim
   source ~/.config/nvim/plugins/lualine.lua
   source ~/.config/nvim/plugins/markdown-preview.lua
@@ -209,7 +208,7 @@ if !exists('g:vscode')
   " source ~/.config/nvim/plugins/rust-lang.lua
   " source ~/.config/nvim/plugins/coc.vim
   " source ~/.config/nvim/plugins/copilot.vim
-  source ~/.config/nvim/plugins/fzf.vim
+  " source ~/.config/nvim/plugins/fzf.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
   " source ~/.config/nvim/plugins/nvim-dashboard.lua
   " source ~/.config/nvim/plugins/nvim-lspconfig.lua
