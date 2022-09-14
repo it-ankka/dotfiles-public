@@ -1,4 +1,5 @@
 # My aliases
+[[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
 alias nv='nvim'
 alias vim='nvim'
 alias dotfiles='cd ~/dotfiles'
