@@ -13,10 +13,11 @@ Plug 'ojroques/nvim-lspfuzzy'
 Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/dressing.nvim'
 
-
+--luasnip
+Plug('L3MON4D3/LuaSnip', {['tag'] = "v<CurrentMajor>.*"})
 -- For vsnip users.
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+-- Plug 'hrsh7th/cmp-vsnip'
+-- Plug 'hrsh7th/vim-vsnip'
 
 local setupAerial = function()
     require("aerial").setup({
@@ -124,8 +125,9 @@ local setupLsp = function()
         "bashls",
         "ccls",
         "diagnosticls",
+        "tailwindcss",
         "dockerls",
-        "emmet_ls",
+        -- "emmet_ls",
         "gdscript",
         "gopls",
         "graphql",
@@ -211,18 +213,34 @@ local setupLsp = function()
             --allow_incremental_sync = true
         }
     }
-
+    nvim_lsp.emmet_ls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
+        init_options = {
+            html = {
+                options = {
+                    -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                    ["bem.enabled"] = true,
+                },
+            },
+        },
+        flags = {
+            debounce_text_changes = 150,
+            --allow_incremental_sync = true
+        }
+    })
     --OMNISHARP
--- require'lspconfig'.omnisharp.setup {
---     cmd = { "/home/lassi/omnisharp/OmniSharp" },
---     enable_editorconfig_support = true,
---     enable_ms_build_load_projects_on_demand = false,
---     enable_roslyn_analyzers = false,
---     organize_imports_on_format = false,
---     enable_import_completion = false,
---     sdk_include_prereleases = true,
---     analyze_open_documents_only = false,
--- }
+    -- require'lspconfig'.omnisharp.setup {
+    --     cmd = { "/home/lassi/omnisharp/OmniSharp" },
+    --     enable_editorconfig_support = true,
+    --     enable_ms_build_load_projects_on_demand = false,
+    --     enable_roslyn_analyzers = false,
+    --     organize_imports_on_format = false,
+    --     enable_import_completion = false,
+    --     sdk_include_prereleases = true,
+    --     analyze_open_documents_only = false,
+    -- }
     vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
     vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
     vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
@@ -260,8 +278,8 @@ local setupCompletion = function()
         snippet = {
             -- REQUIRED - you must specify a snippet engine
             expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-                -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
                 -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
                 -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
             end,
@@ -284,8 +302,8 @@ local setupCompletion = function()
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
-            { name = 'vsnip' }, -- For vsnip users.
-            -- { name = 'luasnip' }, -- For luasnip users.
+            { name = 'luasnip' }, -- For luasnip users.
+            -- { name = 'vsnip' }, -- For vsnip users.
             -- { name = 'ultisnips' }, -- For ultisnips users.
             -- { name = 'snippy' }, -- For snippy users.
         }, {
