@@ -98,11 +98,11 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-/usr/bin/setxkbmap -option caps:escape
+/usr/bin/setxkbmap -option caps:escape 2> /dev/null
 
 # Example aliases
- alias zshconfig="nvim ~/.zshrc"
- alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 export LANG=$(locale -a | grep -i 'en_us.utf')
 export PATH=$PATH:~/.local/bin
