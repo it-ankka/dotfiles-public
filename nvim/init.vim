@@ -174,7 +174,6 @@ autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber
 "-------------------------------------------------------------
 " Commands
 "-------------------------------------------------------------
-command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 command GoRun execute '!cd %:h && go run %'
 command GoRunMain execute '!go run main.go'
 command VRun execute '!v run %'
@@ -189,11 +188,13 @@ function! s:ExecuteInShell(command)
   echo 'Execute ' . command . '...'
   silent! execute 'silent %!'. command
   silent! execute 'resize '
+  silent! execute 'wincmd w'
   silent! redraw
   silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
-  silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
+  silent! execute 'nnoremap <silent> <buffer> <F1> :call <SID>ExecuteInShell(''' . command . ''')<CR>'
   echo 'Shell command ' . command . ' executed.'
 endfunction
+
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 
 "-------------------------------------------------------------
