@@ -188,6 +188,8 @@ function! s:ExecuteInShell(command)
   echo 'Execute ' . command . '...'
   silent! execute 'silent %!'. command
   silent! execute 'resize '
+  silent! execute 'set filetype=text'
+  silent! execute 'lua vim.diagnostic.disable()'
   silent! execute 'wincmd w'
   silent! redraw
   silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
