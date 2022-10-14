@@ -172,6 +172,31 @@ cmap w!! %!sudo tee > /dev/null %
 autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber
 
 "-------------------------------------------------------------
+" Commands
+"-------------------------------------------------------------
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+command GoRun execute '!cd %:h && go run %'
+command GoRunMain execute '!go run main.go'
+command VRun execute '!v run %'
+command NimRunSilent execute '!nim c -r --verbosity:0 %'
+command NimRun execute '!nim c -r %'
+
+function! s:ExecuteInShell(command)
+  let command = join(map(split(a:command), 'expand(v:val)'))
+  let winnr = bufwinnr('^' . command . '$')
+  silent! execute  winnr < 0 ? 'botright vnew ' . fnameescape(command) : winnr . 'wincmd w'
+  setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
+  echo 'Execute ' . command . '...'
+  silent! execute 'silent %!'. command
+  silent! execute 'resize '
+  silent! redraw
+  silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
+  silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
+  echo 'Shell command ' . command . ' executed.'
+endfunction
+command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+
+"-------------------------------------------------------------
 " Plugins
 "-------------------------------------------------------------
 " Automatically install vimplug
@@ -222,9 +247,3 @@ autocmd BufRead,BufNewFile *.v set filetype=vlang
 
 " Set correct filetype for prisma
 autocmd BufRead,BufNewFile *.prisma set filetype=prisma
-
-command GoRun execute '!cd %:h && go run %'
-command GoRunMain execute '!go run main.go'
-command VRun execute '!v run %'
-command NimRunSilent execute '!nim c -r --verbosity:0 %'
-command NimRun execute '!nim c -r %'
