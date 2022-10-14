@@ -183,18 +183,21 @@ command NimRun execute '!nim c -r %'
 function! s:ExecuteInShell(command)
   let command = join(map(split(a:command), 'expand(v:val)'))
   let winnr = bufwinnr('^' . command . '$')
-  silent! execute  winnr < 0 ? 'botright vnew ' . fnameescape(command) : winnr . 'wincmd w'
+  if winnr > 0
+      silent! execute winnr . 'wincmd q'
+  endif
+  silent! execute 'botright vnew ' . fnameescape(command)
   setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
   echo 'Execute ' . command . '...'
   silent! execute 'silent %!'. command
   silent! execute 'resize '
   silent! execute 'set filetype=text'
   silent! execute 'lua vim.diagnostic.disable()'
-  silent! execute 'wincmd w'
+  silent! execute '1wincmd w'
   silent! redraw
-  silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
+  silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ')'
   silent! execute 'nnoremap <silent> <buffer> <F1> :call <SID>ExecuteInShell(''' . command . ''')<CR>'
-  echo 'Shell command ' . command . ' executed.'
+  " echo 'Shell command ' . command . ' executed.'
 endfunction
 
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
