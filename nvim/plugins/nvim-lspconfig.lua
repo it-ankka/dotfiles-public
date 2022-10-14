@@ -81,7 +81,7 @@ local setupLsp = function()
         buf_set_keymap('n', '<leader><Left>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
         buf_set_keymap('n', '<leader><Right>', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
         buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclistt()<CR>', opts)
-        buf_set_keymap("n", "<leader>pf", "<cmd>Format<CR>", opts)
+        buf_set_keymap("n", "<leader>pF", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
 
 
         --protocol.SymbolKind = { }
@@ -125,9 +125,7 @@ local setupLsp = function()
         "bashls",
         "ccls",
         "diagnosticls",
-        "tailwindcss",
         "dockerls",
-        -- "emmet_ls",
         "gdscript",
         "gopls",
         "graphql",
@@ -141,10 +139,12 @@ local setupLsp = function()
         "rust_analyzer",
         "sqls",
         "svelte",
+        "tailwindcss",
         "vimls",
         "vls",
         "yamlls",
         "zk"
+        -- "emmet_ls",
     }
 
     for _, server in pairs(servers) do
