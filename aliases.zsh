@@ -2,6 +2,7 @@
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
 alias nv='nvim'
 alias vim='nvim'
+alias tempdir='cd $(mktemp -d)'
 alias dotfiles='cd ~/dotfiles'
 alias lg='lazygit'
 alias lzd='lazydocker'

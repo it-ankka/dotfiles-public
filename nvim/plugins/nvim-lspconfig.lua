@@ -124,6 +124,7 @@ local setupLsp = function()
         "astro",
         "bashls",
         "ccls",
+        "clojure_lsp",
         "diagnosticls",
         "dockerls",
         "gdscript",
