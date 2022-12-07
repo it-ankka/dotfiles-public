@@ -177,8 +177,9 @@ autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber
 command GoRun execute '!cd %:h && go run %'
 command GoRunMain execute '!go run main.go'
 command VRun execute '!v run %'
-command NimRunSilent execute '!nim c -r --verbosity:0 %'
-command NimRun execute '!nim c -r %'
+command NimRunSilent execute '!nim r --verbosity:0 %'
+command NimRun execute '!nim r %'
+command TsxRun execute '!tsx %'
 
 function! s:ExecuteInShell(command)
   let command = join(map(split(a:command), 'expand(v:val)'))
@@ -191,7 +192,8 @@ function! s:ExecuteInShell(command)
   echo 'Execute ' . command . '...'
   silent! execute 'silent %!'. command
   silent! execute 'resize '
-  silent! execute 'set filetype=text'
+  silent! execute 'set filetype=html'
+  silent! execute 'set wrap'
   silent! execute 'lua vim.diagnostic.disable()'
   silent! execute '1wincmd w'
   silent! redraw
@@ -253,3 +255,6 @@ autocmd BufRead,BufNewFile *.v set filetype=vlang
 
 " Set correct filetype for prisma
 autocmd BufRead,BufNewFile *.prisma set filetype=prisma
+
+" Commenting in nim files
+autocmd FileType nim setlocal commentstring=#\ %s
