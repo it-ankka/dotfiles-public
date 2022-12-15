@@ -12,6 +12,7 @@ Plug 'narutoxy/dim.lua'
 Plug 'ojroques/nvim-lspfuzzy'
 Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/dressing.nvim'
+Plug 'PaterJason/cmp-conjure'
 
 --luasnip
 Plug('L3MON4D3/LuaSnip', {['tag'] = "v<CurrentMajor>.*"})
@@ -77,7 +78,7 @@ local setupLsp = function()
         --buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
         buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
         buf_set_keymap('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-        buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+        -- buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
         buf_set_keymap('n', '<leader><Left>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
         buf_set_keymap('n', '<leader><Right>', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
         buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclistt()<CR>', opts)
@@ -305,6 +306,7 @@ local setupCompletion = function()
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
+            { name = 'conjure' },
             { name = 'luasnip' }, -- For luasnip users.
             -- { name = 'vsnip' }, -- For vsnip users.
             -- { name = 'ultisnips' }, -- For ultisnips users.
