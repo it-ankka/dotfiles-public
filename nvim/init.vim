@@ -7,6 +7,7 @@
 syntax on
 set expandtab
 set number
+set relativenumber
 set hidden
 set signcolumn=yes
 set termguicolors
