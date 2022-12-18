@@ -49,7 +49,8 @@ end
 
 local setupLsp = function()
     --vim.lsp.set_log_level("debug")
-    local nvim_lsp = require('lspconfig')
+    local nvim_lsp = require 'lspconfig'
+    local configs = require 'lspconfig.configs'
     local protocol = require 'vim.lsp.protocol'
 
     -- Use an on_attach function to only map the following keys
@@ -151,6 +152,7 @@ local setupLsp = function()
         -- "emmet_ls",
     }
 
+
     for _, server in pairs(servers) do
         nvim_lsp[server].setup {
             on_attach = on_attach,
@@ -161,6 +163,32 @@ local setupLsp = function()
             }
         }
     end
+
+    --Fennel
+    configs.fennel_language_server = {
+     default_config = {
+        -- replace it with true path
+        cmd = {'/home/lassi/.cargo/bin/fennel-language-server'},
+        filetypes = {'fennel'},
+        single_file_support = true,
+        -- source code resides in directory `fnl/`
+        root_dir = nvim_lsp.util.root_pattern("fnl"),
+        settings = {
+          fennel = {
+            workspace = {
+              -- If you are using hotpot.nvim or aniseed,
+              -- make the server aware of neovim runtime files.
+              library = vim.api.nvim_list_runtime_paths(),
+            },
+            diagnostics = {
+              globals = {'vim'},
+            },
+          },
+        },
+      },
+    }
+
+    nvim_lsp.fennel_language_server.setup{}
 
     --Sumneko Lua
     nvim_lsp.sumneko_lua.setup {
