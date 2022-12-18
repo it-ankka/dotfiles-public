@@ -219,10 +219,11 @@ call plug#begin(data_dir . '/plugins')
 if !exists('g:vscode')
   source ~/.config/nvim/plugins/auto-session.lua
   source ~/.config/nvim/plugins/autopairs.lua
+  source ~/.config/nvim/plugins/aniseed.lua
   source ~/.config/nvim/plugins/blamer.lua
   source ~/.config/nvim/plugins/bufferline.lua
-  source ~/.config/nvim/plugins/conjure.lua
   source ~/.config/nvim/plugins/comment.lua
+  source ~/.config/nvim/plugins/conjure.lua
   source ~/.config/nvim/plugins/fugitive.lua
   source ~/.config/nvim/plugins/fzf-lua.lua
   source ~/.config/nvim/plugins/goyo.vim
@@ -263,5 +264,8 @@ autocmd FileType nim setlocal commentstring=#\ %s
 
 " Docs in clojure
 autocmd BufRead,BufNewFile *.clj nnoremap ,k :ConjureDocWord<CR>
+
 " Docs in clojure
 autocmd FileType clojure nnoremap ,k :ConjureDocWord<CR>
+
+" let g:conjure#filetype#fennel = "conjure.client.fennel.stdio"
