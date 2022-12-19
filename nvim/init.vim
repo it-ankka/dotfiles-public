@@ -7,6 +7,7 @@
 syntax on
 set expandtab
 set number
+set relativenumber
 set hidden
 set signcolumn=yes
 set termguicolors
@@ -56,6 +57,7 @@ let g:neovide_transparency=0.9
 noremap <F1> <Nop>
 noremap <Space> <Nop>
 let mapleader = "\<space>"
+let maplocalleader = ","
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim
@@ -172,6 +174,7 @@ autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber
 "-------------------------------------------------------------
 " Commands
 "-------------------------------------------------------------
+command W execute 'w'
 command GoRun execute '!cd %:h && go run %'
 command GoRunMain execute '!go run main.go'
 command VRun execute '!v run %'
@@ -216,9 +219,11 @@ call plug#begin(data_dir . '/plugins')
 if !exists('g:vscode')
   source ~/.config/nvim/plugins/auto-session.lua
   source ~/.config/nvim/plugins/autopairs.lua
+  source ~/.config/nvim/plugins/aniseed.lua
   source ~/.config/nvim/plugins/blamer.lua
   source ~/.config/nvim/plugins/bufferline.lua
   source ~/.config/nvim/plugins/comment.lua
+  source ~/.config/nvim/plugins/conjure.lua
   source ~/.config/nvim/plugins/fugitive.lua
   source ~/.config/nvim/plugins/fzf-lua.lua
   source ~/.config/nvim/plugins/goyo.vim
@@ -256,3 +261,11 @@ autocmd BufRead,BufNewFile *.prisma set filetype=prisma
 
 " Commenting in nim files
 autocmd FileType nim setlocal commentstring=#\ %s
+
+" Docs in clojure
+autocmd BufRead,BufNewFile *.clj nnoremap ,k :ConjureDocWord<CR>
+
+" Docs in clojure
+autocmd FileType clojure nnoremap ,k :ConjureDocWord<CR>
+
+" let g:conjure#filetype#fennel = "conjure.client.fennel.stdio"

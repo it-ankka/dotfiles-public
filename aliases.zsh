@@ -26,6 +26,10 @@ alias icat="kitty +kitten icat"
 alias gd="git diff --ignore-all-space --ignore-space-at-eol --ignore-space-change --ignore-blank-lines -- . ':(exclude)*package-lock.json' -- . ':(exclude)*yarn.lock'"
 alias kit="kitty --detach && exit"
 alias myissues='jira issue list -s~Done -a$(jira me)'
+alias nrepl="clj -Sdeps '{:deps {nrepl/nrepl {:mvn/version \"0.9.0\"} cider/cider-nrepl {:mvn/version \"0.28.4\"}}}' \
+    -m nrepl.cmdline \
+    --middleware '[\"cider.nrepl/cider-middleware\"]' \
+    --interactive"
 
 # Docker
 alias dk='docker'
