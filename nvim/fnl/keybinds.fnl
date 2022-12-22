@@ -1,4 +1,4 @@
-(import-macros {: g! : set! : map!} :hibiscus.vim)
+(import-macros {: g! : map!} :hibiscus.vim)
 
 ; Set leader keys 
 (map! [n] "<F1>" "<Nop>")
@@ -7,14 +7,14 @@
 (g! mapleader " ")
 (g! maplocalleader ",")
 
-(map! [n] "<leader>ve" ":edit ~/.config/nvim/init.fnl")
-(map! [n] "<leader>vr" ":FnlCompile!")
-(map! [n] "<leader>vl" "~/.config/nvim/fnl/plugin/lsp.lua")
-(map! [n] "<leader>vp" "~/.config/nvim/fnl/plugins.fnl")
-(map! [n] "<leader>vk" "~/.config/nvim/fnl/keybinds.fnl")
+(map! [n] "<leader>ve" ":edit ~/.config/nvim/init.fnl <CR>")
+(map! [n] "<leader>vr" ":FnlCompile! <CR>")
+(map! [n] "<leader>vl" "~/.config/nvim/fnl/plugin/lsp.lua <CR>")
+(map! [n] "<leader>vp" "~/.config/nvim/fnl/plugins.fnl <CR>")
+(map! [n] "<leader>vk" "~/.config/nvim/fnl/keybinds.fnl <CR>")
 
-(map! [n] "<leader>k" "nohlsearch")
-(map! [n] "<leader>Q" ":bufdo bdelete")
+(map! [n] "<leader>k" ":nohlsearch <CR>")
+(map! [n] "<leader>Q" ":bufdo bdelete <CR>")
 
 ;; Toggle linewrap
 (map! [n] "<leader>w" ":set wrap!<CR>")

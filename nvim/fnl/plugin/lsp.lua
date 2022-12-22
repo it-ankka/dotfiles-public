@@ -1,11 +1,3 @@
-
-
-local defaultSetupTargets = { 'dressing','lsp_signature' }
-for _, value in pairs(defaultSetupTargets) do
-    require(value).setup({})
-end
-
---vim.lsp.set_log_level("debug")
 local nvim_lsp = require 'lspconfig'
 local configs = require 'lspconfig.configs'
 local protocol = require 'vim.lsp.protocol'
@@ -97,6 +89,7 @@ local servers = {
     "bashls",
     "ccls",
     "clojure_lsp",
+    "cssls",
     "diagnosticls",
     "dockerls",
     "gopls",
@@ -258,4 +251,8 @@ vim.notify = function(msg, log_level, _)
     end
 end
 
-
+-- Configure default setups
+local defaultSetupTargets = { 'dressing','lsp_signature', 'dim' }
+for _, value in pairs(defaultSetupTargets) do
+    require(value).setup({})
+end

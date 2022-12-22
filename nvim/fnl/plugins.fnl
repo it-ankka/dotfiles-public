@@ -68,10 +68,6 @@
                    ]
         :run ":TSUpdate"
         :config #(require :plugin.treesitter))
-  (use! :narutoxy/dim.lua
-        :requires [:nvim-treesitter/nvim-treesitter :neovim/nvim-lspconfig]
-        :config #(let [d (require :dim)]
-                   (d.setup {})))
   ;; Lsp
   (use! :neovim/nvim-lspconfig
         :requires [
@@ -80,6 +76,7 @@
                    :ojroques/nvim-lspfuzzy
                    :stevearc/dressing.nvim
                    :PaterJason/cmp-conjure
+                   :narutoxy/dim.lua
                    ]
         :config #(require :plugin.lsp))
   (use! :numToStr/Comment.nvim
