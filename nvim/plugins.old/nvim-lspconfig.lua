@@ -168,7 +168,7 @@ local setupLsp = function()
     configs.fennel_language_server = {
      default_config = {
         -- replace it with true path
-        cmd = {'/home/lassi/.cargo/bin/fennel-language-server'},
+        cmd = {os.getenv('HOME') .. '/.cargo/bin/fennel-language-server'},
         filetypes = {'fennel'},
         single_file_support = true,
         -- source code resides in directory `fnl/`

@@ -30,7 +30,6 @@ local setupTreesitter = function()
       "php",
       "json",
       "yaml",
-      --"swift",
       "html",
       "scss",
       "css",
@@ -42,6 +41,7 @@ local setupTreesitter = function()
       "javascript",
       "typescript",
       "bash",
+      "clojure"
     },
   }
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

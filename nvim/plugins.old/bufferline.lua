@@ -1,6 +1,7 @@
 local Plug = vim.fn['plug#']
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'akinsho/bufferline.nvim'
+
 local setupBufferLine = function()
     require("bufferline").setup{
     options = {
@@ -10,7 +11,7 @@ local setupBufferLine = function()
         filetype = "NvimTree",
         text = "📁 File Explorer",
         highlight = "Directory",
-        text_align = "left"
+        
       }
     }
         }

@@ -39,8 +39,6 @@ set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 "Reduce time for highlighting other references
 set redrawtime=10000 "Allow more time for loading highlighting in large files
 
-" Markdown listchars
-au BufNewFile,BufRead *.md set nolist
 
 " SET TITLE
 let dir = fnamemodify(getcwd(), ':t') . " - NVIM"
@@ -168,8 +166,6 @@ vnoremap ª :m '<-2<CR>gv=gv
 
 cmap w!! %!sudo tee > /dev/null %
 
-" Terminal settings
-autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber
 
 "-------------------------------------------------------------
 " Commands
@@ -247,12 +243,16 @@ if !exists('g:vscode')
   " source ~/.config/nvim/plugins/fzf.vim
   " source ~/.config/nvim/plugins/indent-blankline.vim
   " source ~/.config/nvim/plugins/nvim-dashboard.lua
-  " source ~/.config/nvim/plugins/nvim-lspconfig.lua
 endif
 
 call plug#end()
 doautocmd User PlugLoaded
 
+source "~/.config/nvim/plugin/0-tangerine.lua"
+
+"-------------------------------------------------------------
+" Autocommands
+"-------------------------------------------------------------
 " Set correct filetype for vlang
 autocmd BufRead,BufNewFile *.v set filetype=vlang
 
@@ -268,4 +268,8 @@ autocmd BufRead,BufNewFile *.clj nnoremap ,k :ConjureDocWord<CR>
 " Docs in clojure
 autocmd FileType clojure nnoremap ,k :ConjureDocWord<CR>
 
-" let g:conjure#filetype#fennel = "conjure.client.fennel.stdio"
+" Terminal settings
+autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber
+
+" Markdown listchars
+au BufNewFile,BufRead *.md set nolist
