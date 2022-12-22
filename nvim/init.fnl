@@ -5,6 +5,4 @@
 (require :autocommands)
 (require :plugins)
 (require :colors)
-
-
-
+(let [a (require :autoclose)] (a.setup {}))

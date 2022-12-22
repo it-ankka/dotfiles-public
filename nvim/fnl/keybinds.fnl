@@ -2,6 +2,7 @@
 
 ; Set leader keys 
 (map! [n] "<F1>" "<Nop>")
+(map! [n] "Q" "<Nop>")
 (map! [n] "<Space>" "<Nop>")
 
 (g! mapleader " ")
@@ -59,6 +60,17 @@
 (map! [n] ",," "<Esc>mpA,<Esc>`p")
 ;; (map! [i] ";;" "<Esc>mpA;<Esc>`p")
 ;; (map! [i] ",," "<Esc>mpA,<Esc>`p")
+
+;; Keep search terms in middle
+(map! [n] "n" "nzzzv")
+(map! [n] "N" "Nzzzv")
+
+;; Keep jumping in middle
+(map! [n] "<C-u>" "<C-u>zz")
+(map! [n] "<C-d>" "<C-d>zz")
+
+;; Join lines without moving cursor
+(map! [n] "J" "mzJ`z")
 
 ;; Easy insertion of newline at cursor
 (map! [n] "<leader><CR>" "a<CR><Esc>")

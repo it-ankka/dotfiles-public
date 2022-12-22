@@ -5,8 +5,10 @@
 
 (packer-setup {:max_jobs 10})
 
-
 (packer
+  ;; (use! :m4xshen/autoclose.nvim
+  ;;       :config #(let [autoclose (require :autoclose)] 
+  ;;                  (autoclose.setup {})))
   (use! :AndrewRadev/tagalong.vim
         :config #(require :plugin.tagalong))
   (use! :Olical/conjure)
@@ -16,7 +18,7 @@
         :requires :kyazdani42/nvim-web-devicons
         :config #(require :plugin.bufferline))
   (use! :clojure-vim/vim-jack-in)
-  (use! :cohama/lexima.vim)
+  ;; (use! :cohama/lexima.vim)
   ;; Autocomplete
   (use! :hrsh7th/nvim-cmp 
                 :requires [:hrsh7th/cmp-nvim-lsp
@@ -98,7 +100,6 @@
   (use! :sheerun/vim-polyglot)
   (use! :stevearc/aerial.nvim
         :config #(require :plugin.aerial))
-  (use! :stevearc/dressing.nvim)
   ;; Monokai
   (use! :tanvirtin/monokai.nvim)
   (use! :tpope/vim-dispatch)
@@ -108,9 +109,6 @@
   ;; Fennel
   (use! :udayvir-singh/hibiscus.nvim)
   (use! :udayvir-singh/tangerine.nvim)
-  (use! :windwp/nvim-autopairs
-        :opt true 
-        :keys [[:i "\""] [:i "'"] [:i "`"] [:i "("] [:i "["] [:i "{"]])
   )
 
 ; Setup Nvim-Tree
