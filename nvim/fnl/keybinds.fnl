@@ -9,10 +9,12 @@
 (g! maplocalleader ",")
 
 (map! [n] "<leader>ve" ":edit ~/.config/nvim/init.fnl <CR>")
-(map! [n] "<leader>vr" ":FnlCompile! <CR>")
-(map! [n] "<leader>vl" "~/.config/nvim/fnl/plugin/lsp.lua <CR>")
-(map! [n] "<leader>vp" "~/.config/nvim/fnl/plugins.fnl <CR>")
-(map! [n] "<leader>vk" "~/.config/nvim/fnl/keybinds.fnl <CR>")
+(map! [n] "<leader>vr" ":q <CR>")
+(map! [n] "<leader>vl" ":edit ~/.config/nvim/fnl/plugin/lsp.lua <CR>")
+(map! [n] "<leader>vf" ":edit ~/.config/nvim/fnl/functions.lua <CR>")
+(map! [n] "<leader>vc" ":edit ~/.config/nvim/fnl/commands.fnl <CR>")
+(map! [n] "<leader>vp" ":edit ~/.config/nvim/fnl/plugins.fnl <CR>")
+(map! [n] "<leader>vk" ":edit ~/.config/nvim/fnl/keybinds.fnl <CR>")
 
 (map! [n] "<leader>k" ":nohlsearch <CR>")
 (map! [n] "<leader>Q" ":bufdo bdelete <CR>")

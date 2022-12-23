@@ -13,7 +13,7 @@ endfunction
 
 -- Show output of shell command in a new split
 vim.cmd([[
-function! s:ExecuteInShell(command)
+function! ExecuteInShell(command)
   let command = join(map(split(a:command), 'expand(v:val)'))
   let winnr = bufwinnr('^' . command . '$')
   if winnr > 0
@@ -34,3 +34,4 @@ function! s:ExecuteInShell(command)
   " echo 'Shell command ' . command . ' executed.'
 endfunction
 ]])
+

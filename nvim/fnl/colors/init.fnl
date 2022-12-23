@@ -1,4 +1,5 @@
 ;; COLOR SETTINGS
+(require :colors.a11y-dark)
 
 (fn SetColors [color] 
   (let [color (or color "monokai")]
@@ -9,4 +10,3 @@
     ))
 
 (SetColors)
-

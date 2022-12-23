@@ -24,7 +24,7 @@ bootstrap("https://github.com/udayvir-singh/hibiscus.nvim")
 
 require("tangerine").setup {
 	-- save fnl output in a separate dir, it gets automatically added to package.path
-	target = vim.fn.stdpath [[data]] .. "/tangerine",
+	target = vim.fn.stdpath [[config]] .. "/tangerine",
 
 	-- compile files in &rtp
 	rtpdirs = {
