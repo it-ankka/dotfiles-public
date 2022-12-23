@@ -61,7 +61,8 @@
         :requires [:williamboman/mason-lspconfig.nvim]
         :config #(require :plugin.mason))
   ;;nvim-lint
-  (use! :mfussenegger/nvim-lint)
+  (use! :mfussenegger/nvim-lint
+        :config #(require :plugin.lint))
   ;; Treesitter
   (use! :nvim-treesitter/nvim-treesitter 
         :requires [
