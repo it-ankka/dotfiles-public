@@ -1,5 +1,4 @@
 ;; COLOR SETTINGS
-(require :a11y-dark)
 
 (fn _G.SetColors [color] 
   (let [color (or color "mycolor")]

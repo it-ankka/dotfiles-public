@@ -47,8 +47,8 @@ M.classic = {
   green = '#afd75f',
   aqua = '#87afd7',
   yellow = '#ffaf00',
-  orange = '#fd771f',
-  purple = '#d787ff',
+  orange = '#cc8c3c',
+  purple = '#cf9aea',
   red = '#e95678',
   diff_add = '#3d5213',
   diff_remove = '#4a0f23',
@@ -399,23 +399,23 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     ["@variable.builtin"] = {
-      fg = palette.orange,
+      fg = palette.white,
     },
     ["@annotation"] = {
       fg = palette.yellow,
     },
     ["@comment"] = {
-      fg = palette.base6,
+      fg = palette.grey,
       style = 'italic',
     },
     ["@constant"] = {
-      fg = palette.aqua,
+      fg = palette.white,
     },
     ["@const.builtin"] = {
-      fg = palette.purple,
+      fg = palette.white,
     },
     ["@const.macro"] = {
-      fg = palette.purple,
+      fg = palette.white,
     },
     ["@constructor"] = {
       fg = palette.aqua,
@@ -449,13 +449,13 @@ M.load_plugin_syntax = function(palette)
       fg = palette.yellow,
     },
     ["@keyword.return"] = {
-      fg = palette.yellow,
+      fg = palette.orange,
     },
     ["@method"] = {
       fg = palette.yellow,
     },
     ["@namespace"] = {
-      fg = palette.purple,
+      fg = palette.white,
     },
     ["@number"] = {
       fg = palette.purple,
@@ -503,7 +503,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.yellow,
     },
     ["@type"] = {
-      fg = palette.grey,
+      fg = palette.aqua,
     },
     ["@exception"] = {
       fg = palette.yellow,
@@ -512,7 +512,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     ["@float"] = {
-      fg = palette.purple,
+      fg = palette.aqua,
     },
     dbui_tables = {
       fg = palette.white,
