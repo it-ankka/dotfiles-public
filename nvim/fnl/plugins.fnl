@@ -101,8 +101,15 @@
   (use! :sheerun/vim-polyglot)
   (use! :stevearc/aerial.nvim
         :config #(require :plugin.aerial))
-  ;; Monokai
+  ;; Themes
+  (use! :folke/lsp-colors.nvim)
+  (use! :rktjmp/lush.nvim)
   (use! :tanvirtin/monokai.nvim)
+  (use! :eemed/sitruuna.vim)
+  (use! :d11wtq/subatomic256.vim)
+  (use! :veloce/vim-aldmeris)
+  (use! :hwadii/gruber_darker.nvim)
+  ;; TPope the magic man
   (use! :tpope/vim-dispatch)
   (use! :tpope/vim-fugitive)
   (use! :tpope/vim-rhubarb)
