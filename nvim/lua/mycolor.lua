@@ -48,7 +48,7 @@ M.classic = {
   aqua = '#87afd7',
   yellow = '#ffaf00',
   orange = '#fd771f',
-  purple = '#cf9aea',
+  purple = '#d0a7ef',
   red = '#e95678',
   diff_add = '#3d5213',
   diff_remove = '#4a0f23',
@@ -449,10 +449,10 @@ M.load_plugin_syntax = function(palette)
       fg = palette.yellow,
     },
     ["@keyword.return"] = {
-      fg = palette.orange,
+      fg = palette.yellow,
     },
     ["@method"] = {
-      fg = palette.yellow,
+      fg = palette.aqua,
     },
     ["@namespace"] = {
       fg = palette.white,
