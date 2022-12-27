@@ -3,7 +3,7 @@ local vim = vim
 local M = {}
 
 M.default = {
-  name = 'mycolor',
+  name = 'sonokai',
   base0 = '#222426',
   base1 = '#272a30',
   base2 = '#26292C',
@@ -18,21 +18,42 @@ M.default = {
   white = '#f8f8f0',
   grey = '#7f8490',
   black = '#181819',
-  orange = '#fc5d7c',
-  yellow = '#9ed072',
-  green = '#76cce0',
-  pink = '#e7c664',
-  aqua = '#f39660',
+  pink = '#fc5d7c',
+  green = '#9ed072',
+  aqua = '#76cce0',
+  yellow = '#e7c664',
+  orange = '#f39660',
   purple = '#b39df3',
   red = '#ff6077',
   diff_add = '#3d5213',
   diff_remove = '#4a0f23',
   diff_change = '#27406b',
   diff_text = '#23324d',
-  error = '#ff6077',
-  warn = '#e7c664',
-  info = '#76cce0',
 }
+ -- 'black':      ['#181819',   '232'],
+ -- 'bg_dim':     ['#222327',   '232'],
+ -- 'bg0':        ['#2c2e34',   '235'],
+ -- 'bg1':        ['#33353f',   '236'],
+ -- 'bg2':        ['#363944',   '236'],
+ -- 'bg3':        ['#3b3e48',   '237'],
+ -- 'bg4':        ['#414550',   '237'],
+ -- 'bg_red':     ['#ff6077',   '203'],
+ -- 'diff_red':   ['#55393d',   '52'],
+ -- 'bg_green':   ['#a7df78',   '107'],
+ -- 'diff_green': ['#394634',   '22'],
+ -- 'bg_blue':    ['#85d3f2',   '110'],
+ -- 'diff_blue':  ['#354157',   '17'],
+ -- 'diff_yellow':['#4e432f',   '54'],
+ -- 'fg':         ['#e2e2e3',   '250'],
+ -- 'red':        ['#fc5d7c',   '203'],
+ -- 'orange':     ['#f39660',   '215'],
+ -- 'yellow':     ['#e7c664',   '179'],
+ -- 'green':      ['#9ed072',   '107'],
+ -- 'blue':       ['#76cce0',   '110'],
+ -- 'purple':     ['#b39df3',   '176'],
+ -- 'grey':       ['#7f8490',   '246'],
+ -- 'grey_dim':   ['#595f6f',   '240'],
+ -- 'none':       ['NONE',      'NONE']
 
 local function remove_italics(config, colors)
   if not config.italics and colors.style == 'italic' then
@@ -127,11 +148,11 @@ M.load_syntax = function(palette)
       style = 'bold',
     },
     ErrorMsg = {
-      fg = palette.error,
+      fg = palette.red,
       style = 'bold',
     },
     WarningMsg = {
-      fg = palette.warn,
+      fg = palette.yellow,
       style = 'bold',
     },
     VertSplit = {
@@ -159,7 +180,7 @@ M.load_syntax = function(palette)
       bg = palette.base4,
     },
     SpellBad = {
-      fg = palette.error,
+      fg = palette.red,
       style = 'undercurl',
     },
     SpellCap = {
@@ -303,7 +324,7 @@ M.load_syntax = function(palette)
     },
     Ignore = {},
     Error = {
-      fg = palette.error,
+      fg = palette.red,
     },
     Terminal = {
       fg = palette.white,
@@ -346,7 +367,7 @@ M.load_syntax = function(palette)
     },
     debugBreakpoint = {
       fg = palette.base2,
-      bg = palette.error,
+      bg = palette.red,
     },
     Conditional = {
       fg = palette.pink,
@@ -491,36 +512,36 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     DiagnosticSignError = {
-      fg = palette.error,
+      fg = palette.red,
     },
     DiagnosticSignWarn = {
-      fg = palette.warn,
+      fg = palette.yellow,
     },
     DiagnosticSignInfo = {
       fg = palette.white,
     },
     DiagnosticSignHint = {
-      fg = palette.info,
+      fg = palette.aqua,
     },
     DiagnosticVirtualTextError = {
-      fg = palette.error,
+      fg = palette.red,
     },
     DiagnosticVirtualTextWarn = {
-      fg = palette.warn,
+      fg = palette.yellow,
     },
     DiagnosticVirtualTextInfo = {
       fg = palette.white,
     },
     DiagnosticVirtualTextHint = {
-      fg = palette.info,
+      fg = palette.aqua,
     },
     DiagnosticUnderlineError = {
       style = 'undercurl',
-      sp = palette.error,
+      sp = palette.red,
     },
     DiagnosticUnderlineWarn = {
       style = 'undercurl',
-      sp = palette.warn,
+      sp = palette.yellow,
     },
     DiagnosticUnderlineInfo = {
       style = 'undercurl',
@@ -528,7 +549,7 @@ M.load_plugin_syntax = function(palette)
     },
     DiagnosticUnderlineHint = {
       style = 'undercurl',
-      sp = palette.info,
+      sp = palette.aqua,
     },
     CursorWord0 = {
       bg = palette.white,
@@ -568,7 +589,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.pink,
     },
     TelescopeMatching = {
-      fg = palette.info,
+      fg = palette.aqua,
     },
 
     -- hrsh7th/nvim-cmp
