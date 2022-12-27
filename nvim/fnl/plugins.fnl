@@ -6,13 +6,21 @@
 (packer-setup {:max_jobs 10})
 
 (packer
-  ;; (use! :m4xshen/autoclose.nvim
-  ;;       :config #(let [autoclose (require :autoclose)] 
-  ;;                  (autoclose.setup {})))
   (use! :AndrewRadev/tagalong.vim
+        :ft [:tsx :javascript :javascriptreact :html :xml :typescript :typescriptreact]
         :config #(require :plugin.tagalong))
-  (use! :Olical/conjure)
-  (use! :PaterJason/cmp-conjure)
+  (use! :Olical/conjure
+        :opt true
+        :cmd [:Lein :Clj]
+        :ft [:clojure :fennel :lisp])
+  (use! :PaterJason/cmp-conjure
+        :opt true
+        :cmd [:Lein :Clj]
+        :ft [:clojure :fennel :lisp])
+  ;; Autoclose
+  (use! :m4xshen/autoclose.nvim
+        :config #(let [autoclose (require :autoclose)] 
+                   (autoclose.setup {})))
   ;; Bufferline
   (use! :akinsho/bufferline.nvim 
         :requires :kyazdani42/nvim-web-devicons
@@ -36,9 +44,11 @@
   (use! :ibhagwan/fzf-lua 
         :requires :kyazdani42/nvim-web-devicons
         :config #(require :plugin.fzf-lua))
-  (use! :jparise/vim-graphql)
+  (use! :jparise/vim-graphql
+        :ft [:graphql :javascript :typescript :typescriptreact])
   (use! :junegunn/goyo.vim 
-        :ft [:md :mdx :txt] 
+        :ft [:markdown :mdx :text] 
+        :cmd :Goyo
         :run ":Goyo")
   ;; Nvim-Tree
   (use! :kyazdani42/nvim-tree.lua 
@@ -105,9 +115,9 @@
   (use! :folke/lsp-colors.nvim)
   (use! :rktjmp/lush.nvim)
   (use! :tanvirtin/monokai.nvim)
-  (use! :eemed/sitruuna.vim)
-  (use! :d11wtq/subatomic256.vim)
-  (use! :veloce/vim-aldmeris)
+  ;; (use! :eemed/sitruuna.vim)
+  ;; (use! :d11wtq/subatomic256.vim)
+  ;; (use! :veloce/vim-aldmeris)
   (use! :hwadii/gruber_darker.nvim)
   ;; TPope the magic man
   (use! :tpope/vim-dispatch)
