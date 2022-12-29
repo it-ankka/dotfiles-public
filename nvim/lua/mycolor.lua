@@ -48,7 +48,7 @@ M.classic = {
   aqua = '#87afd7',
   yellow = '#ffaf00',
   orange = '#fd771f',
-  purple = '#d0a7ef',
+  purple = '#ad7fa8',
   red = '#e95678',
   diff_add = '#3d5213',
   diff_remove = '#4a0f23',
@@ -56,9 +56,31 @@ M.classic = {
   diff_text = '#23324d',
 }
 
--- pink -> yellow
--- green -> blue
--- yellow -> green
+
+-- ! Black
+-- *color0:  #2e3436
+-- *color8:  #555753
+-- ! Red
+-- *color1:  #cc0000
+-- *color9:  #ef2929
+-- ! Green
+-- *color2:  #4e9a06
+-- *color10: #8ae234
+-- ! Yellow
+-- *color3:  #c4a000
+-- *color11: #fce94f
+-- ! Blue
+-- *color4:  #3465a4
+-- *color12: #729fcf
+-- ! Purple
+-- *color5:  #75507b
+-- *color13: #ad7fa8
+-- ! Cyan
+-- *color6:  #06989a
+-- *color14: #34e2e2
+-- ! White
+-- *color7:  #d3d7cf
+-- *color15: #eeeeec
 
 
 local function remove_italics(config, colors)
@@ -458,7 +480,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     ["@number"] = {
-      fg = palette.purple,
+      fg = palette.white,
     },
     ["@operator"] = {
       fg = palette.yellow,
@@ -503,7 +525,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.yellow,
     },
     ["@type"] = {
-      fg = palette.aqua,
+      fg = palette.purple,
     },
     ["@exception"] = {
       fg = palette.yellow,
@@ -512,7 +534,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
     },
     ["@float"] = {
-      fg = palette.aqua,
+      fg = palette.white,
     },
     dbui_tables = {
       fg = palette.white,

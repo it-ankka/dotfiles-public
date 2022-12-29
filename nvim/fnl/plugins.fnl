@@ -82,7 +82,12 @@
                    :narutoxy/dim.lua
                    ]
         :config #(require :plugin.lsp))
+  (use! :ojroques/nvim-lspfuzzy)
+  (use! :onsails/lspkind.nvim)
+  (use! :ray-x/lsp_signature.nvim)
+  (use! :evanleck/vim-svelte)
   (use! :numToStr/Comment.nvim
+        :requires :Shougo/context_filetype.vim
         :opt true 
         :keys [:gc [:v :gc]]
         :config #(require :plugin.comment))
@@ -91,10 +96,7 @@
         :requires :kyazdani42/nvim-web-devicons
         :config #(let [l (require :lualine)]
                    (l.setup {:theme :powerline})))
-  (use! :ojroques/nvim-lspfuzzy)
-  (use! :onsails/lspkind.nvim)
   (use! :radenling/vim-dispatch-neovim)
-  (use! :ray-x/lsp_signature.nvim)
   (use! :rmagatti/auto-session)
   (use! :sbdchd/neoformat
         :config #(require :plugin.neoformat))
