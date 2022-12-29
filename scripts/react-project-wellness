@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "Starting scan for useEffects"
+
+occ=$(grep -rni --exclude-dir=node_modules "useEffect(()" . | wc -l)
+echo "Occurrances: $occ"
+
+fileCount=$(find . -name "*.tsx" | wc -l)
+echo "Files: $fileCount"
+
+result=$(bc -l <<< "($occ / $fileCount)")
+perc=$(bc -l <<< "$result * 100")
+echo "Wellness: $(printf "%.2f" $perc) %"
+echo "Average $(printf "%.2f" $result) useEffects per file"
