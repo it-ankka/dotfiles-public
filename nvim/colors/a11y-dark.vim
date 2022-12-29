@@ -1,4 +1,3 @@
-vim.cmd([[
 " Name:        a11y-dark
 " Author:      original author Reuben L. Lillie <@reubenlillie>
 " DerivedFrom: https://www.github.com/vim/colorschemes 
@@ -224,4 +223,3 @@ if s:t_Co >= 16
   unlet s:t_Co
   finish
 endif
-]])

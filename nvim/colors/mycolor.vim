@@ -1,1 +1,1 @@
-lua require('mycolor').setup()
+lua require("mycolor").setup()
