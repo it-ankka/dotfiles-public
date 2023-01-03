@@ -84,10 +84,13 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
     vim.lsp.protocol.make_client_capabilities()
 )
 
+capabilities.offsetEncoding = "utf-8"
+
 local servers = {
     "astro",
     "bashls",
     "ccls",
+    "clangd",
     "clojure_lsp",
     "cssls",
     "diagnosticls",
@@ -206,6 +209,8 @@ nvim_lsp.tsserver.setup {
         --allow_incremental_sync = true
     }
 }
+
+-- Emmet
 nvim_lsp.emmet_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
