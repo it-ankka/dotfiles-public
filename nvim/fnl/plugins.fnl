@@ -95,6 +95,12 @@
   (use! :ojroques/nvim-lspfuzzy)
   (use! :onsails/lspkind.nvim)
   (use! :ray-x/lsp_signature.nvim)
+  ;; Some cool stuff
+  ;; (use! :stevearc/overseer.nvim
+  ;;       :config #(let [os (require :overseer)]
+  ;;                  (os.config {})))
+  ;; (use! :ThePrimeagen/refactoring.nvim
+  ;;       :opt true)
   (use! :evanleck/vim-svelte)
   (use! :numToStr/Comment.nvim
         :requires :Shougo/context_filetype.vim
