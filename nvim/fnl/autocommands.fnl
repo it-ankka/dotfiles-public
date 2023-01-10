@@ -17,8 +17,8 @@
 ; Docs in clojure
 (vim.cmd "autocmd FileType clojure nnoremap ,k :ConjureDocWord<CR>")
 
-; Markdown listchars
-(vim.cmd "autocmd BufNewFile,BufRead *.md set nolist")
-
 ; Terminal Settings
 (vim.cmd "autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber")
+
+; Markdown listchars
+(vim.cmd "autocmd BufNewFile,BufRead *.md set nolist filetype=markdown syntax=markdown")
