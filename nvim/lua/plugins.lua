@@ -95,6 +95,7 @@ local packer = require('packer').startup(function(use)
       "p00f/nvim-ts-rainbow",
       "JoosepAlviste/nvim-ts-context-commentstring"
     },
+    commit = "a2d7e78",
     run = ":TSUpdate",
     config = function() require("plugin.treesitter") end
   }
