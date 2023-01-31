@@ -1,0 +1,6 @@
+#!/bin/bash
+
+wget https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+xattr -c ./nvim-macos.tar.gz
+tar xzvf nvim-macos.tar.gz
+mv -f ./nvim-macos/bin/nvim /usr/local/bin/nvim
