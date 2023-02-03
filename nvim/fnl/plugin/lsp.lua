@@ -85,11 +85,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
 )
 
 capabilities.offsetEncoding = "utf-8"
+-- capabilities.offset_encoding = "utf-16"
 
 local servers = {
     "astro",
     "bashls",
-    "ccls",
     "clangd",
     "clojure_lsp",
     "cssls",
