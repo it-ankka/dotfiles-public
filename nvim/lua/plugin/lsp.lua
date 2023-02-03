@@ -257,7 +257,11 @@ vim.notify = function(msg, log_level, _)
 end
 
 -- Configure default setups
-local defaultSetupTargets = { 'dressing','lsp_signature', 'dim' }
+local defaultSetupTargets = {
+    'dressing',
+    'lsp_signature',
+    'dim'
+}
 for _, value in pairs(defaultSetupTargets) do
     require(value).setup({})
 end
