@@ -2,7 +2,7 @@ require("mason").setup({ui = {border = "single"}})
 
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "sumneko_lua",
+    "lua_ls",
     "tsserver",
     "diagnosticls",
     "svelte",

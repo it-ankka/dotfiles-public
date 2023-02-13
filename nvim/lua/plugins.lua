@@ -46,7 +46,8 @@ local packer = require('packer').startup(function(use)
       "onsails/lspkind.nvim",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-calc",
-      "hrsh7th/cmp-emoji"
+      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-nvim-lsp-signature-help"
     },
     config = function() require("plugin.cmp") end
   }
@@ -103,17 +104,16 @@ local packer = require('packer').startup(function(use)
   use {"neovim/nvim-lspconfig",
     requires = {
       "hrsh7th/nvim-cmp",
-      "ray-x/lsp_signature.nvim",
       "ojroques/nvim-lspfuzzy",
       "stevearc/dressing.nvim",
       "PaterJason/cmp-conjure",
-      "narutoxy/dim.lua"
+      -- "ray-x/lsp_signature.nvim",
+      -- "narutoxy/dim.lua"
     },
    config = function() require("plugin.lsp") end
   }
   use {"ojroques/nvim-lspfuzzy"}
   use {"onsails/lspkind.nvim"}
-  use {"ray-x/lsp_signature.nvim"}
   use {"evanleck/vim-svelte"}
   -- Commenting
   use {"numToStr/Comment.nvim",
