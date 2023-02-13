@@ -8,8 +8,7 @@ local _border = "single"
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     vim.lsp.handlers.hover, {
         border = _border
-    }
-    )
+    })
 
 require('lspconfig.ui.windows').default_options = {
     border = _border
@@ -118,6 +117,23 @@ local servers = {
 
 
 for _, server in pairs(servers) do
+    if nvim_lsp[server] == nil then
+      print("not supported", server)
+      goto continue
+    end
+    local lspft = nvim_lsp[server].filetypes
+    if lspft ~= nil and #lspft > 0 then
+      local ft = vim.bo.filetype
+      local should_load = false
+      for _, value in ipairs(lspft) do
+        if ft == value then
+          should_load = true
+        end
+      end
+      if not should_load then
+        goto continue
+      end
+    end
     nvim_lsp[server].setup {
         on_attach = on_attach,
         capabilities = capabilities,
@@ -126,6 +142,7 @@ for _, server in pairs(servers) do
             allow_incremental_sync = true
         }
     }
+    ::continue::
 end
 
 --Fennel
@@ -154,8 +171,8 @@ configs.fennel_language_server = {
 
 nvim_lsp.fennel_language_server.setup{}
 
---Sumneko Lua
-nvim_lsp.sumneko_lua.setup {
+--Lua ls
+nvim_lsp.lua_ls.setup {
     settings = {
         Lua = {
             runtime = {
@@ -259,8 +276,7 @@ end
 -- Configure default setups
 local defaultSetupTargets = {
     'dressing',
-    'lsp_signature',
-    'dim'
+    -- 'dim'
 }
 for _, value in pairs(defaultSetupTargets) do
     require(value).setup({})

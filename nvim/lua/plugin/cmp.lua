@@ -9,6 +9,7 @@ for _, source in ipairs({
   {name = "nvim_lsp"},
   {name = "conjure"},
   {name = "luasnip"},
+  {name = "nvim_lsp_signature_help"},
   {name = "path"},
   {name = "buffer"},
   {name = "calc"},
