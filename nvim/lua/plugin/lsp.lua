@@ -75,6 +75,13 @@ local on_attach = function(client, bufnr)
         'ﬦ', -- Operator
         '', -- TypeParameter
     }
+    --TODO: hack to fix semanticTokens
+    if client.name == "omnisharp" then
+      client.server_capabilities.semanticTokensProvider.legend = {
+        tokenModifiers = { "static" },
+        tokenTypes = { "comment", "excluded", "identifier", "keyword", "keyword", "number", "operator", "operator", "preprocessor", "string", "whitespace", "text", "static", "preprocessor", "punctuation", "string", "string", "class", "delegate", "enum", "interface", "module", "struct", "typeParameter", "field", "enumMember", "constant", "local", "parameter", "method", "method", "property", "event", "namespace", "label", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp" }
+      }
+    end
 end
 
 
@@ -135,7 +142,7 @@ for _, server in pairs(servers) do
         goto continue
       end
     end
-    nvim_lsp[server].setup {
+    local server_config = {
         on_attach = on_attach,
         capabilities = capabilities,
         flags = {
@@ -143,6 +150,11 @@ for _, server in pairs(servers) do
             allow_incremental_sync = true
         }
     }
+    if(server == "omnisharp") then
+        server_config.cmd = {os.getenv('HOME') .. "/.local/share/nvim/mason/bin/omnisharp"}
+    end
+
+    nvim_lsp[server].setup(server_config)
     ::continue::
 end
 
@@ -257,6 +269,7 @@ nvim_lsp.emmet_ls.setup({
 --     sdk_include_prereleases = true,
 --     analyze_open_documents_only = false,
 -- }
+
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })

@@ -2,21 +2,22 @@ require("mason").setup({ui = {border = "single"}})
 
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "lua_ls",
-    "tsserver",
-    "diagnosticls",
-    "svelte",
-    "clojure_lsp",
     "bashls",
-    "dockerls",
-    "gopls",
-    "pyright",
-    "emmet_ls",
-    "vimls",
+    "clojure_lsp",
     "cssls",
-    "prismals",
+    "diagnosticls",
+    "dockerls",
+    "emmet_ls",
+    "gopls",
     "html",
     "jsonls",
-    "tailwindcss"
+    "lua_ls",
+    "omnisharp",
+    "prismals",
+    "pyright",
+    "svelte",
+    "tailwindcss",
+    "tsserver",
+    "vimls",
   }
 })

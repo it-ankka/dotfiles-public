@@ -107,6 +107,7 @@ local packer = require('packer').startup(function(use)
       "ojroques/nvim-lspfuzzy",
       "stevearc/dressing.nvim",
       "PaterJason/cmp-conjure",
+      "williamboman/mason.nvim",
       -- "ray-x/lsp_signature.nvim",
       -- "narutoxy/dim.lua"
     },
