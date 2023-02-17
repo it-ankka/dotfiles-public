@@ -1,6 +1,9 @@
 -- Set correct filetype for vlang
 vim.cmd("autocmd BufRead,BufNewFile *.v set filetype=vlang")
 
+-- Set correct filetype for gdscript
+vim.cmd("autocmd BufRead,BufNewFile *.gd set filetype=gdscript")
+
 -- Set correct filetype for prisma
 vim.cmd("autocmd BufRead,BufNewFile *.prisma set filetype=prisma")
 

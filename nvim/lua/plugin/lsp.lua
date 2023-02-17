@@ -94,6 +94,7 @@ local servers = {
     "cssls",
     "diagnosticls",
     "dockerls",
+    "gdscript",
     "gopls",
     "graphql",
     "html",
