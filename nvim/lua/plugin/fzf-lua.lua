@@ -7,6 +7,9 @@ local function AllFiles()
   return (require("fzf-lua")).files({sync = true, fd_opts = "--type f --hidden --exclude .git", find_opts = "-type f -not -path '*/.git/*' -printf '%P'", git_icons = false, file_icons = false})
 end
 
+local function GrepProject()
+  return (require("fzf-lua")).grep({cmd = "rg --color=always --smart-case -g '!{.git,node_modules,log}/'", search = "", fzf_opts = { ['--nth'] = '1..' } })
+end
 
 local function GrepAll()
   return (require("fzf-lua")).grep({cmd = "rg -uu --color=always --smart-case -g !{.git}", git_icons = false, file_icons = false})
@@ -24,6 +27,7 @@ end
 
 vim.api.nvim_create_user_command("Files", Files, {})
 vim.api.nvim_create_user_command("AllFiles", AllFiles, {})
+vim.api.nvim_create_user_command("GrepProject", GrepProject, {})
 vim.api.nvim_create_user_command("GrepAll", GrepAll, {})
 vim.api.nvim_create_user_command("Diagnostics", Diagnostics, {})
 vim.api.nvim_create_user_command("AllDiagnostics", AllDiagnostics, {})
@@ -33,7 +37,7 @@ vim.keymap.set({"n"}, "<c-P>", "<cmd>AllFiles<CR>", {silent = true})
 vim.keymap.set({"n"}, "<leader>F", "<cmd>AllFiles<CR>", {silent = true})
 vim.keymap.set({"n"}, "<leader>f", "<cmd>Files<CR>", {silent = true})
 vim.keymap.set({"n"}, "<leader>R", "<cmd>GrepAll<CR>", {silent = true})
-vim.keymap.set({"n"}, "<leader>r", "<cmd>lua require('fzf-lua').grep_project()<CR>", {silent = true})
+vim.keymap.set({"n"}, "<leader>r", "<cmd>GrepProject<CR>", {silent = true})
 vim.keymap.set({"n"}, "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", {silent = true})
 vim.keymap.set({"n"}, "<leader>gr", "<cmd>lua require('fzf-lua').lsp_references({ sync = true, jump_to_single_result = true})<CR>", {silent = true})
 vim.keymap.set({"n"}, "<leader>gd", "<cmd>lua require('fzf-lua').lsp_definitions({ sync = true, jump_to_single_result = true})<CR>", {silent = true})

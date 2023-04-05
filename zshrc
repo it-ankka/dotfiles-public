@@ -117,3 +117,5 @@ export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.luarocks/bin
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:/opt/firefox/firefox
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

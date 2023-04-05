@@ -1,6 +1,5 @@
 #!/bin/bash
 
 wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-sudo su
-chmod u+x ./nvim.appimage
-mv -f /usr/local/bin/nvim.appimage /usr/local/bin/nvim
+sudo chmod u+x ./nvim.appimage
+sudo mv -f ./nvim.appimage /usr/local/bin/nvim

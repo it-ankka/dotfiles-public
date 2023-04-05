@@ -7,6 +7,7 @@ A repository for storing my Linux setup's dotfiles
 * Kitty
 * Neovim
 * Ripgrep
+* Fd-find
 
 ## How to remove packer plugins when switching nvim configs
 

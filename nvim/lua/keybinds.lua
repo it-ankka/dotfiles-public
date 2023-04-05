@@ -11,12 +11,8 @@ vim.g["maplocalleader"] = ","
 
 -- Quickly access config files
 vim.keymap.set({"n"}, "<leader>vr", ":q <CR>", {silent = true})
-vim.keymap.set({"n"}, "<leader>ve", ":edit ~/.config/nvim/init.lua <CR>", {silent = true})
-vim.keymap.set({"n"}, "<leader>vl", ":edit ~/.config/nvim/lua/plugin/lsp.lua <CR>", {silent = true})
-vim.keymap.set({"n"}, "<leader>vf", ":edit ~/.config/nvim/lua/functions.lua <CR>", {silent = true})
-vim.keymap.set({"n"}, "<leader>vc", ":edit ~/.config/nvim/lua/commands.lua <CR>", {silent = true})
-vim.keymap.set({"n"}, "<leader>vp", ":edit ~/.config/nvim/lua/plugins.lua <CR>", {silent = true})
-vim.keymap.set({"n"}, "<leader>vk", ":edit ~/.config/nvim/lua/keybinds.lua <CR>", {silent = true})
+vim.keymap.set({"n"}, "<leader>ve", ":FzfLua files cwd=~/.config/nvim/ <CR>", {silent = true})
+
 
 vim.keymap.set({"n"}, "<leader>k", ":nohlsearch <CR>", {silent = true})
 vim.keymap.set({"n"}, "<leader>Q", ":bufdo bdelete <CR>", {silent = true})

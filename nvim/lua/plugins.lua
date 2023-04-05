@@ -2,7 +2,8 @@
 
 local packer = require('packer').startup(function(use)
   -- Packer
-  use 'wbthomason/packer.nvim'
+  use {'wbthomason/packer.nvim'}
+  use {'nvim-tree/nvim-web-devicons'}
   use {"AndrewRadev/tagalong.vim",
     ft = {
       "tsx",
@@ -30,7 +31,7 @@ local packer = require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup() end
   }
   use {"akinsho/bufferline.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = "nvim-tree/nvim-web-devicons",
     config = function() require("plugin.bufferline") end
   }
   use {"clojure-vim/vim-jack-in"}
@@ -53,7 +54,7 @@ local packer = require('packer').startup(function(use)
   }
   -- File search
   use {"ibhagwan/fzf-lua",
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = "nvim-tree/nvim-web-devicons",
     config = function() require("plugin.fzf-lua") end
   }
   use {"jparise/vim-graphql",
@@ -65,8 +66,8 @@ local packer = require('packer').startup(function(use)
     run = ":Goyo"
   }
   -- Filetree
-  use {"kyazdani42/nvim-tree.lua",
-    requires = "kyazdani42/nvim-web-devicons",
+  use {"nvim-tree/nvim-tree.lua",
+    requires = "nvim-tree/nvim-web-devicons",
     config = function() require("plugin.nvim-tree") end
   }
   -- Snippets
@@ -96,7 +97,7 @@ local packer = require('packer').startup(function(use)
       "p00f/nvim-ts-rainbow",
       "JoosepAlviste/nvim-ts-context-commentstring"
     },
-    commit = "a2d7e78",
+    -- commit = "a2d7e78",
     run = ":TSUpdate",
     config = function() require("plugin.treesitter") end
   }
@@ -125,7 +126,7 @@ local packer = require('packer').startup(function(use)
       }
   -- Statusline
   use {"nvim-lualine/lualine.nvim",
-    requires = {"kyazdani42/nvim-web-devicons"},
+    requires = {"nvim-tree/nvim-web-devicons"},
     config = function() require("lualine").setup({theme = "powerline"}) end
   }
   use {"radenling/vim-dispatch-neovim"}
