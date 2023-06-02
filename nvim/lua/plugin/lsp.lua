@@ -114,11 +114,12 @@ local servers = {
     "prismals",
     "pyright",
     "rust_analyzer",
-    "sqls",
+    "sqlls",
     "svelte",
     "tailwindcss",
     "vimls",
     "vls",
+    "volar",
     "yamlls",
     "zk"
 }

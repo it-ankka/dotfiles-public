@@ -1,3 +1,5 @@
+-- Format on save
+vim.cmd("autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.svelte Neoformat")
 -- Set correct filetype for vlang
 vim.cmd("autocmd BufRead,BufNewFile *.v set filetype=vlang")
 

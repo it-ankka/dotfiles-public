@@ -65,6 +65,11 @@ local packer = require('packer').startup(function(use)
     cmd = "Goyo",
     run = ":Goyo"
   }
+  use {"iamcco/markdown-preview.nvim",
+    ft = {"markdown", "mdx", "text"},
+    run = function() vim.fn["mkdp#util#install"]() end,
+    cmd = {"MarkdownPreview", "MarkdownPreviewToggle", "MarkdownPreviewStop"}
+  }
   -- Filetree
   use {"nvim-tree/nvim-tree.lua",
     requires = "nvim-tree/nvim-web-devicons",
@@ -131,7 +136,15 @@ local packer = require('packer').startup(function(use)
   }
   use {"radenling/vim-dispatch-neovim"}
   -- Sessions
-  use {"rmagatti/auto-session"}
+  use {"rmagatti/auto-session",
+  config = function()
+    require("auto-session").setup {
+      log_level = "error",
+      auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+    }
+  end
+  }
+
   -- Formatting
   use {"sbdchd/neoformat", config = function() require("plugin.neoformat") end }
   use {"stevearc/aerial.nvim", config = function() require("plugin.aerial") end }

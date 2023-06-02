@@ -8,7 +8,7 @@ local function AllFiles()
 end
 
 local function GrepProject()
-  return (require("fzf-lua")).grep({cmd = "rg --color=always --smart-case -g '!{.git,node_modules,log}/'", search = "", fzf_opts = { ['--nth'] = '1..' } })
+  return (require("fzf-lua")).grep_project({fzf_opts = {["--delimiter"] = "'[:]'"}})
 end
 
 local function GrepAll()
