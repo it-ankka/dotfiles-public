@@ -1,6 +1,5 @@
 require("nvim-treesitter.configs").setup({
     highlight = {enable = true},
-    content_commentstring = {enable = true},
     rainbow = {
       enable = true,
       extended_mode = true,
@@ -30,7 +29,8 @@ require("nvim-treesitter.configs").setup({
       "tsx",
       "typescript",
       "yaml"
-    }
+    },
+    context_commentstring = { enable = true },
   })
 
 local parser_config = (require("nvim-treesitter.parsers")).get_parser_configs()

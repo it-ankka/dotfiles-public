@@ -107,6 +107,7 @@ local servers = {
     "html",
     "intelephense",
     "jsonls",
+    "lemminx",
     "marksman",
     "nimls",
     "omnisharp",

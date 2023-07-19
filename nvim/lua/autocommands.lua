@@ -26,3 +26,16 @@ vim.cmd("autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber")
 
 -- Markdown listchars
 vim.cmd("autocmd BufNewFile,BufRead *.md set nolist filetype=markdown syntax=markdown")
+
+-- Destroy NvimTree on quit
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'NvimTree' },
+  callback = function(args)
+    vim.api.nvim_create_autocmd('VimLeavePre', {
+      callback = function()
+        vim.api.nvim_buf_delete(args.buf, { force = true })
+        return true
+      end
+    })
+  end,
+})

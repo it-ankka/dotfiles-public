@@ -22,6 +22,7 @@ alias kittystartup='nv ~/.config/kitty/startup.conf'
 alias gitconfig='nv ~/.gitconfig'
 alias work='kitty --detach --session ~/.config/kitty/work.conf'
 alias weather='clear; curl wttr.in;'
+alias ctfwatch='clear; curl ctf.watch'
 alias aptup='sudo apt update && sudo apt upgrade -y'
 alias icat="kitty +kitten icat"
 alias gd="git diff --ignore-all-space --ignore-space-at-eol --ignore-space-change --ignore-blank-lines -- . ':(exclude)*package-lock.json' -- . ':(exclude)*yarn.lock'"
