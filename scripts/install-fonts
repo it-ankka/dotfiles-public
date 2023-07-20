@@ -1,11 +1,11 @@
 #!/bin/sh
 
 mkdir /tmp/font-install && cd /tmp/font-install
-wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip"
-wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraMono.zip"
-wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip"
-wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Iosevka.zip"
-wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip"
+wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip"
+wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraMono.zip"
+wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip"
+wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Iosevka.zip"
+wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip"
 unzip '*.zip'
 rm -rf *.zip
 mkdir $HOME/.fonts || true

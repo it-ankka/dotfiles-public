@@ -128,7 +128,7 @@ mason_lspconfig.setup({
     "diagnosticls",
     "dockerls",
     "emmet_ls",
-    -- "gdscript",
+    "eslint",
     "gopls",
     "graphql",
     "html",
@@ -137,7 +137,6 @@ mason_lspconfig.setup({
     "lemminx",
     "lua_ls",
     "marksman",
-    -- "nimls",
     "omnisharp",
     "perlnavigator",
     "prismals",
@@ -152,6 +151,8 @@ mason_lspconfig.setup({
     "volar",
     "yamlls",
     "zk"
+    -- "gdscript",
+    -- "nimls",
   }
 })
 

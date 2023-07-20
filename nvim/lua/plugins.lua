@@ -3,7 +3,6 @@
 local packer = require('packer').startup(function(use)
   -- Packer
   use {'wbthomason/packer.nvim'}
-  use {'nvim-tree/nvim-web-devicons'}
   use {"AndrewRadev/tagalong.vim",
     ft = {
       "tsx",
@@ -31,7 +30,7 @@ local packer = require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup() end
   }
   use {"akinsho/bufferline.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
+    requires = {"nvim-tree/nvim-web-devicons"},
     config = function() require("plugin.bufferline") end
   }
   use {"clojure-vim/vim-jack-in"}
@@ -54,7 +53,7 @@ local packer = require('packer').startup(function(use)
   }
   -- File search
   use {"ibhagwan/fzf-lua",
-    requires = "nvim-tree/nvim-web-devicons",
+    requires = {"nvim-tree/nvim-web-devicons"},
     config = function() require("plugin.fzf-lua") end
   }
   use {"jparise/vim-graphql",
@@ -82,7 +81,7 @@ local packer = require('packer').startup(function(use)
   }
   -- Filetree
   use {"nvim-tree/nvim-tree.lua",
-    requires = "nvim-tree/nvim-web-devicons",
+    requires = {"nvim-tree/nvim-web-devicons"},
     config = function() require("plugin.nvim-tree") end
   }
   -- Snippets
@@ -153,7 +152,9 @@ local packer = require('packer').startup(function(use)
 
   -- Formatting
   use {"sbdchd/neoformat", config = function() require("plugin.neoformat") end }
-  use {"stevearc/aerial.nvim", config = function() require("plugin.aerial") end }
+  use {"stevearc/aerial.nvim",
+    requires = {"nvim-tree/nvim-web-devicons"},
+    config = function() require("plugin.aerial") end }
   use {"sheerun/vim-polyglot"}
   -- Coloring/theming
   use {"folke/lsp-colors.nvim"}
