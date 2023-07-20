@@ -70,6 +70,16 @@ local packer = require('packer').startup(function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
     cmd = {"MarkdownPreview", "MarkdownPreviewToggle", "MarkdownPreviewStop"}
   }
+  -- Dressing 
+  use {"stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup({
+        input = {
+          relative = "editor",
+        }
+      })
+    end
+  }
   -- Filetree
   use {"nvim-tree/nvim-tree.lua",
     requires = "nvim-tree/nvim-web-devicons",
@@ -86,11 +96,6 @@ local packer = require('packer').startup(function(use)
   use {"APZelos/blamer.nvim", run = ":BlamerShow"}
   use {"lewis6991/gitsigns.nvim"}
   use {"airblade/vim-gitgutter", run = ":GitGutterEnable"}
-  -- Lsp installer
-  use {"williamboman/mason.nvim",
-    requires = {"williamboman/mason-lspconfig.nvim"},
-    config = function() require("plugin.mason") end
-  }
   -- Linting
   use {
     "mfussenegger/nvim-lint",
@@ -114,6 +119,7 @@ local packer = require('packer').startup(function(use)
       "stevearc/dressing.nvim",
       "PaterJason/cmp-conjure",
       "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim"
       -- "ray-x/lsp_signature.nvim",
       -- "narutoxy/dim.lua"
     },
