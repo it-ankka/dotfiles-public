@@ -103,8 +103,8 @@ local packer = require('packer').startup(function(use)
   -- Syntax highlighting and AST
   use {"nvim-treesitter/nvim-treesitter",
     requires = {
-      "p00f/nvim-ts-rainbow",
       "JoosepAlviste/nvim-ts-context-commentstring"
+      --   "p00f/nvim-ts-rainbow", // DEPRACATED
     },
     -- commit = "a2d7e78",
     run = ":TSUpdate",
