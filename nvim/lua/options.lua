@@ -2,7 +2,11 @@
 
 vim.opt["autoindent"] = true
 vim.opt["backup"] = true
-vim.opt["backupdir"] = (os.getenv("HOME") .. "/.local/share/nvim/backup/")
+if(vim.loop.os_uname().sysname ~= "Windows_NT") then
+  vim.opt["backupdir"] = (os.getenv("HOME") .. "/.local/share/nvim/backup/")
+else 
+  vim.opt["backupdir"] = (os.getenv("LocalAppData") .. "\\nvim-backup")
+end 
 vim.opt["breakindent"] = true
 vim.opt["clipboard"] = "unnamedplus"
 vim.opt["confirm"] = true

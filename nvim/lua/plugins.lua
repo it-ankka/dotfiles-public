@@ -51,11 +51,20 @@ local packer = require('packer').startup(function(use)
     },
     config = function() require("plugin.cmp") end
   }
-  -- File search
-  use {"ibhagwan/fzf-lua",
-    requires = {"nvim-tree/nvim-web-devicons"},
-    config = function() require("plugin.fzf-lua") end
-  }
+
+  if(vim.loop.os_uname().sysname ~= "Windows_NT") then
+    -- File search
+    use {"ibhagwan/fzf-lua",
+      requires = {"nvim-tree/nvim-web-devicons"},
+      config = function() require("plugin.fzf-lua") end
+    }
+  else
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.2',
+      requires = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' },
+      config = function() require('plugin.telescope') end
+    }
+  end
   use {"jparise/vim-graphql",
     ft = {"graphql", "javascript", "typescript", "typescriptreact"}
   }
@@ -176,3 +185,4 @@ end)
 
 
 return packer
+

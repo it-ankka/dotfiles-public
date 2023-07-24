@@ -129,7 +129,6 @@ mason_lspconfig.setup({
     "dockerls",
     "emmet_ls",
     "eslint",
-    "gopls",
     "graphql",
     "html",
     "intelephense",
@@ -150,9 +149,6 @@ mason_lspconfig.setup({
     "vls",
     "volar",
     "yamlls",
-    "zk"
-    -- "gdscript",
-    -- "nimls",
   }
 })
 
@@ -212,30 +208,33 @@ end
 ----------------------------
 
 --Fennel
-configs.fennel_language_server = {
- default_config = {
-    -- replace it with true path
-    cmd = {os.getenv('HOME') .. '/.cargo/bin/fennel-language-server'},
-    filetypes = {'fennel'},
-    single_file_support = true,
-    -- source code resides in directory `fnl/`
-    root_dir = nvim_lsp.util.root_pattern("fnl"),
-    settings = {
-      fennel = {
-        workspace = {
-          -- If you are using hotpot.nvim or aniseed,
-          -- make the server aware of neovim runtime files.
-          library = vim.api.nvim_list_runtime_paths(),
-        },
-        diagnostics = {
-          globals = {'vim'},
+
+if(vim.loop.os_uname().sysname ~= "Windows_NT") then
+    configs.fennel_language_server = {
+     default_config = {
+        -- replace it with true path
+        cmd = {os.getenv('HOME') .. '/.cargo/bin/fennel-language-server'},
+        filetypes = {'fennel'},
+        single_file_support = true,
+        -- source code resides in directory `fnl/`
+        root_dir = nvim_lsp.util.root_pattern("fnl"),
+        settings = {
+          fennel = {
+            workspace = {
+              -- If you are using hotpot.nvim or aniseed,
+              -- make the server aware of neovim runtime files.
+              library = vim.api.nvim_list_runtime_paths(),
+            },
+            diagnostics = {
+              globals = {'vim'},
+            },
+          },
         },
       },
-    },
-  },
-}
+    }
 
-nvim_lsp.fennel_language_server.setup{}
+    nvim_lsp.fennel_language_server.setup{}
+end
 
 --Lua ls
 nvim_lsp.lua_ls.setup {
@@ -305,3 +304,4 @@ nvim_lsp.emmet_ls.setup({
 --     sdk_include_prereleases = true,
 --     analyze_open_documents_only = false,
 -- }
+
