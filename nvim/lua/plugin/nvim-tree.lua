@@ -1,13 +1,11 @@
 local nvimTree = require("nvim-tree")
 
 local function NvimTreeFindFileToggleSide()
-  print("Opening Side")
   nvimTree.config.view.float.enable = false
   return vim.cmd(":NvimTreeFindFileToggle<CR>")
 end
 
 local function NvimTreeFindFileToggleFloat()
-  print("Opening Float")
   nvimTree.config.view.float.enable = true
   return vim.cmd(":NvimTreeFindFileToggle<CR>")
 end
@@ -23,6 +21,26 @@ vim.keymap.set({"n"}, "<leader>N", ":NvimTreeFindFileToggleFloat<CR>", {silent =
 -- Floating window settings
 local HEIGHT_RATIO = 0.8
 local WIDTH_RATIO = 0.5
+local WIDTH_RATIO_SMALL = 0.8
+
+local function GetNvimTreeWidth()
+  local columns = vim.opt.columns:get()
+  if(nvimTree.config.view.float.enable) then
+    if columns <= 150 then
+      return math.floor(columns * WIDTH_RATIO_SMALL)
+    end
+    return math.floor(columns * WIDTH_RATIO)
+  end
+
+  local winwidth = vim.fn.winwidth(0)
+  if winwidth <= 100 then
+    return 30
+  elseif winwidth <= 200 then
+    return 40
+  else
+    return 50
+  end
+end
 
 nvimTree.setup({
     view = {
@@ -32,7 +50,7 @@ nvimTree.setup({
         open_win_config = function()
           local screen_w = vim.opt.columns:get()
           local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-          local window_w = screen_w * WIDTH_RATIO
+          local window_w = GetNvimTreeWidth()
           local window_h = screen_h * HEIGHT_RATIO
           local window_w_int = math.floor(window_w)
           local window_h_int = math.floor(window_h)
@@ -50,21 +68,7 @@ nvimTree.setup({
           end,
       },
 
-      width = function()
-        local winwidth = vim.fn.winwidth(0)
-
-        if(nvimTree.config.view.float.enable) then
-          return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
-        end
-
-        if winwidth <= 100 then
-          return 30
-        elseif winwidth <= 200 then
-          return 40
-        else
-          return 50
-        end
-      end,
+      width = GetNvimTreeWidth,
     },
     git = {
       ignore = false
