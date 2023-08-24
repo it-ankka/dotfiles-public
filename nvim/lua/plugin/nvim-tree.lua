@@ -47,6 +47,7 @@ nvimTree.setup({
       side = "right",
       float = {
         enable = true,
+        quit_on_focus_loss = false,
         open_win_config = function()
           local screen_w = vim.opt.columns:get()
           local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()

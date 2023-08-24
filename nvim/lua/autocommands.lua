@@ -1,5 +1,9 @@
 -- Format on save
 vim.cmd("autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.svelte Neoformat")
+
+-- Run Eslint fixes on save
+-- vim.cmd("autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx, EslintFixAll")
+
 -- Set correct filetype for vlang
 vim.cmd("autocmd BufRead,BufNewFile *.v set filetype=vlang")
 
@@ -28,14 +32,25 @@ vim.cmd("autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber")
 vim.cmd("autocmd BufNewFile,BufRead *.md set nolist filetype=markdown syntax=markdown")
 
 -- Destroy NvimTree on quit
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'NvimTree' },
-  callback = function(args)
-    vim.api.nvim_create_autocmd('VimLeavePre', {
-      callback = function()
-        vim.api.nvim_buf_delete(args.buf, { force = true })
-        return true
+vim.api.nvim_create_autocmd("QuitPre", {
+  callback = function()
+    local tree_wins = {}
+    local floating_wins = {}
+    local wins = vim.api.nvim_list_wins()
+    for _, w in ipairs(wins) do
+      local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
+      if bufname:match("NvimTree_") ~= nil then
+        table.insert(tree_wins, w)
       end
-    })
-  end,
+      if vim.api.nvim_win_get_config(w).relative ~= '' then
+        table.insert(floating_wins, w)
+      end
+    end
+    if 1 == #wins - #floating_wins - #tree_wins then
+      -- Should quit, so we close all invalid windows.
+      for _, w in ipairs(tree_wins) do
+        vim.api.nvim_win_close(w, true)
+      end
+    end
+  end
 })
