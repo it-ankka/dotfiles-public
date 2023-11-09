@@ -1,8 +1,5 @@
--- Format on save
-vim.cmd("autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.svelte Neoformat")
-
 -- Run Eslint fixes on save
--- vim.cmd("autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx, EslintFixAll")
+vim.cmd("autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.svelte, EslintFixAll")
 
 -- Set correct filetype for vlang
 vim.cmd("autocmd BufRead,BufNewFile *.v set filetype=vlang")

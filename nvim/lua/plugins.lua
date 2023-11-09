@@ -160,7 +160,8 @@ local packer = require('packer').startup(function(use)
   }
 
   -- Formatting
-  use {"sbdchd/neoformat", config = function() require("plugin.neoformat") end }
+  use {"stevearc/conform.nvim", config = function() require("plugin.conform") end}
+  -- use {"sbdchd/neoformat", config = function() require("plugin.neoformat") end }
   use {"stevearc/aerial.nvim",
     requires = {"nvim-tree/nvim-web-devicons"},
     config = function() require("plugin.aerial") end }
