@@ -2,8 +2,8 @@
 
 local packer = require('packer').startup(function(use)
   -- Packer
-  use {'wbthomason/packer.nvim'}
-  use {"AndrewRadev/tagalong.vim",
+  use { 'wbthomason/packer.nvim' }
+  use { "AndrewRadev/tagalong.vim",
     ft = {
       "tsx",
       "javascript",
@@ -16,26 +16,26 @@ local packer = require('packer').startup(function(use)
     config = function() require("plugin.tagalong") end
   }
   -- Conjure
-  use {"Olical/conjure",
+  use { "Olical/conjure",
     opt = true,
-    cmd = {"Lein", "Clj"},
-    ft = {"clojure", "fennel","lisp"}
+    cmd = { "Lein", "Clj" },
+    ft = { "clojure", "fennel", "lisp" }
   }
-  use {"PaterJason/cmp-conjure",
+  use { "PaterJason/cmp-conjure",
     opt = true,
-    cmd = {"Lein", "Clj"},
-    ft = {"clojure", "fennel", "lisp"}
+    cmd = { "Lein", "Clj" },
+    ft = { "clojure", "fennel", "lisp" }
   }
-  use {"windwp/nvim-autopairs",
+  use { "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup() end
   }
-  use {"akinsho/bufferline.nvim",
-    requires = {"nvim-tree/nvim-web-devicons"},
+  use { "akinsho/bufferline.nvim",
+    requires = { "nvim-tree/nvim-web-devicons" },
     config = function() require("plugin.bufferline") end
   }
-  use {"clojure-vim/vim-jack-in"}
+  use { "clojure-vim/vim-jack-in" }
   -- Autocomplete
-  use {"hrsh7th/nvim-cmp",
+  use { "hrsh7th/nvim-cmp",
     requires = {
       "hrsh7th/cmp-nvim-lsp",
       "PaterJason/cmp-conjure",
@@ -52,10 +52,10 @@ local packer = require('packer').startup(function(use)
     config = function() require("plugin.cmp") end
   }
 
-  if(vim.loop.os_uname().sysname ~= "Windows_NT") then
+  if (vim.loop.os_uname().sysname ~= "Windows_NT") then
     -- File search
-    use {"ibhagwan/fzf-lua",
-      requires = {"nvim-tree/nvim-web-devicons"},
+    use { "ibhagwan/fzf-lua",
+      requires = { "nvim-tree/nvim-web-devicons" },
       config = function() require("plugin.fzf-lua") end
     }
   else
@@ -65,21 +65,21 @@ local packer = require('packer').startup(function(use)
       config = function() require('plugin.telescope') end
     }
   end
-  use {"jparise/vim-graphql",
-    ft = {"graphql", "javascript", "typescript", "typescriptreact"}
+  use { "jparise/vim-graphql",
+    ft = { "graphql", "javascript", "typescript", "typescriptreact" }
   }
-  use {"junegunn/goyo.vim",
-    ft = {"markdown", "mdx", "text"},
+  use { "junegunn/goyo.vim",
+    ft = { "markdown", "mdx", "text" },
     cmd = "Goyo",
     run = ":Goyo"
   }
-  use {"iamcco/markdown-preview.nvim",
-    ft = {"markdown", "mdx", "text"},
+  use { "iamcco/markdown-preview.nvim",
+    ft = { "markdown", "mdx", "text" },
     run = function() vim.fn["mkdp#util#install"]() end,
-    cmd = {"MarkdownPreview", "MarkdownPreviewToggle", "MarkdownPreviewStop"}
+    cmd = { "MarkdownPreview", "MarkdownPreviewToggle", "MarkdownPreviewStop" }
   }
-  -- Dressing 
-  use {"stevearc/dressing.nvim",
+  -- Dressing
+  use { "stevearc/dressing.nvim",
     config = function()
       require("dressing").setup({
         input = {
@@ -89,28 +89,28 @@ local packer = require('packer').startup(function(use)
     end
   }
   -- Filetree
-  use {"nvim-tree/nvim-tree.lua",
-    requires = {"nvim-tree/nvim-web-devicons"},
+  use { "nvim-tree/nvim-tree.lua",
+    requires = { "nvim-tree/nvim-web-devicons" },
     config = function() require("plugin.nvim-tree") end
   }
   -- Snippets
-  use {"L3MON4D3/LuaSnip",
+  use { "L3MON4D3/LuaSnip",
     tag = "v1.1.*"
   }
-  use {"norcalli/nvim-colorizer.lua",
+  use { "norcalli/nvim-colorizer.lua",
     config = function() require("colorizer").setup() end
   }
   -- Git
-  use {"APZelos/blamer.nvim", run = ":BlamerShow"}
-  use {"lewis6991/gitsigns.nvim"}
-  use {"airblade/vim-gitgutter", run = ":GitGutterEnable"}
+  use { "APZelos/blamer.nvim", run = ":BlamerShow" }
+  use { "lewis6991/gitsigns.nvim" }
+  use { "airblade/vim-gitgutter", run = ":GitGutterEnable" }
   -- Linting
   use {
     "mfussenegger/nvim-lint",
     config = function() require("plugin.lint") end
   }
   -- Syntax highlighting and AST
-  use {"nvim-treesitter/nvim-treesitter",
+  use { "nvim-treesitter/nvim-treesitter",
     requires = {
       "JoosepAlviste/nvim-ts-context-commentstring"
       --   "p00f/nvim-ts-rainbow", // DEPRACATED
@@ -120,7 +120,7 @@ local packer = require('packer').startup(function(use)
     config = function() require("plugin.treesitter") end
   }
   -- LSP
-  use {"neovim/nvim-lspconfig",
+  use { "neovim/nvim-lspconfig",
     requires = {
       "hrsh7th/nvim-cmp",
       "ojroques/nvim-lspfuzzy",
@@ -131,51 +131,51 @@ local packer = require('packer').startup(function(use)
       -- "ray-x/lsp_signature.nvim",
       -- "narutoxy/dim.lua"
     },
-   config = function() require("plugin.lsp") end
+    config = function() require("plugin.lsp") end
   }
-  use {"ojroques/nvim-lspfuzzy"}
-  use {"onsails/lspkind.nvim"}
-  use {"evanleck/vim-svelte"}
+  use { "ojroques/nvim-lspfuzzy" }
+  use { "onsails/lspkind.nvim" }
+  use { "evanleck/vim-svelte" }
   -- Commenting
-  use {"numToStr/Comment.nvim",
-        opt = true,
-        requires = {"Shougo/context_filetype.vim"},
-        keys = {"gc", {"v", "gc"}},
-        config = function() require("plugin.comment") end
-      }
-  -- Statusline
-  use {"nvim-lualine/lualine.nvim",
-    requires = {"nvim-tree/nvim-web-devicons"},
-    config = function() require("lualine").setup({theme = "powerline"}) end
+  use { "numToStr/Comment.nvim",
+    opt = true,
+    requires = { "Shougo/context_filetype.vim" },
+    keys = { "gc", { "v", "gc" } },
+    config = function() require("plugin.comment") end
   }
-  use {"radenling/vim-dispatch-neovim"}
+  -- Statusline
+  use { "nvim-lualine/lualine.nvim",
+    requires = { "nvim-tree/nvim-web-devicons" },
+    config = function() require("lualine").setup({ theme = "powerline" }) end
+  }
+  use { "radenling/vim-dispatch-neovim" }
   -- Sessions
-  use {"rmagatti/auto-session",
-  config = function()
-    require("auto-session").setup {
-      log_level = "error",
-      auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
-    }
-  end
+  use { "rmagatti/auto-session",
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+      }
+    end
   }
 
   -- Formatting
-  use {"stevearc/conform.nvim", config = function() require("plugin.conform") end}
+  use { "stevearc/conform.nvim", config = function() require("plugin.conform") end }
   -- use {"sbdchd/neoformat", config = function() require("plugin.neoformat") end }
-  use {"stevearc/aerial.nvim",
-    requires = {"nvim-tree/nvim-web-devicons"},
+  use { "stevearc/aerial.nvim",
+    requires = { "nvim-tree/nvim-web-devicons" },
     config = function() require("plugin.aerial") end }
-  use {"sheerun/vim-polyglot"}
+  use { "sheerun/vim-polyglot" }
   -- Coloring/theming
-  use {"folke/lsp-colors.nvim"}
-  use {"rktjmp/lush.nvim"}
-  use {"tanvirtin/monokai.nvim"}
-  use {"hwadii/gruber_darker.nvim"}
+  use { "folke/lsp-colors.nvim" }
+  use { "rktjmp/lush.nvim" }
+  use { "tanvirtin/monokai.nvim" }
+  use { "hwadii/gruber_darker.nvim" }
   -- Tpope the magic man
-  use {"tpope/vim-dispatch"}
-  use {"tpope/vim-fugitive"}
-  use {"tpope/vim-rhubarb"}
-  use {"tpope/vim-surround"}
+  use { "tpope/vim-dispatch" }
+  use { "tpope/vim-fugitive" }
+  use { "tpope/vim-rhubarb" }
+  use { "tpope/vim-surround" }
 
   -- use {"stevearc/overseer.nvim",
   --   opt = true,
@@ -186,4 +186,3 @@ end)
 
 
 return packer
-

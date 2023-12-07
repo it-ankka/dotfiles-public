@@ -1,5 +1,5 @@
 local function pre_hook(ctx)
-  if (vim.bo.filetype == "typescriptreact") then
+  if (vim.bo.filetype == "typescriptreact" or vim.bo.filetype == "svelte") then
     local U = require("Comment.utils")
     local type = (((ctx.ctype == U.ctype.line) and "__default") or "__multiline")
     local location = nil
@@ -9,10 +9,14 @@ local function pre_hook(ctx)
       location = (require("ts_context_commentstring.utils")).get_visual_start_location()
     else
     end
-    return (require("ts_context_commentstring.internal")).calculate_commentstring({key = type, location = location})
+    return (require("ts_context_commentstring.internal")).calculate_commentstring({ key = type, location = location })
   else
     return nil
   end
 end
 
-require("Comment").setup({ignore = "^$", pre_hook = pre_hook})
+
+vim.g.skip_ts_context_commenstring_module = true;
+require("ts_context_commenstring").setup {}
+
+require("Comment").setup({ ignore = "^$", pre_hook = pre_hook })

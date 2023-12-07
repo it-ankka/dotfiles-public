@@ -2,7 +2,6 @@
 -- ON_ATTACH --
 -------------------
 local on_attach = function(client, bufnr)
-
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
     --Enable completion triggered by <c-x><c-o>
@@ -31,10 +30,10 @@ local on_attach = function(client, bufnr)
 
     --TODO: hack to fix semanticTokens
     if client.name == "omnisharp" then
-      client.server_capabilities.semanticTokensProvider.legend = {
-        tokenModifiers = { "static" },
-        tokenTypes = { "comment", "excluded", "identifier", "keyword", "keyword", "number", "operator", "operator", "preprocessor", "string", "whitespace", "text", "static", "preprocessor", "punctuation", "string", "string", "class", "delegate", "enum", "interface", "module", "struct", "typeParameter", "field", "enumMember", "constant", "local", "parameter", "method", "method", "property", "event", "namespace", "label", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp" }
-      }
+        client.server_capabilities.semanticTokensProvider.legend = {
+            tokenModifiers = { "static" },
+            tokenTypes = { "comment", "excluded", "identifier", "keyword", "keyword", "number", "operator", "operator", "preprocessor", "string", "whitespace", "text", "static", "preprocessor", "punctuation", "string", "string", "class", "delegate", "enum", "interface", "module", "struct", "typeParameter", "field", "enumMember", "constant", "local", "parameter", "method", "method", "property", "event", "namespace", "label", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp" }
+        }
     end
 
     -- Add EslintFixAll command
@@ -50,14 +49,12 @@ end
 -- AUTOCOMMANDS --
 -------------------
 vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'LSP actions',
-  callback = function(args)
-
-    local bufnr = args.buf
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    on_attach(client, bufnr)
-
-  end
+    desc = 'LSP actions',
+    callback = function(args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        on_attach(client, bufnr)
+    end
 })
 
 vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.formatting({ async = true }) end, {})
@@ -124,40 +121,40 @@ vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSig
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 
-mason.setup({ui = {border = _border}})
+mason.setup({ ui = { border = _border } })
 
 mason_lspconfig.setup({
-  ensure_installed = {
-    "astro",
-    "bashls",
-    "clangd",
-    "clojure_lsp",
-    "cssls",
-    "diagnosticls",
-    "dockerls",
-    "emmet_ls",
-    "eslint",
-    "graphql",
-    "html",
-    "intelephense",
-    "jsonls",
-    "lemminx",
-    "lua_ls",
-    "marksman",
-    "omnisharp",
-    "perlnavigator",
-    "prismals",
-    "pyright",
-    "rust_analyzer",
-    "sqlls",
-    "svelte",
-    "tailwindcss",
-    "tsserver",
-    "vimls",
-    "vls",
-    "volar",
-    "yamlls",
-  }
+    ensure_installed = {
+        "astro",
+        "bashls",
+        "clangd",
+        "clojure_lsp",
+        "cssls",
+        "diagnosticls",
+        "dockerls",
+        "emmet_ls",
+        "eslint",
+        "graphql",
+        "html",
+        "intelephense",
+        "jsonls",
+        "lemminx",
+        "lua_ls",
+        "marksman",
+        "omnisharp",
+        "perlnavigator",
+        "prismals",
+        "pyright",
+        "rust_analyzer",
+        "sqlls",
+        "svelte",
+        "tailwindcss",
+        "tsserver",
+        "vimls",
+        "vls",
+        "volar",
+        "yamlls",
+    }
 })
 
 ---------------
@@ -182,21 +179,21 @@ local servers = mason_lspconfig.get_installed_servers()
 -------------------
 for _, server in ipairs(servers) do
     if nvim_lsp[server] == nil then
-      print("not supported", server)
-      goto continue
+        print("not supported", server)
+        goto continue
     end
     local lspft = nvim_lsp[server].filetypes
     if lspft ~= nil and #lspft > 0 then
-      local ft = vim.bo.filetype
-      local should_load = false
-      for _, value in ipairs(lspft) do
-        if ft == value then
-          should_load = true
+        local ft = vim.bo.filetype
+        local should_load = false
+        for _, value in ipairs(lspft) do
+            if ft == value then
+                should_load = true
+            end
         end
-      end
-      if not should_load then
-        goto continue
-      end
+        if not should_load then
+            goto continue
+        end
     end
     local server_config = {
         on_attach = on_attach,
@@ -217,31 +214,31 @@ end
 
 --Fennel
 
-if(vim.loop.os_uname().sysname ~= "Windows_NT") then
+if (vim.loop.os_uname().sysname ~= "Windows_NT") then
     configs.fennel_language_server = {
-     default_config = {
-        -- replace it with true path
-        cmd = {os.getenv('HOME') .. '/.cargo/bin/fennel-language-server'},
-        filetypes = {'fennel'},
-        single_file_support = true,
-        -- source code resides in directory `fnl/`
-        root_dir = nvim_lsp.util.root_pattern("fnl"),
-        settings = {
-          fennel = {
-            workspace = {
-              -- If you are using hotpot.nvim or aniseed,
-              -- make the server aware of neovim runtime files.
-              library = vim.api.nvim_list_runtime_paths(),
+        default_config = {
+            -- replace it with true path
+            cmd = { os.getenv('HOME') .. '/.cargo/bin/fennel-language-server' },
+            filetypes = { 'fennel' },
+            single_file_support = true,
+            -- source code resides in directory `fnl/`
+            root_dir = nvim_lsp.util.root_pattern("fnl"),
+            settings = {
+                fennel = {
+                    workspace = {
+                        -- If you are using hotpot.nvim or aniseed,
+                        -- make the server aware of neovim runtime files.
+                        library = vim.api.nvim_list_runtime_paths(),
+                    },
+                    diagnostics = {
+                        globals = { 'vim' },
+                    },
+                },
             },
-            diagnostics = {
-              globals = {'vim'},
-            },
-          },
         },
-      },
     }
 
-    nvim_lsp.fennel_language_server.setup{}
+    nvim_lsp.fennel_language_server.setup {}
 end
 
 --Lua ls
@@ -312,4 +309,3 @@ nvim_lsp.emmet_ls.setup({
 --     sdk_include_prereleases = true,
 --     analyze_open_documents_only = false,
 -- }
-
