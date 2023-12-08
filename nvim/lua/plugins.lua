@@ -34,13 +34,11 @@ local lazy = require('lazy').setup({
   -- Conjure
   {
     "Olical/conjure",
-    opt = true,
     cmd = { "Lein", "Clj" },
     ft = { "clojure", "fennel", "lisp" }
   },
   {
     "PaterJason/cmp-conjure",
-    opt = true,
     cmd = { "Lein", "Clj" },
     ft = { "clojure", "fennel", "lisp" }
   },
@@ -168,7 +166,6 @@ local lazy = require('lazy').setup({
   -- Commenting
   {
     "numToStr/Comment.nvim",
-    opt = true,
     dependencies = { "Shougo/context_filetype.vim" },
     config = function() require("plugin.comment") end
   },
