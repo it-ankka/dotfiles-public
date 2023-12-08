@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g["mapleader"] = " "
 vim.g["maplocalleader"] = ","
 
-local lazy = require('lazy').setup({
+require('lazy').setup({
   {
     "AndrewRadev/tagalong.vim",
     ft = {
