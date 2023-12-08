@@ -16,7 +16,4 @@ local function pre_hook(ctx)
 end
 
 
-vim.g.skip_ts_context_commenstring_module = true;
-require("ts_context_commenstring").setup {}
-
 require("Comment").setup({ ignore = "^$", pre_hook = pre_hook })
