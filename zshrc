@@ -70,7 +70,7 @@ ZSH_THEME="lambda-gitster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages git-flow vi-mode asdf)
+plugins=(git colored-man-pages git-flow vi-mode kubectl asdf)
 VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
@@ -117,6 +117,7 @@ export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.luarocks/bin
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:/opt/firefox/firefox
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
@@ -125,3 +126,7 @@ if [ -f '/home/lassi/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lassi/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/lassi/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lassi/google-cloud-sdk/completion.zsh.inc'; fi
+
+# fnm
+export PATH="/home/lassi/.local/share/fnm:$PATH"
+eval "`fnm env`"
