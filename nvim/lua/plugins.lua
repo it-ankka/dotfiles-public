@@ -68,6 +68,7 @@ require('lazy').setup({
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-nvim-lsp-signature-help"
     },
+    event = "InsertEnter",
     config = function() require("plugin.cmp") end
   },
 
@@ -79,6 +80,7 @@ require('lazy').setup({
   },
   {
     'nvim-telescope/telescope.nvim',
+    enabled = vim.fn.has('win32'),
     tag = '0.1.2',
     dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' },
     config = function() require('plugin.telescope') end
@@ -86,12 +88,6 @@ require('lazy').setup({
   {
     "jparise/vim-graphql",
     ft = { "graphql", "javascript", "typescript", "typescriptreact" }
-  },
-  {
-    "junegunn/goyo.vim",
-    ft = { "markdown", "mdx", "text" },
-    cmd = "Goyo",
-    build = ":Goyo"
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -119,16 +115,21 @@ require('lazy').setup({
   -- Snippets
   {
     "L3MON4D3/LuaSnip",
-    tag = "v1.1.*"
+    tag = "v2.*"
   },
   {
     "norcalli/nvim-colorizer.lua",
     config = function() require("colorizer").setup() end
   },
   -- Git
-  { "APZelos/blamer.nvim",    build = ":BlamerShow" },
-  "lewis6991/gitsigns.nvim",
-  { "airblade/vim-gitgutter", build = ":GitGutterEnable" },
+  {
+    "APZelos/blamer.nvim",
+    cmd = { "BlamerShow", "BlamerToggle" },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function() require('gitsigns').setup() end
+  },
   -- Linting
   {
     "mfussenegger/nvim-lint",
@@ -139,9 +140,7 @@ require('lazy').setup({
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring"
-      --   "p00f/nvim-ts-rainbow", // DEPRACATED
     },
-    -- commit = "a2d7e78",
     build = ":TSUpdate",
     config = function() require("plugin.treesitter") end
   },
@@ -155,7 +154,6 @@ require('lazy').setup({
       "PaterJason/cmp-conjure",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim"
-      -- "ray-x/lsp_signature.nvim",
       -- "narutoxy/dim.lua"
     },
     config = function() require("plugin.lsp") end
@@ -189,7 +187,6 @@ require('lazy').setup({
 
   -- Formatting
   { "stevearc/conform.nvim", config = function() require("plugin.conform") end },
-  -- {"sbdchd/neoformat", config = function() require("plugin.neoformat") end },
   {
     "stevearc/aerial.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -205,8 +202,11 @@ require('lazy').setup({
   "tpope/vim-surround",
 
   -- {"stevearc/overseer.nvim",
-  --   opt = true,
   --   config = function() require("overseer").setup() end
   -- },
-  -- {"ThePrimeagen/refactoring.nvim", opt = true},
+  -- {"ThePrimeagen/refactoring.nvim",},
+}, {
+  ui = {
+    border = "single"
+  }
 })

@@ -25,9 +25,9 @@ M.default = {
   aqua = '#f39660',
   purple = '#b39df3',
   red = '#ff6077',
-  diff_add = '#3d5213',
-  diff_remove = '#4a0f23',
-  diff_change = '#27406b',
+  diff_add = '#008800',
+  diff_change = '#aaaa00',
+  diff_remove = '#dd2222',
   diff_text = '#23324d',
   error = '#ff6077',
   warn = '#e7c664',
@@ -48,9 +48,9 @@ local function highlighter(config)
     local fg = color.fg and 'guifg = ' .. color.fg or 'guifg = NONE'
     local bg = color.bg and 'guibg = ' .. color.bg or 'guibg = NONE'
     local sp = color.sp and 'guisp = ' .. color.sp or ''
-  vim.cmd(
-    'highlight ' .. group .. ' ' .. style .. ' ' .. fg .. ' ' .. bg .. ' ' .. sp
-  )
+    vim.cmd(
+      'highlight ' .. group .. ' ' .. style .. ' ' .. fg .. ' ' .. bg .. ' ' .. sp
+    )
   end
 end
 
@@ -142,8 +142,8 @@ M.load_syntax = function(palette)
       bg = palette.base2,
     },
     SignColumn = {
-      fg = palette.white,
-      bg = palette.base2,
+      -- fg = palette.white,
+      bg = nil,
     },
     StatusLine = {
       fg = palette.base7,
@@ -184,14 +184,23 @@ M.load_syntax = function(palette)
     Directory = {
       fg = palette.aqua,
     },
+    GitSignsAdd = {
+      fg = palette.diff_add,
+    },
+    GitSignsChange = {
+      fg = palette.diff_change
+    },
+    GitSignsDelete = {
+      fg = palette.diff_remove,
+    },
     DiffAdd = {
       bg = palette.diff_add,
     },
-    DiffDelete = {
-      bg = palette.diff_remove,
-    },
     DiffChange = {
       bg = palette.diff_change,
+    },
+    DiffDelete = {
+      bg = palette.diff_remove,
     },
     DiffText = {
       bg = palette.diff_text,
