@@ -1,5 +1,0 @@
-#!/bin/sh
-
-cd $HOME
-wget "https://go.dev/dl/go1.19.1.linux-amd64.tar.gz"
-tar -xzvf go1.19.1.linux-amd64.tar.gz
