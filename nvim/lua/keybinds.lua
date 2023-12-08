@@ -5,6 +5,10 @@ vim.keymap.set({ "n" }, "<F1>", "<Nop>", { silent = true })
 vim.keymap.set({ "n" }, "Q", "<Nop>", { silent = true })
 vim.keymap.set({ "n" }, "<Space>", "<Nop>", { silent = true })
 
+-- Map leader keys
+vim.g["mapleader"] = " "
+vim.g["maplocalleader"] = ","
+
 -- Quickly access config files
 vim.keymap.set({ "n" }, "<leader>vr", ":q <CR>", { silent = true })
 vim.keymap.set({ "n" }, "<leader>ve", ":FzfLua files cwd=~/.config/nvim/ <CR>", { silent = true })
