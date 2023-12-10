@@ -10,7 +10,7 @@ vim.g["mapleader"] = " "
 vim.g["maplocalleader"] = ","
 
 -- Quickly access config files
-vim.keymap.set({ "n" }, "<leader>vr", ":q <CR>", { silent = true })
+vim.keymap.set({ "n" }, "<leader>vr", ":source ~/.config/nvim/init.lua<CR>", { silent = true })
 vim.keymap.set({ "n" }, "<leader>ve", ":FzfLua files cwd=~/.config/nvim/ <CR>", { silent = true })
 
 
@@ -77,16 +77,19 @@ vim.keymap.set({ "n" }, "ss", ":split<Return><C-w>w", { silent = true })
 vim.keymap.set({ "n" }, "sv", ":vsplit<Return><C-w>w", { silent = true })
 
 -- Resize splits
-vim.keymap.set({ "n" }, "<Leader>+", ":vertical resize +5<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<Leader>-", ":vertical resize -5<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<Leader>h+", ":horizontal resize +5<CR>", { silent = true })
-vim.keymap.set({ "n" }, "<Leader>h-", ":horizontal resize -5<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<C-Right>", ":vertical resize +5<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<C-Left>", ":vertical resize -5<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<C-Down>", ":horizontal resize +5<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<C-Up>", ":horizontal resize -5<CR>", { silent = true })
 
 -- Window movement
 vim.keymap.set({ "n" }, "<c-h>", "<c-w>h", { silent = true })
 vim.keymap.set({ "n" }, "<c-j>", "<c-w>j", { silent = true })
 vim.keymap.set({ "n" }, "<c-k>", "<c-w>k", { silent = true })
 vim.keymap.set({ "n" }, "<c-l>", "<c-w>l", { silent = true })
+
+-- Netrw
+vim.keymap.set({ "n" }, "<leader>n", ":Lex!<CR>", { silent = true })
 
 -- Quick play macros on the number row
 vim.keymap.set({ "n" }, "<F13>", "@1", { silent = true })
