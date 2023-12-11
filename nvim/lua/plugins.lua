@@ -35,12 +35,8 @@ require('lazy').setup({
   {
     "Olical/conjure",
     cmd = { "Lein", "Clj" },
-    ft = { "clojure", "fennel", "lisp" }
-  },
-  {
-    "PaterJason/cmp-conjure",
-    cmd = { "Lein", "Clj" },
-    ft = { "clojure", "fennel", "lisp" }
+    dependencies = { "PaterJason/cmp-conjure" },
+    ft = { "clojure", "fennel", "lisp", "python" }
   },
   {
     "windwp/nvim-autopairs",
@@ -57,7 +53,7 @@ require('lazy').setup({
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "PaterJason/cmp-conjure",
+      -- "PaterJason/cmp-conjure",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
@@ -78,13 +74,13 @@ require('lazy').setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function() require("plugin.fzf-lua") end
   },
-  {
-    'nvim-telescope/telescope.nvim',
-    enabled = vim.fn.has('win32'),
-    tag = '0.1.2',
-    dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' },
-    config = function() require('plugin.telescope') end
-  },
+  -- {
+  --   'nvim-telescope/telescope.nvim',
+  --   enabled = vim.fn.has('win32'),
+  --   tag = '0.1.2',
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' },
+  --   config = function() require('plugin.telescope') end
+  -- },
   {
     "jparise/vim-graphql",
     ft = { "graphql", "javascript", "typescript", "typescriptreact" }
@@ -151,7 +147,7 @@ require('lazy').setup({
       "hrsh7th/nvim-cmp",
       "ojroques/nvim-lspfuzzy",
       "stevearc/dressing.nvim",
-      "PaterJason/cmp-conjure",
+      -- "PaterJason/cmp-conjure",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim"
       -- "narutoxy/dim.lua"
