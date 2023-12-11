@@ -3,7 +3,7 @@ local vim = vim
 local M = {}
 
 M.default = {
-  name = 'mycolor',
+  name = 'solokai',
   base0 = '#222426',
   base1 = '#272a30',
   base2 = '#26292C',
