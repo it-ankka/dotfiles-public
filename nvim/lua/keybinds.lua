@@ -18,7 +18,7 @@ vim.keymap.set({ "n" }, "<leader>k", ":nohlsearch <CR>", { silent = true })
 vim.keymap.set({ "n" }, "<leader>Q", ":bufdo bdelete <CR>", { silent = true })
 
 -- Toggle linewrap
-vim.keymap.set({ "n" }, "<leader>w", ":set wrap!<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<leader>w", ":set wrap! smoothscroll<CR>", { silent = true })
 
 -- Tab switching
 vim.keymap.set({ "n" }, "<M-Left>", ":bp<cr>", { remap = true, silent = true })
