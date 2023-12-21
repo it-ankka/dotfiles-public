@@ -20,3 +20,8 @@ sudo apt install fzf ripgrep fd-find
 * [Lazygit](https://github.com/jesseduffield/lazygit)
 * [Lazydocker](https://github.com/jesseduffield/lazydocker)
 * [Oh-my-zsh](https://ohmyz.sh/)
+
+## ZSH autosuggestions installation
+```shell
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
