@@ -25,6 +25,9 @@ vim.cmd("autocmd TermOpen,TermEnter * setlocal signcolumn=no nonumber")
 -- Markdown listchars
 vim.cmd("autocmd BufNewFile,BufRead *.md set nolist filetype=markdown syntax=markdown")
 
+-- GdScript tabs
+vim.cmd("autocmd FileType gdscript setlocal noexpandtab")
+
 -- Open help window in a vertical split to the right.
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = vim.api.nvim_create_augroup("help_window_right", {}),
