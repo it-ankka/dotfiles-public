@@ -129,6 +129,8 @@ if [ -f '/home/lassi/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lassi/googl
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/lassi/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lassi/google-cloud-sdk/completion.zsh.inc'; fi
 
-# fnm
-export PATH="/home/lassi/.local/share/fnm:$PATH"
-eval "`fnm env`"
+# # fnm
+if [ -f '/home/lassi/.local/share/fnm' ]; then
+  export PATH="/home/lassi/.local/share/fnm:$PATH";
+  eval "`fnm env`";
+fi
