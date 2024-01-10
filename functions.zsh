@@ -180,3 +180,7 @@ function qrcode() {
     curl qrenco.de/"$@"
 }
 
+function weather() {
+  clear; 
+  curl wttr.in/$1;
+}

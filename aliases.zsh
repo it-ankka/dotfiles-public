@@ -21,7 +21,6 @@ alias kittyconfig='nv ~/.config/kitty/kitty.conf'
 alias kittystartup='nv ~/.config/kitty/startup.conf'
 alias gitconfig='nv ~/.gitconfig'
 alias work='kitty --detach --session ~/.config/kitty/work.conf'
-alias weather='clear; curl wttr.in;'
 alias ctfwatch='clear; curl ctf.watch'
 alias aptup='sudo apt update && sudo apt upgrade -y'
 alias icat="kitty +kitten icat"
