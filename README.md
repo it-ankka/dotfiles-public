@@ -25,3 +25,6 @@ sudo apt install fzf ripgrep fd-find
 ```shell
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
+
+## Dotnet
+* [How to install](https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual)
