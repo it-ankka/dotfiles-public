@@ -34,6 +34,22 @@ require('lazy').setup({
   "ojroques/nvim-lspfuzzy",
   "onsails/lspkind.nvim",
   "evanleck/vim-svelte",
+  -- Neovim lua API documentation
+  {
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup({
+        library = { plugins = { "nvim-dap-ui" }, types = true },
+      })
+    end
+  },
+
+  -- Debugging
+  {
+    "mfussenegger/nvim-dap",
+    config = function() require("plugin.dap") end,
+    dependencies = { "rcarriga/nvim-dap-ui", }
+  },
 
   -- Autocomplete
   {
@@ -62,13 +78,13 @@ require('lazy').setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function() require("plugin.fzf-lua") end
   },
-  -- {
-  --   'nvim-telescope/telescope.nvim',
-  --   enabled = vim.fn.has('win32') == 1,
-  --   tag = '0.1.2',
-  --   dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' },
-  --   config = function() require('plugin.telescope') end
-  -- },
+  {
+    'nvim-telescope/telescope.nvim',
+    enabled = vim.fn.has('win32') == 1,
+    tag = '0.1.2',
+    dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' },
+    config = function() require('plugin.telescope') end
+  },
   {
     "jparise/vim-graphql",
     ft = { "graphql", "javascript", "typescript", "typescriptreact" }
