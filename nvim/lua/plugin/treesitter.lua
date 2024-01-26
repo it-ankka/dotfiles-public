@@ -4,6 +4,9 @@ require("nvim-treesitter.configs").setup({
     disable = {},
     enable = false
   },
+  autotag = {
+    enable = true,
+  },
   ensure_installed = {
     "bash",
     "clojure",

@@ -17,43 +17,29 @@ vim.g["mapleader"] = " "
 vim.g["maplocalleader"] = ","
 
 require('lazy').setup({
+  -- LSP
   {
-    "AndrewRadev/tagalong.vim",
-    ft = {
-      "tsx",
-      "javascript",
-      "javascriptreact",
-      "html",
-      "svelte",
-      "xml",
-      "typescript",
-      "typescriptreact"
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "hrsh7th/nvim-cmp",
+      "ojroques/nvim-lspfuzzy",
+      "stevearc/dressing.nvim",
+      -- "PaterJason/cmp-conjure",
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim"
+      -- "narutoxy/dim.lua"
     },
-    config = function() require("plugin.tagalong") end
+    config = function() require("plugin.lsp") end
   },
-  -- Conjure
-  {
-    "Olical/conjure",
-    cmd = { "Lein", "Clj" },
-    dependencies = { "PaterJason/cmp-conjure" },
-    ft = { "clojure", "fennel", "lisp", "python" }
-  },
-  {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup() end
-  },
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function() require("plugin.bufferline") end
-  },
-  "clojure-vim/vim-jack-in",
+  "ojroques/nvim-lspfuzzy",
+  "onsails/lspkind.nvim",
+  "evanleck/vim-svelte",
+
   -- Autocomplete
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      -- "PaterJason/cmp-conjure",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
@@ -63,6 +49,7 @@ require('lazy').setup({
       "hrsh7th/cmp-calc",
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-nvim-lsp-signature-help"
+      -- "PaterJason/cmp-conjure",
     },
     event = "InsertEnter",
     config = function() require("plugin.cmp") end
@@ -71,12 +58,13 @@ require('lazy').setup({
   -- File search
   {
     "ibhagwan/fzf-lua",
+    enabled = vim.fn.has('win32') ~= 1,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function() require("plugin.fzf-lua") end
   },
   -- {
   --   'nvim-telescope/telescope.nvim',
-  --   enabled = vim.fn.has('win32'),
+  --   enabled = vim.fn.has('win32') == 1,
   --   tag = '0.1.2',
   --   dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' },
   --   config = function() require('plugin.telescope') end
@@ -140,23 +128,6 @@ require('lazy').setup({
     build = ":TSUpdate",
     config = function() require("plugin.treesitter") end
   },
-  -- LSP
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "hrsh7th/nvim-cmp",
-      "ojroques/nvim-lspfuzzy",
-      "stevearc/dressing.nvim",
-      -- "PaterJason/cmp-conjure",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim"
-      -- "narutoxy/dim.lua"
-    },
-    config = function() require("plugin.lsp") end
-  },
-  "ojroques/nvim-lspfuzzy",
-  "onsails/lspkind.nvim",
-  "evanleck/vim-svelte",
   -- Commenting
   {
     "numToStr/Comment.nvim",
@@ -169,7 +140,6 @@ require('lazy').setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function() require("lualine").setup({ theme = "powerline" }) end
   },
-  "radenling/vim-dispatch-neovim",
   -- Sessions
   {
     "rmagatti/auto-session",
@@ -188,6 +158,37 @@ require('lazy').setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function() require("plugin.aerial") end
   },
+  -- Auto closing tags
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx',
+      'rescript',
+      'xml',
+      'php',
+      'markdown',
+      'astro', 'glimmer', 'handlebars', 'hbs'
+    },
+  },
+
+  -- Conjure
+  {
+    "Olical/conjure",
+    cmd = { "Lein", "Clj" },
+    dependencies = { "PaterJason/cmp-conjure" },
+    ft = { "clojure", "fennel", "lisp", "python" }
+  },
+  {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup() end
+  },
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function() require("plugin.bufferline") end
+  },
+  "clojure-vim/vim-jack-in",
+
   -- Coloring/theming
   "folke/lsp-colors.nvim",
   "rktjmp/lush.nvim",
