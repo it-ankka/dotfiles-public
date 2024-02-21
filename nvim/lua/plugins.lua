@@ -31,6 +31,7 @@ require('lazy').setup({
     },
     config = function() require("plugin.lsp") end
   },
+  "b0o/schemastore.nvim",
   "ojroques/nvim-lspfuzzy",
   "onsails/lspkind.nvim",
   "evanleck/vim-svelte",

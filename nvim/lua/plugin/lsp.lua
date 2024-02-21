@@ -32,7 +32,12 @@ local on_attach = function(client, bufnr)
   if client.name == "omnisharp" then
     client.server_capabilities.semanticTokensProvider.legend = {
       tokenModifiers = { "static" },
-      tokenTypes = { "comment", "excluded", "identifier", "keyword", "keyword", "number", "operator", "operator", "preprocessor", "string", "whitespace", "text", "static", "preprocessor", "punctuation", "string", "string", "class", "delegate", "enum", "interface", "module", "struct", "typeParameter", "field", "enumMember", "constant", "local", "parameter", "method", "method", "property", "event", "namespace", "label", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp" }
+      tokenTypes = { "comment", "excluded", "identifier", "keyword", "keyword", "number", "operator", "operator",
+        "preprocessor", "string", "whitespace", "text", "static", "preprocessor", "punctuation", "string", "string",
+        "class", "delegate", "enum", "interface", "module", "struct", "typeParameter", "field", "enumMember", "constant",
+        "local", "parameter", "method", "method", "property", "event", "namespace", "label", "xml", "xml", "xml", "xml",
+        "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml", "xml",
+        "xml", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp", "regexp" }
     }
   end
 
@@ -272,12 +277,45 @@ nvim_lsp.lua_ls.setup {
 
 --TS/JS
 nvim_lsp.tsserver.setup {
-  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact",
+    "typescript.tsx" },
   capabilities = lsp_capabilities,
   flags = {
     debounce_text_changes = 150,
-    --allow_incremental_sync = true
+    -- allow_incremental_sync = true
   }
+}
+
+-- JSON
+nvim_lsp.jsonls.setup {
+  capabilities = lsp_capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+    flags = {
+      debounce_text_changes = 150,
+      --allow_incremental_sync = true
+    }
+  },
+}
+
+-- YAML
+nvim_lsp.yamlls.setup {
+  capabilities = lsp_capabilities,
+  settings = {
+    yaml = {
+      schemaStore = {
+        -- You must disable built-in schemaStore support if you want to use
+        -- this plugin and its advanced options like `ignore`.
+        enable = false,
+        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = "",
+      },
+      schemas = require('schemastore').yaml.schemas(),
+    },
+  },
 }
 
 -- Emmet
