@@ -337,3 +337,4 @@ nvim_lsp.emmet_ls.setup({
 })
 
 nvim_lsp.gdscript.setup({})
+nvim_lsp.glsl_analyzer.setup({})
