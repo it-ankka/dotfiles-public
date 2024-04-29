@@ -18,6 +18,7 @@ conform.setup({
     json = prettier,
     jsonc = prettier,
     css = prettier,
+    cs = { "csharpier" },
     c = { "clang-format" }
   },
   format_on_save = {
