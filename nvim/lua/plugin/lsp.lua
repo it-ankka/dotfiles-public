@@ -154,7 +154,7 @@ mason_lspconfig.setup({
     "sqlls",
     "svelte",
     "tailwindcss",
-    "tsserver",
+    "ts_ls",
     "vimls",
     "vls",
     "volar",
@@ -276,7 +276,7 @@ nvim_lsp.lua_ls.setup {
 }
 
 --TS/JS
-nvim_lsp.tsserver.setup {
+nvim_lsp.ts_ls.setup {
   filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact",
     "typescript.tsx" },
   capabilities = lsp_capabilities,
