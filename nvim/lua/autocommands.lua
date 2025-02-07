@@ -1,6 +1,9 @@
 -- Commenting in nim files
 vim.cmd("autocmd FileType nim setlocal commentstring=#\\ %s")
 
+-- Make sure html files are html files
+vim.cmd("autocmd BufRead,BufNewFile *.html set filetype=html")
+
 -- Docs in clojure
 vim.cmd("autocmd BufRead,BufNewFile *.clj nnoremap ,k :ConjureDocWord<CR>")
 
