@@ -1,6 +1,6 @@
 local conform = require("conform")
 
-local prettier = { { "prettierd", "prettier" } }
+local prettier = { "prettierd", "prettier" }
 
 conform.setup({
   formatters_by_ft = {
