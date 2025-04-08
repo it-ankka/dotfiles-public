@@ -16,6 +16,7 @@ if (vim.loop.os_uname().sysname ~= "Windows_NT") then
 end
 vim.cmd("hi! link netrwMarkFile Search")
 
+vim.o.exrc = true
 vim.opt.autoindent = true
 vim.opt.backup = true
 if (vim.loop.os_uname().sysname ~= "Windows_NT") then
