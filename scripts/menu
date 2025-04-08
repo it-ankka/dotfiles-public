@@ -1,0 +1,22 @@
+#!/bin/bash
+
+rss_url='https://menu.leijonacatering.fi/AromieMenus/FI/Default/Leijona/LuonettiTikkakoski/Rss.aspx?Id=e3dd1621-cb99-44f9-9993-cdd6ff1b95c7&DateMode=1'
+
+rss=$(curl -s "$rss_url")
+itemsCount=$(echo "$rss" | xmllint --xpath "count(//item)" -)
+
+
+for (( i=1; i <= $itemsCount; i++ )); do
+
+  item=$(echo "$rss" | xmllint --xpath "//item[$i]" -)
+
+  title=$(echo "$item" | xmllint --xpath "string(//title)" -)
+  description=$(echo "$item" | xmllint --xpath "string(//description)" - | sed 's/<br><br>/\n/g')
+
+  echo "Päivä: $title"
+  echo "$description"
+
+  echo "----------------------------------------"
+
+done 
+

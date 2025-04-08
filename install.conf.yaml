@@ -6,9 +6,9 @@
     ~/.config/nvim:
         create: true
         path: nvim
-    ~/.config/karabiner:
-        create: true
-        path: karabiner
+#    ~/.config/karabiner:
+#        create: true
+#        path: karabiner
     ~/scripts:
         create: true
         path: scripts
@@ -22,4 +22,4 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - ["vim +PlugUpdate +PlugClean! +qa", Installing and updating plugins]
+    - ["nvim +PlugUpdate +PlugClean! +qa", Installing and updating plugins]

@@ -174,7 +174,9 @@ function proj() {
     fi
 }
 
-function transfer() { if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n  transfer <file|directory>\n  ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
+function transfer() { 
+  if [ $# -eq 0 ];
+  then echo "No arguments specified.\nUsage:\n  transfer <file|directory>\n  ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
 
 function qrcode() {
     curl qrenco.de/"$@"
@@ -183,4 +185,19 @@ function qrcode() {
 function weather() {
   clear; 
   curl wttr.in/$1;
+}
+
+function findCaptivePortal() {
+  interfaceName=$1
+  if [[ -z $1 ]]; then
+    interfaceName=$(ip -j link show | jq -r '.[1].ifname') 
+    echo "No network interface specified. Using default interface: $interfaceName\n"
+  fi
+  portalIp=$(route -n | grep --color=none "^0.0.0.0.*$1" | awk '{ print $2; }' )
+  if [[ -n $portalIp ]]; then 
+    echo "Captive portal IP found: \n$portalIp"
+  else 
+    echo "ERROR: No captive portal IP found."
+  fi
+
 }

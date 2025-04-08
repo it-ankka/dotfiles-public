@@ -129,8 +129,10 @@ local mason_lspconfig = require("mason-lspconfig")
 mason.setup({ ui = { border = _border } })
 
 mason_lspconfig.setup({
+  automatic_installation = { exclude = { "fennel_language_server" } },
   ensure_installed = {
     "astro",
+    "ansiblels",
     "bashls",
     "clangd",
     "clojure_lsp",

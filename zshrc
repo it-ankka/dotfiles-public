@@ -98,39 +98,8 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-/usr/bin/setxkbmap -option caps:escape 2> /dev/null
+export PATH=$PATH:$HOME/go/bin
 
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-
-export LANG=$(locale -a | grep -i 'en_us.utf')
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
-export PATH=$PATH:$HOME/android-studio/bin
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-export PATH=$PATH:$HOME/.cargo/env
-export PATH=$PATH:$HOME/.luarocks/bin
-export PATH=$PATH:$HOME/scripts
-export PATH=$PATH:/opt/firefox/firefox
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$PATH:$HOME/.dotnet
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/lassi/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lassi/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/lassi/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lassi/google-cloud-sdk/completion.zsh.inc'; fi
-
-# # fnm
-if [ -f '/home/lassi/.local/share/fnm' ]; then
-  export PATH="/home/lassi/.local/share/fnm:$PATH";
-  eval "`fnm env`";
-fi
