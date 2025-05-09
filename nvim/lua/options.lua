@@ -14,6 +14,22 @@ if (vim.loop.os_uname().sysname ~= "Windows_NT") then
   vim.g.netrw_localmkdir = "mkdir -p"
   vim.g.netrw_localrmdir = "rm -r"
 end
+
+if vim.fn.has('wsl') == 1 then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end
+
 vim.cmd("hi! link netrwMarkFile Search")
 
 vim.o.exrc = true
