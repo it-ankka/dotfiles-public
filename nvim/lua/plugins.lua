@@ -24,23 +24,22 @@ require('lazy').setup({
       "hrsh7th/nvim-cmp",
       "ojroques/nvim-lspfuzzy",
       "stevearc/dressing.nvim",
-      -- "PaterJason/cmp-conjure",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim"
-      -- "narutoxy/dim.lua"
     },
     config = function() require("plugin.lsp") end
   },
   "b0o/schemastore.nvim",
   "ojroques/nvim-lspfuzzy",
   "onsails/lspkind.nvim",
-  "evanleck/vim-svelte",
+  "mfussenegger/nvim-ansible",
   -- Neovim lua API documentation
   {
-    "folke/neodev.nvim",
+    "folke/lazydev.nvim",
+    ft = "lua",
     config = function()
-      require("neodev").setup({
-        library = { plugins = { "nvim-dap-ui" }, types = true },
+      require("lazydev").setup({
+        library = { "nvim-dap-ui" },
       })
     end
   },
