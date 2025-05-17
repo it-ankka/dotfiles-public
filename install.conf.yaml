@@ -3,6 +3,7 @@
 - link:
     ~/.zshrc: zshrc
     ~/.gitconfig: gitconfig
+    ~/.tmux.conf: tmux.conf
     ~/.config/nvim:
         create: true
         path: nvim
@@ -12,9 +13,6 @@
     ~/scripts:
         create: true
         path: scripts
-    ~/cheatsheets:
-        create: true
-        path: cheatsheets
     ~/.config/kitty: kitty
     ~/.oh-my-zsh/custom/aliases.zsh: aliases.zsh
     ~/.oh-my-zsh/custom/functions.zsh: functions.zsh
