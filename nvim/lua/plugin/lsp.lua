@@ -87,33 +87,6 @@ require('lspconfig.ui.windows').default_options = {
   border = _border
 }
 
-vim.lsp.protocol.CompletionItemKind = {
-  '', -- Text
-  '', -- Method
-  '', -- Function
-  '', -- Constructor
-  '', -- Field
-  '', -- Variable
-  '', -- Class
-  'ﰮ', -- Interface
-  '', -- Module
-  '', -- Property
-  '', -- Unit
-  '', -- Value
-  '', -- Enum
-  '', -- Keyword
-  '﬌', -- Snippet
-  '', -- Color
-  '', -- File
-  '', -- Reference
-  '', -- Folder
-  '', -- EnumMember
-  '', -- Constant
-  '', -- Struct
-  '', -- Event
-  'ﬦ', -- Operator
-  '', -- TypeParameter
-}
 
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
@@ -129,10 +102,11 @@ local mason_lspconfig = require("mason-lspconfig")
 mason.setup({ ui = { border = _border } })
 
 mason_lspconfig.setup({
+  automatic_enable = {},
   automatic_installation = { exclude = { "fennel_language_server" } },
   ensure_installed = {
-    "astro",
     "ansiblels",
+    "astro",
     "bashls",
     "clangd",
     "clojure_lsp",
@@ -319,6 +293,34 @@ nvim_lsp.yamlls.setup {
     },
   },
 }
+
+-- ANSIBLE
+nvim_lsp.ansiblels.setup({
+  capabilities = lsp_capabilities,
+  settings = {
+    ansible = {
+      python = {
+        interpreterPath = 'python',
+      },
+      ansible = {
+        path = 'ansible',
+      },
+      executionEnvironment = {
+        enabled = false,
+      },
+      -- validation = false,
+      validation = {
+        enabled = true,
+        lint = {
+          enabled = false,
+          path = 'ansible-lint',
+        },
+      },
+    },
+  },
+  filetypes = { 'yaml.ansible' },
+  root_markers = { 'ansible.cfg', '.ansible-lint' },
+})
 
 -- Emmet
 nvim_lsp.emmet_ls.setup({
