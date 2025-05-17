@@ -1,6 +1,9 @@
 -- Commenting in nim files
 vim.cmd("autocmd FileType nim setlocal commentstring=#\\ %s")
 
+-- Commenting in nim files
+vim.cmd("autocmd FileType python set noexpandtab")
+
 -- Make sure html files are html files
 vim.cmd("autocmd BufRead,BufNewFile *.html set filetype=html")
 
