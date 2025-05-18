@@ -308,11 +308,10 @@ nvim_lsp.ansiblels.setup({
       executionEnvironment = {
         enabled = false,
       },
-      -- validation = false,
       validation = {
         enabled = true,
         lint = {
-          enabled = false,
+          enabled = true,
           path = 'ansible-lint',
         },
       },
