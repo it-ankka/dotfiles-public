@@ -38,6 +38,7 @@ set splitright
 set splitbelow
 set noswapfile
 set undofile
+set undodir=~/.vim/undodir
 set complete+=d
 set tabstop=4 shiftwidth=4 expandtab
 set scrolloff=8 sidescrolloff=8
