@@ -133,7 +133,6 @@ mason_lspconfig.setup({
     "ts_ls",
     "vimls",
     "vls",
-    "volar",
     "yamlls",
   }
 })
