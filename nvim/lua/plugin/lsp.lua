@@ -98,8 +98,23 @@ vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSig
 -----------
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
+local mason_tool_installer = require("mason-tool-installer")
 
-mason.setup({ ui = { border = _border } })
+mason.setup({
+  ui = { border = _border },
+  -- Autoinstall formatters and linters
+  mason_tool_installer.setup({
+    ensure_installed = {
+      "ansible-lint",
+      "prettier",
+      "prettierd",
+      "clang-format",
+      "csharpier",
+      "isort",
+      "black",
+    }
+  })
+})
 
 mason_lspconfig.setup({
   automatic_enable = {},
@@ -136,6 +151,7 @@ mason_lspconfig.setup({
     "yamlls",
   }
 })
+
 
 ---------------
 -- LSPCONFIG --
