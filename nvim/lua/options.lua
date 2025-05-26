@@ -22,10 +22,10 @@ if vim.fn.has('wsl') == 1 then
       ['+'] = 'clip.exe',
       ['*'] = 'clip.exe',
     },
-    -- paste = {
-    --   ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    --   ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    -- },
+    paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
     cache_enabled = 0,
   }
 end
@@ -41,7 +41,6 @@ else
   vim.opt.backupdir = (os.getenv("LocalAppData") .. "\\nvim-backup")
 end
 vim.opt.breakindent = true
-vim.opt.clipboard = "unnamedplus"
 vim.opt.confirm = true
 vim.opt.expandtab = true
 vim.opt.fileencoding = "utf-8"

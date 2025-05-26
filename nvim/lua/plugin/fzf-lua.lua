@@ -36,7 +36,9 @@ local GrepAll = function()
   })
 end
 
-local Resume = function() return fzf_lua.resume() end
+local Resume = function() fzf_lua.resume() end
+local Help = function() fzf_lua.helptags() end
+local Manpages = function() fzf_lua.manpages({ previewer = false }) end
 
 local AllDiagnostics = function() return fzf_lua.lsp_workspace_diagnostics() end
 local AllSymbols = function() return fzf_lua.lsp_live_workspace_symbols() end
@@ -49,6 +51,8 @@ local Symbols = function() return fzf_lua.lsp_document_symbols() end
 local TypeDefinitions = function() fzf_lua.lsp_typedefs() end
 
 vim.api.nvim_create_user_command("Resume", Resume, {})
+vim.api.nvim_create_user_command("Help", Help, {})
+vim.api.nvim_create_user_command("Manpages", Manpages, {})
 
 vim.api.nvim_create_user_command("AllFiles", AllFiles, {})
 vim.api.nvim_create_user_command("AllSymbols", AllSymbols, {})
@@ -69,6 +73,9 @@ vim.api.nvim_create_user_command("GrepProject", GrepProject, {})
 -- KEYMAPS
 vim.keymap.set({ "n" }, "<c-P>", AllFiles, { silent = true })
 vim.keymap.set({ "n" }, "<leader>F", Resume, { silent = true })
+vim.keymap.set({ "n" }, "<leader>fh", Help, { silent = true })
+vim.keymap.set({ "n" }, "<leader>fm", Manpages, { silent = true })
+vim.keymap.set({ "n" }, "<leader>fF", AllFiles, { silent = true })
 vim.keymap.set({ "n" }, "<leader>fF", AllFiles, { silent = true })
 vim.keymap.set({ "n" }, "<leader>ff", Files, { silent = true })
 vim.keymap.set({ "n" }, "<leader>fR", GrepAll, { silent = true })

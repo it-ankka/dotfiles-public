@@ -10,13 +10,36 @@ vim.cmd("command Tsx execute '!tsx %'")
 vim.cmd("command! -complete=shellcmd -nargs=+ Shell call ExecuteInShell(<q-args>)")
 
 local function HideDiagnostics()
-  return vim.diagnostic.config({virtual_text = false, underline = false, signs = false})
+  return vim.diagnostic.config({ virtual_text = false, underline = false, signs = false })
 end
 
 
 local function ShowDiagnostics()
-  return vim.diagnostic.config({virtual_text = true, signs = true, underline = true})
+  return vim.diagnostic.config({ virtual_text = true, signs = true, underline = true })
 end
 
-vim.api.nvim_create_user_command("HideDiagnostics", HideDiagnostics, {force = true})
-vim.api.nvim_create_user_command("ShowDiagnostics", ShowDiagnostics, {force = true})
+vim.api.nvim_create_user_command("HideDiagnostics", HideDiagnostics, { force = true })
+vim.api.nvim_create_user_command("ShowDiagnostics", ShowDiagnostics, { force = true })
+
+vim.api.nvim_create_user_command("Clip", function(opts)
+  local text = ""
+  local is_wsl = vim.fn.has("wsl")
+  if opts.range == 0 then
+    text = vim.fn.getreg('"')
+  else
+    local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)
+    text = table.concat(lines, "\n")
+  end
+
+  if is_wsl then
+    local clip = io.popen("clip.exe", "w")
+    if clip then
+      clip:write(text)
+      clip:close()
+    else
+      print("Failed to open clip.exe")
+    end
+  else
+    vim.fn.setreg("+", text)
+  end
+end, { range = true, desc = "Copy visually selected text or register content to Clipboard" })

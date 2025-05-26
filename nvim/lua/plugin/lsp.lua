@@ -2,7 +2,7 @@
 -- ON_ATTACH --
 -------------------
 local on_attach = function(client, bufnr)
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function buf_set_option(name, value) vim.bo[bufnr][name] = value end
 
   --Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -12,21 +12,21 @@ local on_attach = function(client, bufnr)
 
   vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.formatting({ async = true }) end, {})
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.keymap.set('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  -- vim.keymap.set('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.keymap.set('n', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.keymap.set('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  vim.keymap.set('n', '<leader><Left>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  vim.keymap.set('n', '<leader><Right>', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  vim.keymap.set('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  vim.keymap.set("n", "<leader>pF", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+  vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
+  vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set('n', 'gy', function() vim.lsp.buf.type_definition() end, opts)
+  vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
+  -- vim.keymap.set('i', '<C-k>', function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set('n', '<C-s>', function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set('n', '<leader>ga', function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set('n', '<leader>e', function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set('n', '<leader><Left>', function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set('n', '<leader><Right>', function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set('n', '<leader>q', function() vim.diagnostic.setloclist() end, opts)
+  vim.keymap.set('n', '<leader>pF', function() vim.lsp.buf.format({ async = true }) end, opts)
 
   --TODO: hack to fix semanticTokens
   if client.name == "omnisharp" then
@@ -67,91 +67,18 @@ vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.formatting({ a
 ----------------
 -- APPEARANCE --
 ----------------
-local _border = "single"
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = _border
-  })
-
-require('lspconfig.ui.windows').default_options = {
-  border = _border
-}
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = _border
-  })
-
-require('lspconfig.ui.windows').default_options = {
-  border = _border
-}
-
+  vim.lsp.handlers.hover,
+  { border = "rounded" }
+)
+require('lspconfig.ui.windows').default_options = { border = "rounded" }
 
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
 vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 
------------
--- MASON --
------------
-local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
-local mason_tool_installer = require("mason-tool-installer")
-
-mason.setup({
-  ui = { border = _border },
-  -- Autoinstall formatters and linters
-  mason_tool_installer.setup({
-    ensure_installed = {
-      "ansible-lint",
-      "prettier",
-      "prettierd",
-      "clang-format",
-      "csharpier",
-      "isort",
-      "black",
-    }
-  })
-})
-
-mason_lspconfig.setup({
-  automatic_enable = {},
-  automatic_installation = { exclude = { "fennel_language_server" } },
-  ensure_installed = {
-    "ansiblels",
-    "astro",
-    "bashls",
-    "clangd",
-    "clojure_lsp",
-    "cssls",
-    "diagnosticls",
-    "dockerls",
-    "emmet_ls",
-    "eslint",
-    "graphql",
-    "html",
-    "intelephense",
-    "jsonls",
-    "lemminx",
-    "lua_ls",
-    "marksman",
-    "omnisharp",
-    "perlnavigator",
-    "prismals",
-    "pyright",
-    "rust_analyzer",
-    "sqlls",
-    "svelte",
-    "tailwindcss",
-    "ts_ls",
-    "vimls",
-    "vls",
-    "yamlls",
-  }
-})
-
 
 ---------------
 -- LSPCONFIG --
@@ -166,7 +93,6 @@ local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(
 )
 
 lsp_capabilities.offsetEncoding = "utf-8"
--- lsp_capabilities.offset_encoding = "utf-16"
 
 local servers = mason_lspconfig.get_installed_servers()
 
@@ -241,22 +167,14 @@ end
 nvim_lsp.lua_ls.setup {
   settings = {
     Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim', 'love' },
-      },
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = { 'vim', 'love' } },
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
       },
       -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
+      telemetry = { enable = false },
     },
   },
   capabilities = lsp_capabilities,
@@ -273,7 +191,6 @@ nvim_lsp.ts_ls.setup {
   capabilities = lsp_capabilities,
   flags = {
     debounce_text_changes = 150,
-    -- allow_incremental_sync = true
   }
 }
 
@@ -287,7 +204,6 @@ nvim_lsp.jsonls.setup {
     },
     flags = {
       debounce_text_changes = 150,
-      --allow_incremental_sync = true
     }
   },
 }
@@ -298,43 +214,13 @@ nvim_lsp.yamlls.setup {
   settings = {
     yaml = {
       schemaStore = {
-        -- You must disable built-in schemaStore support if you want to use
-        -- this plugin and its advanced options like `ignore`.
         enable = false,
-        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
         url = "",
       },
       schemas = require('schemastore').yaml.schemas(),
     },
   },
 }
-
--- ANSIBLE
-nvim_lsp.ansiblels.setup({
-  capabilities = lsp_capabilities,
-  settings = {
-    ansible = {
-      python = {
-        interpreterPath = 'python',
-      },
-      ansible = {
-        path = 'ansible',
-      },
-      executionEnvironment = {
-        enabled = false,
-      },
-      validation = {
-        enabled = true,
-        lint = {
-          enabled = true,
-          path = 'ansible-lint',
-        },
-      },
-    },
-  },
-  filetypes = { 'yaml.ansible' },
-  root_markers = { 'ansible.cfg', '.ansible-lint' },
-})
 
 -- Emmet
 nvim_lsp.emmet_ls.setup({
@@ -343,14 +229,12 @@ nvim_lsp.emmet_ls.setup({
   init_options = {
     html = {
       options = {
-        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
         ["bem.enabled"] = true,
       },
     },
   },
   flags = {
     debounce_text_changes = 150,
-    --allow_incremental_sync = true
   }
 })
 
