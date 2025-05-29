@@ -96,10 +96,16 @@ require('lazy').setup({
       ft = { "graphql", "javascript", "typescript", "typescriptreact" }
     },
     {
-      "iamcco/markdown-preview.nvim",
-      ft = { "markdown", "mdx", "text" },
-      build = function() vim.fn["mkdp#util#install"]() end,
-      cmd = { "MarkdownPreview", "MarkdownPreviewToggle", "MarkdownPreviewStop" }
+      "toppair/peek.nvim",
+      event = { "VeryLazy" },
+      build = "deno task --quiet build:fast",
+      config = function()
+        require("peek").setup({
+          app = "browser"
+        })
+        vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+        vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+      end,
     },
     -- Dressing
     {
