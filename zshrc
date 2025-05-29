@@ -105,7 +105,7 @@ export PATH=$PATH:$HOME/go/bin
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-. "~/.deno/env"
+. "$HOME/.deno/env"
 # Initialize zsh completions (added by deno install script)
 autoload -Uz compinit
 compinit
