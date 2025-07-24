@@ -1,7 +1,7 @@
 # My aliases
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
 alias nv='nvim'
-#alias vim='nvim'
+alias vim='vimx'
 alias tempdir='cd $(mktemp -d)'
 alias dotfiles='cd ~/dotfiles'
 alias publicip='curl -s https://ipecho.net/plain ; echo'

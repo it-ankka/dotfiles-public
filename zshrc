@@ -100,12 +100,18 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-export PATH=$PATH:$HOME/go/bin
+export PATH=~/.npm-global/bin:$PATH
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
 
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-. "$HOME/.deno/env"
+if [ -d "$HOME/.deno" ]; then
+  . "$HOME/.deno/env"
+fi
 # Initialize zsh completions (added by deno install script)
 autoload -Uz compinit
 compinit
+
