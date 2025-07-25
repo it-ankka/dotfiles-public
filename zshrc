@@ -100,7 +100,8 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-export PATH=~/.npm-global/bin:$PATH
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$HOME/.npm-global/bin:$PATH
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
@@ -114,4 +115,3 @@ fi
 # Initialize zsh completions (added by deno install script)
 autoload -Uz compinit
 compinit
-

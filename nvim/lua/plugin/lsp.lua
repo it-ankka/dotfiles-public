@@ -16,10 +16,10 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set('n', 'gy', function() vim.lsp.buf.type_definition() end, opts)
   vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = "rounded" }) end, opts)
   vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
   -- vim.keymap.set('i', '<C-k>', function() vim.lsp.buf.signature_help() end, opts)
-  vim.keymap.set('n', '<C-s>', function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set('n', '<C-s>', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, opts)
   vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set('n', '<leader>ga', function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', '<leader>e', function() vim.diagnostic.open_float() end, opts)
@@ -72,6 +72,10 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   { border = "rounded" }
 )
 require('lspconfig.ui.windows').default_options = { border = "rounded" }
+
+vim.diagnostic.config({
+  float = { border = "rounded" }
+})
 
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
@@ -162,6 +166,20 @@ if (vim.loop.os_uname().sysname ~= "Windows_NT") then
 
   nvim_lsp.fennel_language_server.setup {}
 end
+
+-- Omnisharp
+nvim_lsp.omnisharp.setup {
+  cmd = {
+    vim.fn.executable('OmniSharp') == 1 and 'OmniSharp' or 'omnisharp',
+    '-z', -- https://github.com/OmniSharp/omnisharp-vscode/pull/4300
+    '--hostPID',
+    tostring(vim.fn.getpid()),
+    'DotNet:enablePackageRestore=false',
+    '--encoding',
+    'utf-8',
+    '--languageserver',
+  },
+}
 
 --Lua ls
 nvim_lsp.lua_ls.setup {

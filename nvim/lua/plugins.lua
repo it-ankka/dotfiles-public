@@ -67,7 +67,6 @@ require('lazy').setup({
       ft = "lua",
       config = { library = { "nvim-dap-ui" } }
     },
-    -- Autocomplete
 
     -- Debugging
     {
@@ -75,7 +74,6 @@ require('lazy').setup({
       dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
       config = function() require("plugin.dap") end,
     },
-
 
     -- File search
     {
