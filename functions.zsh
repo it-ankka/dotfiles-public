@@ -187,6 +187,15 @@ function weather() {
   curl wttr.in/$1;
 }
 
+function jabraconnect() {
+  bluetoothctl pair 28:6F:40:91:F0:99 2>/dev/null;
+  bluetoothctl connect 28:6F:40:91:F0:99;
+}
+
+function jabradisconnect() {
+  bluetoothctl disconnect 28:6F:40:91:F0:99;
+}
+
 function findCaptivePortal() {
   interfaceName=$1
   if [[ -z $1 ]]; then
