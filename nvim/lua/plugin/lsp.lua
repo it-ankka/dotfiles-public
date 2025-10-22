@@ -87,8 +87,6 @@ local mason_lspconfig = require("mason-lspconfig")
 ---------------
 -- LSPCONFIG --
 ---------------
-local nvim_lsp = require 'lspconfig'
-local configs = require 'lspconfig.configs'
 
 
 -- Set up completion using nvim_cmp with LSP source
@@ -103,72 +101,22 @@ local servers = mason_lspconfig.get_installed_servers()
 -------------------
 -- SETUP SERVERS --
 -------------------
-for _, server in ipairs(servers) do
-  if nvim_lsp[server] == nil then
-    print("not supported", server)
-    goto continue
-  end
-  local lspft = nvim_lsp[server].filetypes
-  if lspft ~= nil and #lspft > 0 then
-    local ft = vim.bo.filetype
-    local should_load = false
-    for _, value in ipairs(lspft) do
-      if ft == value then
-        should_load = true
-      end
-    end
-    if not should_load then
-      goto continue
-    end
-  end
-  local server_config = {
-    on_attach = on_attach,
-    capabilities = lsp_capabilities,
-    flags = {
-      debounce_text_changes = 500,
-      allow_incremental_sync = true
-    }
-  }
 
-  nvim_lsp[server].setup(server_config)
-  ::continue::
-end
+vim.lsp.config("*", {
+  on_attach = on_attach,
+  capabilities = lsp_capabilities,
+  flags = {
+    debounce_text_changes = 500,
+    allow_incremental_sync = true
+  }
+})
 
 ----------------------------
 -- SETUP SPECIFIC SERVERS --
 ----------------------------
 
---Fennel
-
-if (vim.loop.os_uname().sysname ~= "Windows_NT") then
-  configs.fennel_language_server = {
-    default_config = {
-      -- replace it with true path
-      cmd = { os.getenv('HOME') .. '/.cargo/bin/fennel-language-server' },
-      filetypes = { 'fennel' },
-      single_file_support = true,
-      -- source code resides in directory `fnl/`
-      root_dir = nvim_lsp.util.root_pattern("fnl"),
-      settings = {
-        fennel = {
-          workspace = {
-            -- If you are using hotpot.nvim or aniseed,
-            -- make the server aware of neovim runtime files.
-            library = vim.api.nvim_list_runtime_paths(),
-          },
-          diagnostics = {
-            globals = { 'vim' },
-          },
-        },
-      },
-    },
-  }
-
-  nvim_lsp.fennel_language_server.setup {}
-end
-
 -- Omnisharp
-nvim_lsp.omnisharp.setup {
+vim.lsp.config('omnisharp', {
   cmd = {
     vim.fn.executable('OmniSharp') == 1 and 'OmniSharp' or 'omnisharp',
     '-z', -- https://github.com/OmniSharp/omnisharp-vscode/pull/4300
@@ -179,10 +127,10 @@ nvim_lsp.omnisharp.setup {
     'utf-8',
     '--languageserver',
   },
-}
+})
 
 --Lua ls
-nvim_lsp.lua_ls.setup {
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT' },
@@ -200,20 +148,20 @@ nvim_lsp.lua_ls.setup {
     debounce_text_changes = 500,
     allow_incremental_sync = true
   },
-}
+})
 
 --TS/JS
-nvim_lsp.ts_ls.setup {
+vim.lsp.config('ts_ls', {
   filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact",
     "typescript.tsx" },
   capabilities = lsp_capabilities,
   flags = {
     debounce_text_changes = 150,
   }
-}
+})
 
 -- JSON
-nvim_lsp.jsonls.setup {
+vim.lsp.config('jsonls', {
   capabilities = lsp_capabilities,
   settings = {
     json = {
@@ -224,10 +172,10 @@ nvim_lsp.jsonls.setup {
       debounce_text_changes = 150,
     }
   },
-}
+})
 
 -- YAML
-nvim_lsp.yamlls.setup {
+vim.lsp.config('yamlls', {
   capabilities = lsp_capabilities,
   settings = {
     yaml = {
@@ -238,10 +186,10 @@ nvim_lsp.yamlls.setup {
       schemas = require('schemastore').yaml.schemas(),
     },
   },
-}
+})
 
 -- Emmet
-nvim_lsp.emmet_ls.setup({
+vim.lsp.config('emmet_ls', {
   capabilities = lsp_capabilities,
   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
   init_options = {
@@ -255,6 +203,3 @@ nvim_lsp.emmet_ls.setup({
     debounce_text_changes = 150,
   }
 })
-
-nvim_lsp.gdscript.setup({})
-nvim_lsp.glsl_analyzer.setup({})

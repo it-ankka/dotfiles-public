@@ -1,6 +1,6 @@
 local conform = require("conform")
 
-local prettier = { "prettierd", "prettier", stop_after_first = true }
+local prettier = { "prettier", "prettierd", stop_after_first = true }
 
 -- Commands to enable and disable autoformat
 vim.api.nvim_create_user_command("FormatDisable", function(args)

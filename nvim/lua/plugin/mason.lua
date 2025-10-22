@@ -22,8 +22,6 @@ mason.setup({
 })
 
 mason_lspconfig.setup({
-  automatic_enable = {},
-  automatic_installation = { exclude = { "fennel_language_server" } },
   ensure_installed = {
     "ansiblels",
     "astro",
@@ -53,7 +51,6 @@ mason_lspconfig.setup({
     "tailwindcss",
     "ts_ls",
     "vimls",
-    "vls",
     "yamlls",
   }
 })
