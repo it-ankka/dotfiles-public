@@ -43,7 +43,6 @@ mason_lspconfig.setup({
     "lemminx",
     "lua_ls",
     "marksman",
-    "omnisharp",
     "perlnavigator",
     "prismals",
     "pyright",
@@ -53,7 +52,6 @@ mason_lspconfig.setup({
     "tailwindcss",
     "ts_ls",
     "vimls",
-    "vls",
     "yamlls",
   }
 })
