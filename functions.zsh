@@ -210,3 +210,10 @@ function findCaptivePortal() {
   fi
 
 }
+
+function img64 () {
+  filename=$1
+  ext=$1:t:e
+  fileInBase64=$(base64 -w 0 $filename)
+  echo -n "data:image/$ext;base64,$fileInBase64"
+}
