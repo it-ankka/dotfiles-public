@@ -61,6 +61,10 @@ require('lazy').setup({
     "b0o/schemastore.nvim",
     "onsails/lspkind.nvim",
     "mfussenegger/nvim-ansible",
+    -- Roslyn
+    {
+      "seblyng/roslyn.nvim",
+    },
     -- Neovim lua API documentation
     {
       "folke/lazydev.nvim",

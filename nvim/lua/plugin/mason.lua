@@ -4,8 +4,13 @@
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local mason_tool_installer = require("mason-tool-installer")
+local mason_registry = require("mason-registry")
 
 mason.setup({
+  registries = {
+    "github:mason-org/mason-registry",
+    "github:Crashdummyy/mason-registry",
+  },
   ui = { border = "rounded" },
   -- Autoinstall formatters and linters
   mason_tool_installer.setup({
@@ -55,3 +60,13 @@ mason_lspconfig.setup({
     "yamlls",
   }
 })
+
+
+mason_registry.refresh(function()
+  local pkg = mason_registry.get_package("roslyn")
+
+  if pkg ~= nil and not pkg:is_installed() then
+    pkg:install()
+    print("Mason installed")
+  end
+end)
