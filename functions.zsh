@@ -211,9 +211,26 @@ function findCaptivePortal() {
 
 }
 
-function img64 () {
+function img64() {
   filename=$1
   ext=$1:t:e
   fileInBase64=$(base64 -w 0 $filename)
   echo -n "data:image/$ext;base64,$fileInBase64"
+}
+
+function findDomains() {
+  filepath="$1"
+  maxlen="${2:-4}"   # default max length = 4
+  tld="${3:-fi}"     # default TLD = fi
+
+  if [ ! -f "$filepath" ]; then
+    echo "Please enter a valid file path"
+    exit 1
+  fi
+
+  while read -r word; do
+    if whois "$word.$tld" 2>/dev/null | grep -qi "not found"; then
+      echo "$word.$tld"
+    fi
+  done < <(cut -f1 "$filepath" | tr -d '\r' | grep -P "^[A-Za-z]{2,$maxlen}$")
 }
