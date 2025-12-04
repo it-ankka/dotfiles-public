@@ -234,3 +234,15 @@ function findDomains() {
     fi
   done < <(cut -f1 "$filepath" | tr -d '\r' | grep -P "^[A-Za-z]{2,$maxlen}$")
 }
+
+function openRemote() {
+  url=$(git remote get-url origin)
+  if [[ $url == *github.com* ]]; then
+    if [[ $url == git@* ]]; then
+      url="${url/git@/}"
+      url="${url/:/\/}"
+      url="https://$url"
+    fi
+  fi
+  xdg-open $url
+}
