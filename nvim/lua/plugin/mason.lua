@@ -46,7 +46,7 @@ mason_lspconfig.setup({
     "intelephense",
     "jsonls",
     "lemminx",
-    "lua_ls",
+    "lua_ls@3.15.0",
     "marksman",
     "perlnavigator",
     "prismals",
