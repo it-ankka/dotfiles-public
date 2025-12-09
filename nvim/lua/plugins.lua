@@ -202,7 +202,7 @@ require('lazy').setup({
       "Olical/conjure",
       cmd = { "Lein", "Clj" },
       dependencies = { "PaterJason/cmp-conjure" },
-      ft = { "clojure", "fennel", "lisp", "python" }
+      ft = { "clojure", "fennel", "lisp" }
     },
     {
       "windwp/nvim-autopairs",
