@@ -164,6 +164,32 @@ vim.lsp.config("ts_ls", {
   }
 })
 
+local vue_language_server_path = vim.fn.stdpath('data') ..
+    "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+vim.lsp.config("vtsls", {
+  settings = {
+    vtsls = {
+      tsserver = {
+        globalPlugins = {
+          {
+            name = '@vue/typescript-plugin',
+            location = vue_language_server_path,
+            languages = { 'vue' },
+            configNamespace = 'typescript',
+          }
+        }
+      }
+    }
+  },
+  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'json', "typescript", "typescriptreact",
+    "typescript.tsx", 'vue' },
+  capabilities = lsp_capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  }
+})
+
 -- JSON
 vim.lsp.config("jsonls", {
   capabilities = lsp_capabilities,
@@ -217,6 +243,8 @@ vim.lsp.config("roslyn", {
     },
   },
 })
+
+vim.lsp.config("vue_ls", {})
 
 --------------------
 -- ENABLE SERVERS --
