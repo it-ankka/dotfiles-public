@@ -1,6 +1,6 @@
 local conform = require("conform")
 
-local prettier = { "prettierd", "prettier", stop_after_first = true }
+local js_formatters = { "biome", "prettierd", "prettier", stop_after_first = true }
 
 -- Commands to enable and disable autoformat
 vim.api.nvim_create_user_command("FormatDisable", function(args)
@@ -27,16 +27,16 @@ conform.setup({
     -- Conform will run multiple formatters sequentially
     python = { "isort", "black" },
     -- Use a sub-list to run only the first available formatter
-    html = prettier,
-    javascript = prettier,
-    jsx = prettier,
-    typescript = prettier,
-    typescriptreact = prettier,
-    svelte = prettier,
-    tsx = prettier,
-    json = prettier,
-    jsonc = prettier,
-    css = prettier,
+    html = js_formatters,
+    javascript = js_formatters,
+    jsx = js_formatters,
+    typescript = js_formatters,
+    typescriptreact = js_formatters,
+    svelte = js_formatters,
+    tsx = js_formatters,
+    json = js_formatters,
+    jsonc = js_formatters,
+    css = js_formatters,
     cs = { "csharpier" },
     c = { "clang-format" }
   },

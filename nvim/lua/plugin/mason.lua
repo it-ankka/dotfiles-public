@@ -33,6 +33,7 @@ mason_lspconfig.setup({
     "ansiblels",
     "astro",
     "bashls",
+    "biome",
     "clangd",
     "clojure_lsp",
     "cssls",
@@ -57,6 +58,8 @@ mason_lspconfig.setup({
     "tailwindcss",
     "ts_ls",
     "vimls",
+    "vtsls",
+    "vue_ls",
     "yamlls",
   }
 })
