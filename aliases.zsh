@@ -253,3 +253,6 @@ alias mgcu='mutagen compose up'
 alias mgcU='mutagen compose up -d'
 alias mgcv='mutagen compose version'
 alias mgcx='mutagen compose stop'
+
+alias rmlocal="PVARKI_DOCKER_REPO=localhost:5050/ docker compose -p rmlocal -f docker-compose-local.yml"
+alias rmdev="PVARKI_DOCKER_REPO=localhost:5050/ docker compose -p rmdev -f docker-compose-local.yml -f docker-compose-dev.yml"

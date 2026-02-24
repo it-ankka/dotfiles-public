@@ -72,7 +72,7 @@ ZSH_THEME="lambda-gitster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages git-flow vi-mode kubectl asdf zsh-autosuggestions docker docker-compose fzf gcloud yarn)
+plugins=(git colored-man-pages git-flow vi-mode kubectl asdf zsh-autosuggestions docker docker-compose fzf gcloud)
 VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+export EDITOR=nvim
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$HOME/.npm-global/bin:$PATH
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
