@@ -22,6 +22,22 @@ end, {
 })
 
 conform.setup({
+  formatters = {
+    biome = {
+      require_cwd = true
+    },
+    yamlfix = {
+      env = {
+        YAMLFIX_INDENT_OFFSET = 0,
+        YAMLFIX_INDENT_MAPPING = 2,
+        YAMLFIX_INDENT_SEQUENCE = 2,
+        YAMLFIX_EXPLICIT_START = "false",
+        YAMLFIX_SEQUENCE_STYLE = "block_style",
+        YAMLFIX_WHITELINES = "1"
+
+      },
+    }
+  },
   formatters_by_ft = {
     lua = { "stylua" },
     -- Conform will run multiple formatters sequentially
@@ -30,6 +46,7 @@ conform.setup({
     html = js_formatters,
     javascript = js_formatters,
     jsx = js_formatters,
+    vue = js_formatters,
     typescript = js_formatters,
     typescriptreact = js_formatters,
     svelte = js_formatters,
@@ -38,7 +55,8 @@ conform.setup({
     jsonc = js_formatters,
     css = js_formatters,
     cs = { "csharpier" },
-    c = { "clang-format" }
+    c = { "clang-format" },
+    yaml = { "yamlfix" }
   },
   format_on_save = function(bufnr)
     -- Disable with a global or buffer-local variable
@@ -64,6 +82,5 @@ vim.api.nvim_create_user_command("Conform", function(args)
     range = range
   })
 end, { range = true })
-
 
 vim.keymap.set({ "n" }, "<leader>pf", "<cmd>Conform<CR>", { silent = false })

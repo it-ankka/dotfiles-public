@@ -16,12 +16,14 @@ mason.setup({
   mason_tool_installer.setup({
     ensure_installed = {
       "ansible-lint",
-      "prettier",
-      "prettierd",
+      "black",
       "clang-format",
       "csharpier",
       "isort",
-      "black",
+      "prettier",
+      "prettierd",
+      "yamlfix",
+      "yamlfmt",
     }
   })
 })
