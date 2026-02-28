@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Check if the URL is provided
+if [ -z "$1" ]; then
+  echo "Please provide a URL to a font zip file."
+  exit 1
+fi
+
+TEMP_DIR=$(mktemp -d)
+
+fontFilename=${1##*/}
+fontName=${fontFilename%.zip}
+
+
+wget -O "$TEMP_DIR/font.zip" "$1"
+unzip "$TEMP_DIR/font.zip" -d "$TEMP_DIR"
+fontPath=/usr/local/share/fonts/$fontName
+echo "Installing font $fontName to $fontPath"
+sudo mkdir -p $fontPath
+sudo mv "$TEMP_DIR"/*.{ttf,otf} $fontPath
+fc-cache -f -v
+
+rm -rf "$TEMP_DIR"
+echo "Fonts installed successfully!"
+

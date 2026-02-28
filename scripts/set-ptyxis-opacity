@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ -z $PTYXIS_PROFILE ]]; then
+  echo "Not running in Ptyxis"
+  exit 1
+fi
+
+opacity=$1
+if [[ -z $1 ]]; then
+  opacity=0.95
+fi
+
+echo "Setting opacity to $opacity"
+dconf write "/org/gnome/Ptyxis/Profiles/$PTYXIS_PROFILE/opacity" $opacity
