@@ -72,7 +72,7 @@ ZSH_THEME="lambda-gitster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages git-flow vi-mode kubectl asdf zsh-autosuggestions docker docker-compose fzf gcloud)
+plugins=(git colored-man-pages git-flow vi-mode kubectl asdf zsh-autosuggestions docker docker-compose fzf gcloud mise)
 VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
@@ -124,3 +124,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+eval "$(mise activate zsh)"
