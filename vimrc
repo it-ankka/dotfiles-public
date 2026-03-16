@@ -1,7 +1,7 @@
 filetype plugin indent on
 syntax on
 runtime macros/matchit.vim
-" -- NETRW ---
+" --- NETRW ---
 let netrw_banner=0
 let g:netrw_altv=1
 let g:netrw_keepdir=0
@@ -45,6 +45,7 @@ set scrolloff=8 sidescrolloff=8
 set pumheight=10
 set updatetime=300
 set redrawtime=10000
+set ttimeoutlen=10
 set titlestring=%{dir}
 set title
 " --- KEYMAPPING ---
@@ -88,11 +89,14 @@ inoremap <silent> <A-j> <Esc>:m .+1<CR>==gi
 inoremap <silent> <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <silent> <A-j> :m '>+1<CR>gv=gv
 "--- COLORS ---
-" colorscheme habamax " VIM 8.2 ->
-colorscheme desert
+colorscheme habamax
 hi Normal guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
 hi ModeMsg      ctermbg=green     ctermfg=black cterm=NONE
 hi StatusLineNC ctermbg=darkgrey                cterm=bold
 hi Visual       ctermbg=lightcyan ctermfg=black cterm=bold
 hi NonText guibg=NONE ctermbg=NONE
+"--- CURSOR SHAPE ----
+let &t_SI = "\e[5 q"
+let &t_SR = "\e[3 q"
+let &t_EI = "\e[2 q"
