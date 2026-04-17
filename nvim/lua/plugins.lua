@@ -142,6 +142,7 @@ require('lazy').setup({
     -- Syntax highlighting and AST
     {
       "nvim-treesitter/nvim-treesitter",
+      branch = "main",
       dependencies = {
         "JoosepAlviste/nvim-ts-context-commentstring"
       },
@@ -177,7 +178,6 @@ require('lazy').setup({
         auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
       }
     },
-
     -- Formatting
     { "stevearc/conform.nvim", config = function() require("plugin.conform") end },
     {
@@ -219,6 +219,44 @@ require('lazy').setup({
     "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
     "tpope/vim-surround",
+    {
+      "github/copilot.vim",
+      config = function() require("plugin.copilot") end
+    },
+    {
+      "CopilotC-Nvim/CopilotChat.nvim",
+      dependencies = {
+        { "nvim-lua/plenary.nvim", branch = "master" },
+      },
+      build = "make tiktoken",
+      opts = {
+        model = "gpt-5.3-codex",
+        temperature = 0.1,
+
+        window = {
+          layout = "vertical",
+          border = 'rounded',
+          width = 0.3,
+        },
+
+        headers = {
+          user = '👤 You',
+          assistant = '🤖 Copilot',
+          tool = '🔧 Tool',
+        },
+        separator = '━━',
+      },
+      init = function()
+        vim.api.nvim_create_autocmd('BufEnter', {
+          pattern = 'copilot-*',
+          callback = function()
+            vim.opt_local.relativenumber = false
+            vim.opt_local.number = false
+            vim.opt_local.conceallevel = 0
+          end,
+        })
+      end
+    },
 
     -- {"stevearc/overseer.nvim",
     --   config = function() require("overseer").setup() end

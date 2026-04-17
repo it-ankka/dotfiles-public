@@ -28,9 +28,6 @@ conform.setup({
     },
     yamlfix = {
       env = {
-        YAMLFIX_INDENT_OFFSET = 0,
-        YAMLFIX_INDENT_MAPPING = 2,
-        YAMLFIX_INDENT_SEQUENCE = 2,
         YAMLFIX_EXPLICIT_START = "false",
         YAMLFIX_SEQUENCE_STYLE = "block_style",
         YAMLFIX_WHITELINES = "1"

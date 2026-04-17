@@ -91,6 +91,7 @@ vim.keymap.set({ "n" }, "<leader>gr", References, { silent = true })
 vim.keymap.set({ "n" }, "<leader>gy", TypeDefinitions, { silent = true })
 vim.keymap.set({ "n" }, "<leader>gq", AllDiagnostics, { silent = true })
 
+fzf_lua.register_ui_select()
 fzf_lua.setup({
   winopts = { width = 0.9, height = 0.9 },
   keymap = {

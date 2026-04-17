@@ -70,6 +70,9 @@ vim.opt.undofile = true
 vim.opt.updatetime = 300
 vim.opt.wildmode = "longest:full,full"
 
+vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"
+
 vim.opt.signcolumn = "yes"
 vim.opt.number = true
 vim.opt.relativenumber = true
