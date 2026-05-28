@@ -1,6 +1,6 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -183,7 +183,8 @@ require('lazy').setup({
     {
       "stevearc/aerial.nvim",
       dependencies = { "nvim-tree/nvim-web-devicons" },
-      config = function() require("plugin.aerial") end
+      config = function() require("plugin.aerial") end,
+      event = { "VeryLazy" },
     },
     -- Auto closing tags
     {

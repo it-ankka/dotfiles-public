@@ -66,12 +66,13 @@ mason_lspconfig.setup({
   }
 })
 
+vim.api.nvim_create_user_command("RoslynInstall", function()
+  mason_registry.refresh(function()
+    local pkg = mason_registry.get_package("roslyn")
 
-mason_registry.refresh(function()
-  local pkg = mason_registry.get_package("roslyn")
-
-  if pkg ~= nil and not pkg:is_installed() then
-    pkg:install()
-    print("Mason installed")
-  end
-end)
+    if pkg ~= nil and not pkg:is_installed() then
+      pkg:install()
+      print("Roslyn installed")
+    end
+  end)
+end, {})

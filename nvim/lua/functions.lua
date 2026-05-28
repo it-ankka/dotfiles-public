@@ -26,7 +26,7 @@ function! ExecuteInShell(command)
   silent! execute 'resize '
   silent! execute 'set filetype=html'
   silent! execute 'set wrap'
-  silent! execute 'lua vim.diagnostic.disable()'
+  silent! execute 'lua vim.diagnostic.enable(false, { bufnr = 0})'
   silent! execute '1wincmd w'
   silent! redraw
   silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ')'
@@ -34,4 +34,3 @@ function! ExecuteInShell(command)
   " echo 'Shell command ' . command . ' executed.'
 endfunction
 ]])
-

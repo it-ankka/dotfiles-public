@@ -36,7 +36,6 @@ vim.keymap.set('n', '<Leader>B', DapSetBreakpoint)
 vim.keymap.set('n', '<Leader>lp', DapSetLogPoint)
 vim.keymap.set({ 'n', 'v' }, '<Leader>dh', DapHover)
 vim.keymap.set({ 'n', 'v' }, '<Leader>dp', DapPreview)
-vim.keymap.set({ 'n', 'v' }, '<Leader>df', DapPreview)
 
 vim.keymap.set('n', '<Leader>df', DapFrames)
 vim.keymap.set('n', '<Leader>ds', DapScopes)
